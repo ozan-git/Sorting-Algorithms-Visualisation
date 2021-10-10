@@ -36,8 +36,11 @@ class BubbleSort(Sorter):
 	@staticmethod
 	def bubble_sort(sorting_array):
 		# Cycles through all array elements.
+		operations = 0
 		for i in range(len(sorting_array) - 1):
+			operations += 1
 			for j in range(len(sorting_array) - 1 - i):
 				if sorting_array[j] > sorting_array[j + 1]:
 					# If the element is greater than its adjacent value, replace it.
 					sorting_array[j], sorting_array[j + 1] = sorting_array[j + 1], sorting_array[j]
+		return operations

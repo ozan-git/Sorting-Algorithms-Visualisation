@@ -8,6 +8,7 @@
 
 # Written by Orhan Ozan Yildiz.
 from sorting.insertion_sort import InsertionSort
+from sorting.merge_sort import MergeSort
 from sorting.sorter import Sorter
 
 
@@ -40,28 +41,7 @@ class MergeInsertionSort(Sorter):
 		start_half = unsorted_array[0: mid]
 		end_half = unsorted_array[mid: length_unsorted_array]
 
-		InsertionSort.insertion_sort(start_half)
-		InsertionSort.insertion_sort(end_half)
+		first_half = InsertionSort.insertion_sort(start_half)
+		second_half = InsertionSort.insertion_sort(end_half)
 
-		MergeInsertionSort.merge(unsorted_array, start_half, end_half)
-
-	@staticmethod
-	def merge(unsorted_array, start_half, end_half):
-		i, j, k = 0, 0, 0
-		length_part_left, length_part_right = len(start_half), len(end_half)
-
-		while i < length_part_left and j < length_part_right:
-			if start_half[i] < end_half[j]:
-				unsorted_array[k] = start_half[i]
-				k, i = (k + 1), (i + 1)
-			else:
-				unsorted_array[k] = end_half[j]
-				k, j = (k + 1), (j + 1)
-
-		while i < length_part_left:
-			unsorted_array[k] = start_half[i]
-			k, i = (k + 1), (i + 1)
-
-		while j < length_part_right:
-			unsorted_array[k] = end_half[j]
-			k, j = (k + 1), (j + 1)
+		MergeSort.merge(unsorted_array, first_half, second_half)

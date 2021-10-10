@@ -47,3 +47,4 @@ class InsertionSort(Sorter):
 				unsorted_array[j + 1] = unsorted_array[j]
 				j -= 1
 			unsorted_array[j + 1] = key
+		return unsorted_array

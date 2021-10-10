@@ -2,16 +2,18 @@
 # 5 October 2021.
 
 # Written by Orhan Ozan Yildiz.
-import datetime
 import random
+import time
 
-from numpy.random import rand, seed
+import matplotlib.pyplot as plt
+from numpy.random import rand, seed, randint
 
 from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
 from sorting.merge_insert_sort import MergeInsertionSort
 from sorting.merge_sort import MergeSort
 
+# assuming we are in Jupyter:
 # Initialize of result for compare the computational time with respect to n (number of inputs).
 insertion_comp_time = []
 bubble_comp_time = []
@@ -20,7 +22,7 @@ merge_insertion_comp_time = []
 
 
 # Generating a random array based on user inputs.
-def random_array():
+def generate_random_array():
 	generated_array = []
 	size_array = int(input("How many numbers should the array consist of: "))
 	i_min = int(input("What is the smallest value: "))
@@ -50,11 +52,9 @@ def check_entered_values():
 
 # The analysis of the sorting algorithms with respect to array size.
 def analyse_sorting_algorithms(array_to_be_sorted):
-	# The time is taken in milliseconds before the algorithm runs, and the time is taken again when the algorithm is
-	# finished.
-	start_time = datetime.datetime.now()
+	start_time = time.perf_counter()
 	array_to_be_sorted.sorting()
-	end_time = datetime.datetime.now()
+	end_time = time.perf_counter()
 
 	# The elapsed time is recorded.
 	computational_time = str(end_time - start_time)
@@ -72,6 +72,7 @@ def analyse_sorting_algorithms(array_to_be_sorted):
 
 	print(
 		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + computational_time)
+	return computational_time
 
 
 # The menu will first ask whether to enter the array manually or to create it randomly.
@@ -134,7 +135,7 @@ Enter Value: """)
 
 			elif chosen_operation == str(1) or chosen_operation == str(2) or chosen_operation == str(
 					3) or chosen_operation == str(4):
-				rand_array = random_array()
+				rand_array = generate_random_array()
 				print("Random array is:")
 				print(rand_array)
 
@@ -157,8 +158,59 @@ Enter Value: """)
 
 				operate_sorting_fun(unsorted_array)
 
+		# Compare the computational time with respect to n (number of inputs).
 		elif select_process == str(3):
 			different_array_sizes = [10, 25, 50, 100, 500, 1000, 10000]
+
+			elements_insertion, elements_merge, elements_merge_insert, elements_bubble = list(), list(), list(), list()
+			times_insertion, times_merge, times_merge_insert, times_bubble = list(), list(), list(), list()
+
+			for i in range(1, 10):
+				seed(1)
+				# Generate some integers.
+				arr = randint(0, 10000 * i, 1000 * i)
+				# For insertion sorting.
+				start_ins = time.perf_counter()
+				InsertionSort(arr).sorting()
+				end_ins = time.perf_counter()
+				print(len(arr), "Elements Sorted by InsertionSort in ", end_ins - start_ins)
+				elements_insertion.append(len(arr))
+				times_insertion.append(end_ins - start_ins)
+
+				# For merge sorting.
+				start_merge = time.perf_counter()
+				MergeSort(arr).sorting()
+				end_merge = time.perf_counter()
+				print(len(arr), "Elements Sorted by MergeSort in ", end_merge - start_merge)
+				elements_merge.append(len(arr))
+				times_merge.append(end_merge - start_merge)
+
+				# For bubble sorting.
+				start_bubble = time.perf_counter()
+				BubbleSort(arr).sorting()
+				end_bubble = time.perf_counter()
+				print(len(arr), "Elements Sorted by BubbleSort in ", end_bubble - start_bubble)
+				elements_bubble.append(len(arr))
+				times_bubble.append(end_bubble - start_bubble)
+
+				# For merge based insertion sorting.
+				start_merge_insert = time.perf_counter()
+				MergeInsertionSort(arr).sorting()
+				end_merge_insert = time.perf_counter()
+				print(len(arr), "Elements Sorted by MergeSort Based Insertion in ",
+					  end_merge_insert - start_merge_insert)
+				elements_merge_insert.append(len(arr))
+				times_merge_insert.append(MergeInsertionSort(arr).sorting())
+
+			plt.xlabel('List Length')
+			plt.ylabel('Time Complexity')
+			plt.plot(elements_insertion, times_insertion, label='Insertion Sort')
+			plt.plot(elements_merge, times_merge, label='Merge Sort')
+			plt.plot(elements_merge_insert, times_merge_insert, label='Merge-Insertion Sort')
+			plt.plot(elements_bubble, times_bubble, label='Bubble Sort')
+			plt.grid()
+			plt.legend()
+			plt.show()
 
 			for array_size in different_array_sizes:
 				seed(1)
