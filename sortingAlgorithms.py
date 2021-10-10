@@ -7,18 +7,18 @@ import datetime
 import random
 
 
-# Generating a random array based on user inputs.
-def random_array():
-	array = []
-	size_array = int(input("How many numbers should the array consist of: "))
-	i_min = int(input("What is the smallest value: "))
-	iMax = int(input("What is the largest value: "))
-	for i in range(size_array):
-		# Creating random array.
-		values = random.randint(i_min, iMax)
-		# The resulting random values are added to the array.
-		array.append(int(values))
-	return array
+# # Generating a random array based on user inputs.
+# def random_array():
+# 	array = []
+# 	size_array = int(input("How many numbers should the array consist of: "))
+# 	i_min = int(input("What is the smallest value: "))
+# 	iMax = int(input("What is the largest value: "))
+# 	for i in range(size_array):
+# 		# Creating random array.
+# 		values = random.randint(i_min, iMax)
+# 		# The resulting random values are added to the array.
+# 		array.append(int(values))
+# 	return array
 
 
 # The user creates the array.
@@ -36,19 +36,19 @@ class InputArray:
 		pass
 
 
-# BUBBLE SORT.A/
-# (1) for i = 1 to A:length - 1
-# (2)   for j = A:length down to i + 1
-# (3)       if A[j] < A[j - 1]
-# (4)           exchange A[j] with A[j] - 1"
-def bubble_sort(array):
-	# Cycles through all array elements.
-	for i in range(len(array) - 1):
-		for j in range(len(array) - 1 - i):
-			if array[j] > array[j + 1]:
-				# If the element is greater than its adjacent value, replace it.
-				array[j], array[j + 1] = array[j + 1], array[j]
-	return array
+# # BUBBLE SORT.A/
+# # (1) for i = 1 to A:length - 1
+# # (2)   for j = A:length down to i + 1
+# # (3)       if A[j] < A[j - 1]
+# # (4)           exchange A[j] with A[j] - 1"
+# def bubble_sort(array):
+# 	# Cycles through all array elements.
+# 	for i in range(len(array) - 1):
+# 		for j in range(len(array) - 1 - i):
+# 			if array[j] > array[j + 1]:
+# 				# If the element is greater than its adjacent value, replace it.
+# 				array[j], array[j + 1] = array[j + 1], array[j]
+# 	return array
 
 
 # MERGE(A, p, q, r)
@@ -118,21 +118,21 @@ def merge_sort(array, p, q, r):
 # (6)         A[i + 1] = A[i]
 # (7)         i = i - 1
 # (8)     A[i + 1] = key
-def insertion_sort(array):
-	# (1) for j(iterationNumber) = 2 to A(array).length.
-	# Our array index started from 0 so we need to take j = 1.
-	for iterationNumber in range(1, len(array)):
-		# (2) key = A[j].
-		key = array[iterationNumber]
-
-		# (3) and (4) Insert A[j] into the sorted sequence A[1..j - 1].
-		j = iterationNumber - 1
-		# (5), (6), (7) and (8).
-		while j >= 0 and array[j] > key:
-			array[j + 1] = array[j]
-			j -= 1
-		array[j + 1] = key
-	return array
+# def insertion_sort(array):
+# 	# (1) for j(iterationNumber) = 2 to A(array).length.
+# 	# Our array index started from 0 so we need to take j = 1.
+# 	for iterationNumber in range(1, len(array)):
+# 		# (2) key = A[j].
+# 		key = array[iterationNumber]
+#
+# 		# (3) and (4) Insert A[j] into the sorted sequence A[1..j - 1].
+# 		j = iterationNumber - 1
+# 		# (5), (6), (7) and (8).
+# 		while j >= 0 and array[j] > key:
+# 			array[j + 1] = array[j]
+# 			j -= 1
+# 		array[j + 1] = key
+# 	return array
 
 
 class SortAlgorithm:
