@@ -197,7 +197,7 @@ Enter Value: """)
 				start_merge_insert = time.perf_counter()
 				MergeInsertionSort(arr).sorting()
 				end_merge_insert = time.perf_counter()
-				print(len(arr), "Elements Sorted by MergeSort Based Insertion in ",  end_merge_insert - start_merge_insert)
+				print(len(arr), "Elements Sorted by MergeSort Based Insertion in ", end_merge_insert - start_merge_insert)
 				elements_merge_insert.append(len(arr))
 				times_merge_insert.append(end_merge_insert - start_merge_insert)
 
