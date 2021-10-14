@@ -52,12 +52,12 @@ def check_entered_values():
 
 # The analysis of the sorting algorithms with respect to array size.
 def analyse_sorting_algorithms(array_to_be_sorted):
-	start_time = time.perf_counter()
+	start_time = time.time()
 	array_to_be_sorted.sorting()
-	end_time = time.perf_counter()
+	end_time = time.time()
 
 	# The elapsed time is recorded.
-	computational_time = str(end_time - start_time)
+	computational_time = end_time - start_time
 
 	# Store execution times.
 	algorithm_name = array_to_be_sorted.get_algorithm_name
@@ -71,8 +71,7 @@ def analyse_sorting_algorithms(array_to_be_sorted):
 		bubble_comp_time.append(computational_time)
 
 	print(
-		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + computational_time)
-	return computational_time
+		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + str(computational_time))
 
 
 # The menu will first ask whether to enter the array manually or to create it randomly.
@@ -160,69 +159,37 @@ Enter Value: """)
 
 		# Compare the computational time with respect to n (number of inputs).
 		elif select_process == str(3):
-			different_array_sizes = [10, 25, 50, 100, 500, 1000, 10000]
+			different_array_sizes = [10, 25, 50, 100, 200, 300, 600, 800, 1000, 2000, 3000, 4000, 5000]
 
-			elements_insertion, elements_merge, elements_merge_insert, elements_bubble = list(), list(), list(), list()
-			times_insertion, times_merge, times_merge_insert, times_bubble = list(), list(), list(), list()
-
-			for i in range(1, 10):
-				seed(1)
-				# Generate some integers.
-				arr = randint(0, 10000 * i, 1000 * i)
-				# For insertion sorting.
-				start_ins = time.perf_counter()
-				InsertionSort(arr).sorting()
-				end_ins = time.perf_counter()
-				print(len(arr), "Elements Sorted by InsertionSort in ", end_ins - start_ins)
-				elements_insertion.append(len(arr))
-				times_insertion.append(end_ins - start_ins)
-
-				# For merge sorting.
-				start_merge = time.perf_counter()
-				MergeSort(arr).sorting()
-				end_merge = time.perf_counter()
-				print(len(arr), "Elements Sorted by MergeSort in ", end_merge - start_merge)
-				elements_merge.append(len(arr))
-				times_merge.append(end_merge - start_merge)
-
-				# For bubble sorting.
-				start_bubble = time.perf_counter()
-				BubbleSort(arr).sorting()
-				end_bubble = time.perf_counter()
-				print(len(arr), "Elements Sorted by BubbleSort in ", end_bubble - start_bubble)
-				elements_bubble.append(len(arr))
-				times_bubble.append(end_bubble - start_bubble)
-
-				# For merge based insertion sorting.
-				start_merge_insert = time.perf_counter()
-				MergeInsertionSort(arr).sorting()
-				end_merge_insert = time.perf_counter()
-				print(len(arr), "Elements Sorted by MergeSort Based Insertion in ", end_merge_insert - start_merge_insert)
-				elements_merge_insert.append(len(arr))
-				times_merge_insert.append(end_merge_insert - start_merge_insert)
-
-			plt.xlabel('List Length')
-			plt.ylabel('Time Complexity')
-			plt.plot(elements_insertion, times_insertion, label='Insertion Sort')
-			plt.plot(elements_merge, times_merge, label='Merge Sort')
-			plt.plot(elements_merge_insert, times_merge_insert, label='Merge-Insertion Sort')
-			plt.plot(elements_bubble, times_bubble, label='Bubble Sort')
-			plt.grid()
-			plt.legend()
-			plt.show()
+			insertion_comp_time.clear()
+			merge_comp_time.clear()
+			merge_insertion_comp_time.clear()
+			bubble_comp_time.clear()
 
 			for array_size in different_array_sizes:
 				seed(1)
-				insertion_sort = InsertionSort(rand(array_size))
-				merge_insertion_sort = MergeInsertionSort(rand(array_size))
-				merge_sort = MergeSort(rand(array_size))
-				bubble_sort = BubbleSort(rand(array_size))
+				insertion_sort = InsertionSort(randint(1, array_size, array_size))
+				merge_insertion_sort = MergeInsertionSort(randint(1, array_size, array_size))
+				merge_sort = MergeSort(randint(1, array_size, array_size))
+				bubble_sort = BubbleSort(randint(1, array_size, array_size))
 
 				print("\n\nArray size: " + str(array_size) + "\n")
 				analyse_sorting_algorithms(insertion_sort)
 				analyse_sorting_algorithms(merge_insertion_sort)
 				analyse_sorting_algorithms(merge_sort)
 				analyse_sorting_algorithms(bubble_sort)
+
+			plt.xlabel('List Length')
+			plt.ylabel('Time Complexity')
+			plt.plot(different_array_sizes, insertion_comp_time, label='Insertion Sort')
+			plt.plot(different_array_sizes, merge_comp_time, label='Merge Sort')
+			plt.plot(different_array_sizes, merge_insertion_comp_time, label='Merge-Insertion Sort')
+			plt.plot(different_array_sizes, bubble_comp_time, label='Bubble Sort')
+			plt.grid()
+			plt.legend()
+			plt.show()
+
+
 		elif select_process == str(4):
 			break
 		else:
