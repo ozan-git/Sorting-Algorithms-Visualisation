@@ -6,7 +6,7 @@ import random
 import time
 
 import matplotlib.pyplot as plt
-from numpy.random import rand, seed, randint
+from numpy.random import seed, randint
 
 from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
@@ -71,7 +71,8 @@ def analyse_sorting_algorithms(array_to_be_sorted):
 		bubble_comp_time.append(computational_time)
 
 	print(
-		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + str(computational_time))
+		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + str(
+			computational_time))
 
 
 # The menu will first ask whether to enter the array manually or to create it randomly.
@@ -168,7 +169,7 @@ Enter Value: """)
 
 			for array_size in different_array_sizes:
 				seed(1)
-				insertion_sort = InsertionSort(randint(1, array_size, array_size))
+				insertion_sort = InsertionSort(randint(low=1, high=array_size, size=array_size))
 				merge_insertion_sort = MergeInsertionSort(randint(1, array_size, array_size))
 				merge_sort = MergeSort(randint(1, array_size, array_size))
 				bubble_sort = BubbleSort(randint(1, array_size, array_size))
@@ -189,7 +190,7 @@ Enter Value: """)
 			plt.legend()
 			plt.show()
 
-
+		# Exit.
 		elif select_process == str(4):
 			break
 		else:
