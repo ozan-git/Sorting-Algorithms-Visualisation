@@ -27,7 +27,7 @@ from sorting.sorter import Sorter
 
 class MergeSort(Sorter):
 	# Sorting algorithm name.
-	MERGE_SORT = "MERGE SORT"
+	MERGE_SORT = "Merge Sort"
 
 	def __init__(self, unsorted_array):
 		# Calls the parent abstract class constructor (__init__ method).

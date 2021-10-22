@@ -9,9 +9,11 @@ import matplotlib.pyplot as plt
 from numpy.random import seed, randint
 
 from sorting.bubble_sort import BubbleSort
+from sorting.heap_sort import HeapSort
 from sorting.insertion_sort import InsertionSort
 from sorting.merge_insert_sort import MergeInsertionSort
 from sorting.merge_sort import MergeSort
+from sorting.quick_sort import QuickSort
 
 # assuming we are in Jupyter:
 # Initialize of result for compare the computational time with respect to n (number of inputs).
@@ -19,6 +21,8 @@ insertion_comp_time = []
 bubble_comp_time = []
 merge_comp_time = []
 merge_insertion_comp_time = []
+heap_comp_time = []
+quick_comp_time = []
 
 
 # Generating a random array based on user inputs.
@@ -69,16 +73,14 @@ def analyse_sorting_algorithms(array_to_be_sorted):
 		merge_comp_time.append(computational_time)
 	elif algorithm_name == BubbleSort.BUBBLE_SORT:
 		bubble_comp_time.append(computational_time)
+	elif algorithm_name == QuickSort.QUICK_SORT:
+		quick_comp_time.append(computational_time)
+	elif algorithm_name == HeapSort.HEAP_SORT:
+		heap_comp_time.append(computational_time)
 
 	print(
 		array_to_be_sorted.get_algorithm_name + " computational time with respect to size of array is " + str(
 			computational_time))
-
-
-# The menu will first ask whether to enter the array manually or to create it randomly.
-# Afterwards, the user is asked which sorting method they want to sort with, and the user can compare these tests
-# or exit the application.
-infinity_loop = True
 
 
 def ask_operation_fun():
@@ -86,8 +88,11 @@ def ask_operation_fun():
 Press 1 Insertion sort,
 press 2 Merge sort based on insertion sort,
 press 3 Merge sort,
-press 4 Bubble sort, or
-press 5 Exit.
+press 4 Bubble sort,
+press 5 Heap sort,
+press 6 Quick sort, or
+press 7 Exit.
+You can go back by pressing any key.
 Enter value: """)
 	return operation
 
@@ -117,7 +122,23 @@ def operate_sorting_fun(uns_array):
 		sorter.sorting()
 		print("Sorted array by using bubble sort: \n" + str(sorter.unsorted_array))
 
+	# Heap sort.
+	elif chosen_operation == str(5):
+		sorter = HeapSort(uns_array)
+		sorter.sorting()
+		print("Sorted array by using heap sort: \n" + str(sorter.unsorted_array))
 
+	# Quick sort.
+	elif chosen_operation == str(6):
+		sorter = QuickSort(uns_array, 0, len(uns_array) - 1)
+		sorter.sorting()
+		print("Sorted array by using quick sort: \n" + str(sorter.unsorted_array))
+
+
+# The menu will first ask whether to enter the array manually or to create it randomly.
+# Afterwards, the user is asked which sorting method they want to sort with, and the user can compare these tests
+# or exit the application.
+infinity_loop = True
 while infinity_loop:
 	try:
 		select_process = input("""
@@ -130,11 +151,11 @@ Enter Value: """)
 		if select_process == str(1):
 			chosen_operation = ask_operation_fun()
 
-			if chosen_operation == str(5):
+			if chosen_operation == str(7):
 				infinity_loop = False
 
 			elif chosen_operation == str(1) or chosen_operation == str(2) or chosen_operation == str(
-					3) or chosen_operation == str(4):
+					3) or chosen_operation == str(4) or chosen_operation == str(5) or chosen_operation == str(6):
 				rand_array = generate_random_array()
 				print("Random array is:")
 				print(rand_array)
@@ -145,11 +166,11 @@ Enter Value: """)
 		elif select_process == str(2):
 			chosen_operation = ask_operation_fun()
 
-			if chosen_operation == str(5):
+			if chosen_operation == str(7):
 				infinity_loop = False
 
 			elif chosen_operation == str(1) or chosen_operation == str(2) or chosen_operation == str(
-					3) or chosen_operation == str(4):
+					3) or chosen_operation == str(4) or chosen_operation == str(5) or chosen_operation == str(6):
 				unsorted_array = []
 				element = input("Please enter numbers using commas: ")
 				array_elements = element.split(",")
@@ -166,26 +187,34 @@ Enter Value: """)
 			merge_comp_time.clear()
 			merge_insertion_comp_time.clear()
 			bubble_comp_time.clear()
+			heap_comp_time.clear()
+			quick_comp_time.clear()
 
 			for array_size in different_array_sizes:
 				seed(1)
 				insertion_sort = InsertionSort(randint(low=1, high=array_size, size=array_size))
 				merge_insertion_sort = MergeInsertionSort(randint(1, array_size, array_size))
-				merge_sort = MergeSort(randint(1, array_size, array_size))
 				bubble_sort = BubbleSort(randint(1, array_size, array_size))
+				merge_sort = MergeSort(randint(1, array_size, array_size))
+				heap_sort = HeapSort(randint(1, array_size, array_size))
+				quick_sort = QuickSort(randint(1, array_size, array_size), 0, array_size - 1)
 
 				print("\n\nArray size: " + str(array_size) + "\n")
 				analyse_sorting_algorithms(insertion_sort)
 				analyse_sorting_algorithms(merge_insertion_sort)
-				analyse_sorting_algorithms(merge_sort)
 				analyse_sorting_algorithms(bubble_sort)
+				analyse_sorting_algorithms(merge_sort)
+				analyse_sorting_algorithms(heap_sort)
+				analyse_sorting_algorithms(quick_sort)
 
 			plt.xlabel('List Length')
 			plt.ylabel('Time Complexity')
 			plt.plot(different_array_sizes, insertion_comp_time, label='Insertion Sort')
-			plt.plot(different_array_sizes, merge_comp_time, label='Merge Sort')
 			plt.plot(different_array_sizes, merge_insertion_comp_time, label='Merge-Insertion Sort')
 			plt.plot(different_array_sizes, bubble_comp_time, label='Bubble Sort')
+			plt.plot(different_array_sizes, merge_comp_time, label='Merge Sort')
+			plt.plot(different_array_sizes, heap_comp_time, label='Heap Sort')
+			plt.plot(different_array_sizes, quick_comp_time, label='Quick Sort')
 			plt.grid()
 			plt.legend()
 			plt.show()
