@@ -34,7 +34,7 @@ class HeapSort(Sorter):
 		# n is array length.
 		n = len(unsorted_array)
 
-		HeapSort.build_max_hap(unsorted_array)
+		HeapSort.build_max_heap(unsorted_array)
 
 		for i in range(n - 1, 0, -1):
 			unsorted_array[i], unsorted_array[0] = unsorted_array[0], unsorted_array[i]
@@ -64,7 +64,6 @@ class HeapSort(Sorter):
 			largest = right
 		if largest != i:
 			unsorted_array[i], unsorted_array[largest] = unsorted_array[largest], unsorted_array[i]
-
 			HeapSort.heapify(unsorted_array, size_heap, largest)
 
 	# Build-Max-Heap(A)
@@ -72,7 +71,7 @@ class HeapSort(Sorter):
 	# (2) for i = ⌊A.length/2⌋ down to 1
 	# (3)     Max-Heapify(A,i)
 	@staticmethod
-	def build_max_hap(unsorted_array):
+	def build_max_heap(unsorted_array):
 		size_array = len(unsorted_array)
 		for i in range(size_array // 2 - 1, -1, -1):
 			HeapSort.heapify(unsorted_array, size_array, i)

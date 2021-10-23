@@ -14,13 +14,13 @@
 % Written by Orhan Ozan Yildiz.
 
 function [array, comp_insertion] = insertion(array)
-% Measure the computational time of the method.
-tic;                  
+    % Measure the computational time of the method.
+    tic;
     arrayLength = size(array,2);
     for i = 2:arrayLength
         key = array(i);
         j = i - 1;
-
+        
         while j > 0 && array(j) > key
             array(j+1) = array(j);
             j = j - 1;

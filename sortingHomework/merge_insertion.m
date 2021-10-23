@@ -23,49 +23,53 @@
 
 % Written by Orhan Ozan Yildiz.
 
-function [array, comp_merge] = merge_insertion(array,l,r)
-% Measure the computational time of the method.
-tic;   
-if(l<r)
+function [array, comp_merge] = merge_insertion(array)
+    % Measure the computational time of the method.
+    tic;
+    length_array = length(array);
+    if(length_array < 2)
+        return
+    end
+    
     % Finding the midpoint of the array.
-    mid = floor((l+r)/2); 
-    array = insertion(array,l,mid);
-    array = merge_insertion(array,mid+1,r);
-    array = merge_sort(array,l,r,mid);
+    mid = floor(length_array/2);
+    start_half = array(1:mid);
+    end_half = array(mid + 1: length(array));
+    
+    [start_half, ~] = insertion(start_half);
+    [end_half, ~] = insertion(end_half);
+    
+    array = merge_sort(array,start_half,end_half);
     comp_merge = toc;
-end
-
-function array = merge_sort(array,l,r,mid)
-% First half of array.
-i = l;
-% Second half of array.
-j = mid+1;
-% Combining the first and last half. 
-k = 1;
-
-% Data is copied to temporary arrays.
-while i <= mid && j <= r        
-        if array(i)<array(j)       
-            temp(k) = array(i);
-            i = i+1;
-            k = k+1;
-        else  
-            temp(k) = array(j);
-            j = j+1;
-            k = k+1;
-        end   
-end
-
-while i <= mid 
-    temp(k) = array(i);
-    i = i+1;
-    k = k+1;
-end
-
-while j <= r
-    temp(k) = array(j);
-    j = j+1;
-    k = k+1;
-end
-
-array(l:r) = temp(1:k-1);
+    
+    
+function double_list = merge_sort(double_list,start_half,end_half)
+    i = 1;
+    j = 1;
+    k = 1;
+    
+    length_part_left = length(start_half);
+    length_part_right = length(end_half);
+    while i <= length_part_left && j <= length_part_right
+        if (start_half(i) >= end_half(j))
+            double_list(k) = end_half(j);
+            k = (k + 1);
+            j = (j + 1);
+        else
+            double_list(k) = start_half(i);
+            k = (k + 1);
+            i = (i + 1);
+        end
+    end
+    while (i <= length_part_left)
+        double_list(k) = start_half(i);
+        k = (k + 1);
+        i = (i + 1);
+    end
+    while (j <= length_part_right)
+        double_list(k) = end_half(j);
+        k = (k + 1);
+        j = (j + 1);
+    end
+    
+    

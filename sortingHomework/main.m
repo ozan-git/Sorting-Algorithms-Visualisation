@@ -2,6 +2,8 @@
 % 5 October 2021.
 
 % Written by Orhan Ozan Yildiz.
+%% Clear memory and screen.
+clear, clc, close all;
 
 flag = true;
 while flag
@@ -56,11 +58,11 @@ while flag
             disp([length(arr), " Elements Sorted by MergeSort in ", merg_comp_time])
             times_merge = [times_merge, merg_comp_time];
         end
-     
+        
         plot(str2double(elements),str2double(times_insertion), 'b-','LineWidth', 2)
         plot(str2double(elements),str2double(times_bubble),'b-','LineWidth', 2)
         plot(str2double(elements),str2double(times_merge),'b-','LineWidth', 2)
-
+        
         title('2-D Line Plot for Comparasion Sorting Algorithms')
         xlabel('computational time')
         ylabel('Length of array')
@@ -70,24 +72,41 @@ while flag
     else
         disp('This input not valid. Please try again.')
         break;
-    end    
+    end
 end
 
 function callingSorting(array)
-        % Calling sorting functions.
-        [insertion_sorting, ins_comp_time] = insertion(array);
-        disp('Insertion sort result: ');
-        disp(insertion_sorting)
-        
-        [bubble_sorting, bub_comp_time] = bubble(array);
-        disp('Bubble sort result: ');
-        disp(bubble_sorting)
-        
-        [merge_sorting, merg_comp_time] = merge(array,1,length(array));
-        disp('Merge sort result: ');
-        disp(merge_sorting)
-        
-        fprintf('insertion sort computational time is %.4f \n',ins_comp_time)
-        fprintf('bubble sort computational time is %.4f \n',bub_comp_time)
-        fprintf('merge sort computational time is %.4f \n',merg_comp_time)
+    % Calling sorting functions.
+    [insertion_sorting, ins_comp_time] = insertion(array);
+    disp('Insertion sort result: ');
+    disp(insertion_sorting)
+    
+    [bubble_sorting, bub_comp_time] = bubble(array);
+    disp('Bubble sort result: ');
+    disp(bubble_sorting)
+    
+    [merge_sorting, merg_comp_time] = merge(array,1,length(array));
+    disp('Merge sort result: ');
+    disp(merge_sorting)
+    
+    [merge_insertion_sorting, merg_ins_comp_time] = merge_insertion(array);
+    disp('Merge insertion sort result: ')
+    disp(merge_insertion_sorting)
+    
+    [heap_sorting, heap_comp_time] = heap(array);
+    disp('Heap sort result: ')
+    disp(heap_sorting)
+    
+    [quick_sorting, quick_comp_time] = quick(array);
+    disp('Quick sort result: ')
+    disp(quick_sorting)
+    
+    fprintf('insertion sort computational time is %.4f \n',ins_comp_time)
+    fprintf('bubble sort computational time is %.4f \n',bub_comp_time)
+    fprintf('merge sort computational time is %.4f \n',merg_comp_time)
+    fprintf('merge insertion sort computational time is %.4f \n',merg_ins_comp_time)
+    fprintf('heap sort computational time is %.4f \n',heap_comp_time)
+    fprintf('quick sort computational time is %.4f \n',quick_comp_time)
+    
+    
 end

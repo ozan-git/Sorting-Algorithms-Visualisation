@@ -64,7 +64,7 @@ class MergeSort(Sorter):
 		i, j, k = 0, 0, 0
 		length_part_left, length_part_right = len(start_half), len(end_half)
 
-		while i < len(start_half) and j < length_part_right:
+		while i < length_part_left and j < length_part_right:
 			if start_half[i] >= end_half[j]:
 				double_list[k] = end_half[j]
 				k, j = (k + 1), (j + 1)
@@ -72,7 +72,7 @@ class MergeSort(Sorter):
 				double_list[k] = start_half[i]
 				k, i = (k + 1), (i + 1)
 
-		while i < len(start_half):
+		while i < length_part_left:
 			double_list[k] = start_half[i]
 			k, i = (k + 1), (i + 1)
 

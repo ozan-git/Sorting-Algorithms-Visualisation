@@ -24,48 +24,48 @@
 % Written by Orhan Ozan Yildiz.
 
 function [array, comp_merge] = merge(array,l,r)
-% Measure the computational time of the method.
-tic;   
-if(l<r)
-    % Finding the midpoint of the array.
-    mid = floor((l+r)/2); 
-    array = merge(array,l,mid);
-    array = merge(array,mid+1,r);
-    array = merge_sort(array,l,r,mid);
-    comp_merge = toc;
-end
-
+    % Measure the computational time of the method.
+    tic;
+    if(l<r)
+        % Finding the midpoint of the array.
+        mid = floor((l+r)/2);
+        array = merge(array,l,mid);
+        array = merge(array,mid+1,r);
+        array = merge_sort(array,l,r,mid);
+        comp_merge = toc;
+    end
+    
 function array = merge_sort(array,l,r,mid)
-% First half of array.
-i = l;
-% Second half of array.
-j = mid+1;
-% Combining the first and last half. 
-k = 1;
-
-% Data is copied to temporary arrays.
-while i <= mid && j <= r        
-        if array(i)<array(j)       
+    % First half of array.
+    i = l;
+    % Second half of array.
+    j = mid+1;
+    % Combining the first and last half.
+    k = 1;
+    
+    % Data is copied to temporary arrays.
+    while i <= mid && j <= r
+        if array(i)<array(j)
             temp(k) = array(i);
             i = i+1;
             k = k+1;
-        else  
+        else
             temp(k) = array(j);
             j = j+1;
             k = k+1;
-        end   
-end
-
-while i <= mid 
-    temp(k) = array(i);
-    i = i+1;
-    k = k+1;
-end
-
-while j <= r
-    temp(k) = array(j);
-    j = j+1;
-    k = k+1;
-end
-
-array(l:r) = temp(1:k-1);
+        end
+    end
+    
+    while i <= mid
+        temp(k) = array(i);
+        i = i+1;
+        k = k+1;
+    end
+    
+    while j <= r
+        temp(k) = array(j);
+        j = j+1;
+        k = k+1;
+    end
+    
+    array(l:r) = temp(1:k-1);
