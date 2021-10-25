@@ -1,4 +1,4 @@
-# Perform insertion, bubble and merge sorting algorithms.
+# Perform insertion, bubble and merge sortingalgorithm algorithms.
 # 5 October 2021.
 
 # Written by Orhan Ozan Yildiz.
@@ -8,12 +8,12 @@ import time
 import matplotlib.pyplot as plt
 from numpy.random import seed, randint
 
-from sorting.bubble_sort import BubbleSort
-from sorting.heap_sort import HeapSort
-from sorting.insertion_sort import InsertionSort
-from sorting.merge_insert_sort import MergeInsertionSort
-from sorting.merge_sort import MergeSort
-from sorting.quick_sort import QuickSort
+from sortingalgorithm.bubble_sort import BubbleSort
+from sortingalgorithm.heap_sort import HeapSort
+from sortingalgorithm.insertion_sort import InsertionSort
+from sortingalgorithm.merge_insert_sort import MergeInsertionSort
+from sortingalgorithm.merge_sort import MergeSort
+from sortingalgorithm.quick_sort import QuickSort
 
 # assuming we are in Jupyter:
 # Initialize of result for compare the computational time with respect to n (number of inputs).
@@ -54,7 +54,7 @@ def check_entered_values():
 	return user_input
 
 
-# The analysis of the sorting algorithms with respect to array size.
+# The analysis of the sortingalgorithm algorithms with respect to array size.
 def analyse_sorting_algorithms(array_to_be_sorted):
 	start_time = time.time()
 	array_to_be_sorted.sorting()
@@ -136,7 +136,7 @@ def operate_sorting_fun(uns_array):
 
 
 # The menu will first ask whether to enter the array manually or to create it randomly.
-# Afterwards, the user is asked which sorting method they want to sort with, and the user can compare these tests
+# Afterwards, the user is asked which sortingalgorithm method they want to sort with, and the user can compare these tests
 # or exit the application.
 infinity_loop = True
 while infinity_loop:
@@ -144,7 +144,7 @@ while infinity_loop:
 		select_process = input("""
 Press 1 if you want to use a random array,
 press 2 if you want to decide the array,
-press 3 if you want to compare sorting algorithms, or
+press 3 if you want to compare sortingalgorithm algorithms, or
 press 4 if you want to exit.
 Enter Value: """)
 		# Using random array.

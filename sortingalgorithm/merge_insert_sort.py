@@ -3,7 +3,7 @@
 # (2) Recursively sort A[1..⌈n/2⌉] and A[⌈n/2⌉+1..n].
 # (3) "Merge" the 2 sorted lists.
 
-# Performs merge based insertion sorting algorithm.
+# Performs merge based insertion sortingalgorithm algorithm.
 # It was created on October 5, 2021.
 
 # Written by Orhan Ozan Yildiz.

@@ -1,10 +1,10 @@
 # Performs quick sort algorithm.
 # Quick sort algorithm, like merge sort, applies the dive-and-conquer paradigm.
-# Divide: Partition the array Array[p..r] into two (possibly empty) subarrays Array[p..(q-1)] and Array[(q+1)..r]
+# Divide: Partition the array Array[p..r] into two (possibly empty) subarray Array[p..(q-1)] and Array[(q+1)..r]
 # such that each element of Array[p..(q-1)] is less than or equal to Array[q], which is, in turn, less than or
 # equal to each element of Array[(q+1)..r]. Compute the index q as part of this partitioning procedure.
-# Conquer: Sort the two subarrays Array[p..(q-1)] and Array[(q+1)..r] by recursive calls to quicksort.
-# Combine: Because the subarrays are already sorted, no work is needed to combine them: the entire array Array[p..r]
+# Conquer: Sort the two subarray Array[p..(q-1)] and Array[(q+1)..r] by recursive calls to quicksort.
+# Combine: Because the subarray are already sorted, no work is needed to combine them: the entire array Array[p..r]
 # is now sorted.
 # It was created on October 22, 2021.
 # page 170, CLRS
