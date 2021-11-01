@@ -11,16 +11,16 @@
 % Written by Orhan Ozan Yildiz.
 
 function [array, comp_bubble] = bubble(array)
-% Measure the computational time of the method.
-tic;   
-    arrayLength = size(array,2); 
+    % Measure the computational time of the method.
+    tic;
+    arrayLength = size(array,2);
     
-    for i = 1: (arrayLength+1)   
+    for i = 1: (arrayLength+1)
         for j = arrayLength:-1:(i + 1)
             
             if array(j) < array(j - 1)
                 
-                temp = array(j); 
+                temp = array(j);
                 array(j) = array(j - 1);
                 array(j-1) = temp;
             end

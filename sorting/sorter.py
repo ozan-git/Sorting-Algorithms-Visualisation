@@ -5,7 +5,7 @@
 from abc import ABC, abstractmethod
 
 
-# Abstract base class for sortingalgorithm algorithms.
+# Abstract base class for sorting algorithms.
 # This class defines methods for subclasses.
 class Sorter(ABC):
 
