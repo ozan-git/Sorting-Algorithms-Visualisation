@@ -3,8 +3,8 @@
 % Matlab program for implementation of Counting Sort.
 
 % Written by Orhan Ozan Yildiz.
-function array = counting(array)
- 
+function [array, comp_counting] = counting(array)
+    tic;
     min_value = min(array);
     max_value = max(array);
  
@@ -22,6 +22,6 @@ function array = counting(array)
             count(i - min_value + 1) = count(i - min_value + 1) - 1;
         end
     end
- 
-end 
+    comp_counting = toc;
+end
 

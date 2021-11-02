@@ -3,7 +3,8 @@
 % Matlab program for implementation of Bucket Sort.
 
 % Written by Orhan Ozan Yildiz.
-function array = bucket(array)
+function [array, comp_bucket] = bucket(array)
+    tic;
     % (1) (2) Find maximum value in the list and use length of the list to determine which value in the
 	% list goes into which bucket.
     A = max(array);
@@ -20,5 +21,6 @@ function array = bucket(array)
             index = index + 1;
         end
     end
+    comp_bucket = toc;
 end
 

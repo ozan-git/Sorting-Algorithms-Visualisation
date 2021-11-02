@@ -38,6 +38,11 @@ while flag
         times_merge = {};
         times_merge_insert = {};
         times_bubble = {};
+        times_quick = {};
+        times_heap = {};
+        times_counting = {};
+        times_radix = {};
+        times_bucket = {};
         for i = 1:10
             % Generate some integers.
             arr = randi([0,10000*i], 1000*i);
@@ -57,6 +62,31 @@ while flag
             [merge_sorting, merg_comp_time] = merge(arr,1,length(arr));
             disp([length(arr), " Elements Sorted by MergeSort in ", merg_comp_time])
             times_merge = [times_merge, merg_comp_time];
+            
+            % For quick sorting.
+            [quick_sorting, quick_comp_time] = quick(arr);
+            disp([length(arr), " Elements Sorted by QuickSort in ", quick_comp_time])
+            times_quick = [times_quick, quick_comp_time];
+            
+            % For heap sorting.
+            [heap_sorting, heap_comp_time] = heap(arr);
+            disp([length(arr), " Elements Sorted by HeapSort in ", heap_comp_time])
+            times_heap = [times_heap, heap_comp_time];
+            
+            % For counting sorting.
+            [counting_sorting, counting_comp_time] = counting(arr);
+            disp([length(arr), " Elements Sorted by CountingSort in ", counting_comp_time])
+            times_counting = [times_counting, counting_comp_time];
+            
+            % For radix sorting.
+            [radix_sorting, radix_comp_time] = radix(arr);
+            disp([length(arr), " Elements Sorted by RadixSort in ", radix_comp_time])
+            times_radix = [times_radix, radix_comp_time];
+            
+            % For bucket sorting.
+            [bucket_sorting, bucket_comp_time] = bucket(arr);
+            disp([length(arr), " Elements Sorted by BucketSort in ", bucket_comp_time])
+            times_bucket = [times_bucket, bucket_comp_time];
         end
         
         plot(str2double(elements),str2double(times_insertion), 'b-','LineWidth', 2)
@@ -101,12 +131,29 @@ function callingSorting(array)
     disp('Quick sort result: ')
     disp(quick_sorting)
     
+    [counting_sorting, counting_comp_time] = counting(array);
+    disp('Counting sort result: ')
+    disp(counting_sorting)
+    
+    [radix_sorting, radix_comp_time] = radix(array);
+    disp('Radix sort result: ')
+    disp(radix_sorting)
+    
+    [bucket_sorting, bucket_comp_time] = bucket(array);
+    disp('Bucket sort result: ')
+    disp(bucket_sorting)
+    
+    
     fprintf('insertion sort computational time is %.4f \n',ins_comp_time)
     fprintf('bubble sort computational time is %.4f \n',bub_comp_time)
     fprintf('merge sort computational time is %.4f \n',merg_comp_time)
     fprintf('merge insertion sort computational time is %.4f \n',merg_ins_comp_time)
     fprintf('heap sort computational time is %.4f \n',heap_comp_time)
     fprintf('quick sort computational time is %.4f \n',quick_comp_time)
+    fprintf('counting sort computational time is %.4f \n',counting_comp_time)
+    fprintf('radix sort computational time is %.4f \n',radix_comp_time)
+    fprintf('bucket sort computational time is %.4f \n',bucket_comp_time)
+
     
     
 end

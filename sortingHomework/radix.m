@@ -3,7 +3,8 @@
 % Matlab program for implementation of Radix Sort.
 
 % Written by Orhan Ozan Yildiz.
-function array = radix(array)
+function [array, comp_radix] = radix(array)
+    tic;
     max_value = max(array);
     base = 1;
 while max_value/base > 0
@@ -24,5 +25,6 @@ end
             B(rem(floor(array(j)/base),10)+1) = B(rem(floor(array(j)/base),10)+1) - 1;
         end
     end
+    comp_radix = toc;
 end
 
