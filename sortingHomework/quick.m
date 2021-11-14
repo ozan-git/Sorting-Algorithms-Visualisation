@@ -12,10 +12,10 @@
 % Combine: Because the subarrays are already sorted, no work is needed to
 % combine them: the entire array Array[p..r]
 % is now sorted.
+
 % It was created on October 22, 2021.
 % page 170, CLRS
 % Written by Orhan Ozan Yildiz.
-
 function [array, comp_quick] = quick(array)
     tic;
     % vectors with one or less elements are sorted
@@ -23,8 +23,8 @@ function [array, comp_quick] = quick(array)
         return
     else
         pivot=array(1);     % Take first value as pivot element
-                            % randomization would help avoiding worst case
-                            % runtime.
+        % randomization would help avoiding worst case
+        % runtime.
         % We need three partitions in order to make use of Matlabs
         % in-place processing feature.
         array = [ quick( array(array < pivot))...

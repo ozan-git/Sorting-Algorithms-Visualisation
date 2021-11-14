@@ -143,7 +143,6 @@ function callingSorting(array)
     disp('Bucket sort result: ')
     disp(bucket_sorting)
     
-    
     fprintf('insertion sort computational time is %.4f \n',ins_comp_time)
     fprintf('bubble sort computational time is %.4f \n',bub_comp_time)
     fprintf('merge sort computational time is %.4f \n',merg_comp_time)
@@ -154,6 +153,4 @@ function callingSorting(array)
     fprintf('radix sort computational time is %.4f \n',radix_comp_time)
     fprintf('bucket sort computational time is %.4f \n',bucket_comp_time)
 
-    
-    
 end
