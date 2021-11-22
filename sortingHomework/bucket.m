@@ -6,7 +6,7 @@
 function [array, comp_bucket] = bucket(array)
     tic;
     % (1) (2) Find maximum value in the list and use length of the list to determine which value in the
-	% list goes into which bucket.
+    % list goes into which bucket.
     A = max(array);
     bucket = zeros(1,A+1);
     

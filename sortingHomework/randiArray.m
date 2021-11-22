@@ -2,7 +2,6 @@
 % 5 October 2021.
 
 % Written by Orhan Ozan Yildiz.
-
 function randomArray = randiArray()
     
     size_array = input('How many numbers should the array consist of: ');
