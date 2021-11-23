@@ -22,7 +22,7 @@
 % Matlab program for implementation of Bubble Sort
 
 % Written by Orhan Ozan Yildiz.
-function unsortedvariables = mergeSort(unsortedvariables,low,high,app,event)
+function unsortedvariables = mergeSorti(unsortedvariables,low,high,app,event)
     global projectspeed
     
     if(low < high)
@@ -31,14 +31,14 @@ function unsortedvariables = mergeSort(unsortedvariables,low,high,app,event)
         
         middle = floor((low + high)/2);
         
-        unsortedvariables = mergeSort(unsortedvariables,low,middle,app,event);
+        unsortedvariables = mergeSorti(unsortedvariables,low,middle,app,event);
         
-        unsortedvariables = mergeSort(unsortedvariables,middle + 1, high,app,event);
+        unsortedvariables = mergeSorti(unsortedvariables,middle + 1, high,app,event);
         
-        unsortedvariables = merge(unsortedvariables, low, middle, high,app,event);
+        unsortedvariables = merge2(unsortedvariables, low, middle, high,app,event);
         
-        bar(app.UIAxes2, unsortedvariables,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
-        text(app.UIAxes2,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),...
+        bar(app.UIAxesVisualisation, unsortedvariables,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
+        text(app.UIAxesVisualisation,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),...
             'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
         drawnow update
         

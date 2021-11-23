@@ -19,13 +19,13 @@ function sortedArray = CountSort(unsortedvariables,app, ~)
         
         pause(projectspeed)
         sortedArray(thirdArray(unsortedvariables(j))) = unsortedvariables(j);
-        bar(app.UIAxes2, sortedArray,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
+        bar(app.UIAxesVisualisation, sortedArray,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
         
         drawnow update
         thirdArray(unsortedvariables(j)) = thirdArray(unsortedvariables(j)) - 1;
         
     end
-    bar(app.UIAxes2, sortedArray,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
+    bar(app.UIAxesVisualisation, sortedArray,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
     
     drawnow update
 end

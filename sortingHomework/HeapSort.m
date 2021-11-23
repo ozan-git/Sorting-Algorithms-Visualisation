@@ -19,10 +19,10 @@ function unsorted_variables = HeapSort(unsorted_variables, app, ~)
                 unsorted_variables([root child]) = unsorted_variables([child root]);
                 root = child;
                 pause(projectspeed)
-                b = bar(app.UIAxes2,unsorted_variables,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
+                b = bar(app.UIAxesVisualisation,unsorted_variables,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
                 b.CData(root,:) = [1 0 0];
                 b.CData(child,:) = [1 0 0];
-                text(app.UIAxes2,1:length(unsorted_variables),unsorted_variables,num2str(unsorted_variables'),...
+                text(app.UIAxesVisualisation,1:length(unsorted_variables),unsorted_variables,num2str(unsorted_variables'),...
                     'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
                 drawnow update
             else
@@ -49,9 +49,9 @@ function unsorted_variables = HeapSort(unsorted_variables, app, ~)
         unsorted_variables([count 1]) = unsorted_variables([1 count]); %Swap
         count = count - 1;
         unsorted_variables = shiftDown(unsorted_variables,1,count);
-        b = bar(app.UIAxes2,unsorted_variables,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
+        b = bar(app.UIAxesVisualisation,unsorted_variables,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
         b.CData(count,:)=[1 0 0];
-        text(app.UIAxes2,1:length(unsorted_variables),unsorted_variables,num2str(unsorted_variables'),...
+        text(app.UIAxesVisualisation,1:length(unsorted_variables),unsorted_variables,num2str(unsorted_variables'),...
             'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
         drawnow update
     end

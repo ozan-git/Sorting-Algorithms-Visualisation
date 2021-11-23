@@ -23,8 +23,8 @@
 
 % Written by Orhan Ozan Yildiz.
 
-function array=merge_sorti(array)
-    array=mergesort(array,1,length(array));
+function array = merge_sorti(array)
+    array = mergesort(array,1,length(array));
 end
 
 % Dividing the list into 2 halfes.

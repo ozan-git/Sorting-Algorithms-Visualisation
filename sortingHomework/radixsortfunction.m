@@ -10,8 +10,6 @@ function unsortedvariables = radixsortfunction(unsortedvariables,app)
     while lesssignificant/base > 1
         unsortedvariables = counting_sort(unsortedvariables,base,app);
         base = base * 10;
-        
-        
     end
     function B = counting_sort(unsortedvariables,base,app)
         
@@ -29,8 +27,9 @@ function unsortedvariables = radixsortfunction(unsortedvariables,app)
             C(rem(floor(unsortedvariables(j)/base),10)+1) = C(rem(floor(unsortedvariables(j)/base),10)+1) - 1;
             
             pause(projectspeed)
-            bar(app.UIAxes2, unsortedvariables,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
-            text(app.UIAxes2,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
+            bar(app.UIAxesVisualisation, unsortedvariables,'FaceColor',[0 .5 .5],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
+            text(app.UIAxesVisualisation,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),...
+                'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
             drawnow update
         end
     end

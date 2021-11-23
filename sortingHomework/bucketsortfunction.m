@@ -11,7 +11,7 @@ function array = bucketsortfunction(array,app)
     for j = 1:numel(array)
         bucket(array(j)) = bucket(array(j)) + 1;
         pause(projectspeed)
-        b=bar(app.UIAxes2,bucket,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
+        b=bar(app.UIAxesVisualisation,bucket,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
         b.CData(j,:)=[1 0 0];
         %b.CData(anothercount-1,:)=[1 0 0];
         
@@ -23,10 +23,10 @@ function array = bucketsortfunction(array,app)
             array(index) = i;
             index = index + 1;
             pause(projectspeed)
-            b=bar(app.UIAxes2,array,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
+            b=bar(app.UIAxesVisualisation,array,'FaceColor','flat','EdgeColor',[0 1 0],'LineWidth',1.5);
             b.CData(index,:)=[1 0 0];
             b.CData(index+1,:)=[1 0 0];
-            %text(app.UIAxes2,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
+            %text(app.UIAxesVisualisation,1:length(unsortedvariables),unsortedvariables,num2str(unsortedvariables'),'HorizontalAlignment','center','VerticalAlignment','baseline','Color','r','FontWeight','bold')
             drawnow update
         end
     end
