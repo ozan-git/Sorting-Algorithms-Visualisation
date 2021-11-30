@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from mplsort import MplSort
+
 
 class Ui_SortWindow(object):
     def setupUi(self, SortWindow):
@@ -676,8 +678,7 @@ class Ui_SortWindow(object):
         self.actionTxt_File_2.setText(_translate("SortWindow", "Txt File"))
         self.actionCsv_File_2.setText(_translate("SortWindow", "Csv File"))
         self.actionXlsx_File_2.setText(_translate("SortWindow", "Xlsx File"))
-from mplsort import MplSort
-import resources_rc
+
 
 
 if __name__ == "__main__":
