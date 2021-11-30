@@ -1,0 +1,1374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SortWindow</class>
+ <widget class="QMainWindow" name="SortWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#SortWindow{
+background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="MplSort" name="MplSort" native="true">
+    <property name="geometry">
+     <rect>
+      <x>136</x>
+      <y>60</y>
+      <width>971</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Algorithm Visualisation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(199, 204, 219,0);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>436</x>
+      <y>10</y>
+      <width>351</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#ffffff;&quot;&gt;Sorting Algorithms&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>530</y>
+      <width>36</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton{background-color: rgba(255, 255, 255,0);\n}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/arrow_up_square.svg</normaloff>:/images/images/arrow_up_square.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>630</y>
+      <width>36</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton_2{background-color: rgba(255, 255, 255,0);\n}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/arrow_down_square.svg</normaloff>:/images/images/arrow_down_square.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>206</x>
+      <y>500</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;Seed Value&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="set_default_values">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>520</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>The program assigns values ​​to default</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#set_default_values{
+background-color: rgb(102, 61, 54);
+border-radius: 10px ;
+color: white;}
+
+#set_default_values:hover{
+background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+    </property>
+    <property name="text">
+     <string>SET DEFAULT VALUES</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>216</x>
+      <y>560</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Seed Array</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Seed Array</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>216</x>
+      <y>520</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(229, 249, 255);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clear_btn">
+    <property name="geometry">
+     <rect>
+      <x>56</x>
+      <y>680</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Clear all values</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#clear_btn:hover{
+background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));
+}
+
+#clear_btn{
+background-color: rgba(255, 255, 255,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Clear</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/clean.svg</normaloff>:/images/images/clean.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create_array">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>560</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Create array with selected values</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#create_array{
+border-radius: 12px;
+border: 4px solid white;
+background-color: rgb(f, f, f);
+color: white;
+}
+
+#create_array:hover{
+background-color:
+qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}
+</string>
+    </property>
+    <property name="text">
+     <string>CREATE ARRAY</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enter_array">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>600</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Enter array yourself</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#enter_array{
+border-radius: 12px;
+border: 4px solid white;
+background-color: rgb(f, f, f);
+color: white;
+}
+
+#enter_array:hover{
+background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+    </property>
+    <property name="text">
+     <string>ENTER ARRAY</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stop_btn">
+    <property name="geometry">
+     <rect>
+      <x>126</x>
+      <y>640</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Stop the animation</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#stop_btn:hover{
+background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));
+}
+
+#stop_btn{
+background-color: rgba(255, 255, 255,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Stop</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/stop.svg</normaloff>:/images/images/stop.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_2">
+    <property name="geometry">
+     <rect>
+      <x>216</x>
+      <y>590</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Unique Array</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Non-repeating Array</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="skip_btn">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>640</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Skip the animation</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#skip_btn:hover{
+background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));
+}
+
+#skip_btn{
+background-color: rgba(255, 255, 255,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Skip</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/forward.svg</normaloff>:/images/images/forward.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="displayarraylen_sort">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>500</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#displayarraylen_sort{
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Array Size&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>730</y>
+      <width>301</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="2" column="1">
+      <widget class="QSlider" name="horizontalSlider">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksAbove</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Animation Speed&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>530</y>
+      <width>111</width>
+      <height>132</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QDial" name="array_sort">
+       <property name="toolTip">
+        <string>Set the Array Size.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(153, 92, 81);</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="displayarrays_sort">
+       <property name="minimumSize">
+        <size>
+         <width>76</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>444</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(225, 229, 238);</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="back_btn">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>20</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Back To Menu</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#back_btn:hover{
+background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));
+
+}
+
+#back_btn{
+background-color: rgba(255, 255, 255,0);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/images/images/home.svg</normaloff>:/images/images/home.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>866</x>
+      <y>480</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Sorting Algorithms&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="time_comparison">
+    <property name="geometry">
+     <rect>
+      <x>626</x>
+      <y>540</y>
+      <width>151</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="toolTip">
+     <string>See the Time Complexity Graph</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#time_comparison{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#time_comparison:hover{
+background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+    </property>
+    <property name="text">
+     <string>TIME COMPARISON</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>816</x>
+      <y>510</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>966</x>
+      <y>540</y>
+      <width>133</width>
+      <height>278</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="spacing">
+      <number>18</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="insertion_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Insertion Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#insertion_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;
+}
+
+#insertion_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>INSERTION SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="heap_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Heap Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#heap_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;
+}
+
+#heap_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>HEAP SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="quick_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Quick Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#quick_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#quick_sort:hover{
+background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>QUICK SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="radix_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Radix Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#radix_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#radix_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>RADIX SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="shell_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Shell Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#shell_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#shell_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>SHELL SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="comb_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#comb_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#comb_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>COMB SORT</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>816</x>
+      <y>540</y>
+      <width>133</width>
+      <height>279</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="spacing">
+      <number>18</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="bubble_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Bubble Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#bubble_sort{
+background-color: rgb(102, 61, 54);
+border-radius: 10px ;
+color: white;}
+
+#bubble_sort:hover{
+background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>BUBBLE SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="bucket_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Bucket Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#bucket_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#bucket_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>BUCKET SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="merge_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Merge Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#merge_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#merge_sort:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>MERGE SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="counting_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Counting Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#counting_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;
+}
+
+#counting_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>COUNTING SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="selection_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Selection Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#selection_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;
+}
+
+#selection_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>SELECTION SORT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="coctail_sort">
+       <property name="minimumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Coctail Sort Animation</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#coctail_sort{
+border-radius: 10px ;
+background-color: rgb(102, 61, 54);
+color: white;}
+
+#coctail_sort:hover{
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));
+}</string>
+       </property>
+       <property name="text">
+        <string>COCTAIL SORT</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>680</y>
+      <width>80</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>80</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>80</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Upper Range:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>703</y>
+      <width>80</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>80</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>80</width>
+      <height>18</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Lower Range:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>680</y>
+      <width>133</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="upper_range">
+        <property name="toolTip">
+         <string>Set Upper Range</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(225, 229, 238);</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignHCenter|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="lower_range">
+        <property name="toolTip">
+         <string>Set Lower Range</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(225, 229, 238);</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="file_operations">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));</string>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menuFile_Operations">
+    <property name="title">
+     <string>File Operations</string>
+    </property>
+    <widget class="QMenu" name="menuSave_File">
+     <property name="title">
+      <string>Save File</string>
+     </property>
+     <addaction name="actionTxt_File"/>
+     <addaction name="actionCsv_File"/>
+     <addaction name="actionXlsx_File"/>
+    </widget>
+    <widget class="QMenu" name="menuInsert_File">
+     <property name="title">
+      <string>Insert File</string>
+     </property>
+     <addaction name="actionTxt_File_2"/>
+     <addaction name="actionCsv_File_2"/>
+     <addaction name="actionXlsx_File_2"/>
+    </widget>
+    <addaction name="menuSave_File"/>
+    <addaction name="menuInsert_File"/>
+   </widget>
+   <addaction name="menuFile_Operations"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string notr="true">#SortWindow{
+background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));
+}</string>
+   </property>
+  </widget>
+  <action name="actionTxt_File">
+   <property name="text">
+    <string>Txt File</string>
+   </property>
+  </action>
+  <action name="actionCsv_File">
+   <property name="text">
+    <string>Csv File</string>
+   </property>
+  </action>
+  <action name="actionXlsx_File">
+   <property name="text">
+    <string>Xlsx File</string>
+   </property>
+  </action>
+  <action name="actionTxt_File_2">
+   <property name="text">
+    <string>Txt File</string>
+   </property>
+  </action>
+  <action name="actionCsv_File_2">
+   <property name="text">
+    <string>Csv File</string>
+   </property>
+  </action>
+  <action name="actionXlsx_File_2">
+   <property name="text">
+    <string>Xlsx File</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MplSort</class>
+   <extends>QWidget</extends>
+   <header>mplsort.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
