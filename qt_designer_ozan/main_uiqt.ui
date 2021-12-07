@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow{
+background-color: rgb(219, 240, 242);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame_main_menu">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1182</width>
+      <height>781</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#MainWindow{
+background-color: rgb(208, 23qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255))2, 242);}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>1181</width>
+       <height>213</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>491</width>
+          <height>211</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>491</width>
+          <height>211</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Visit Izmir Katip Celebi University website.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton{background-color: rgba(255, 255, 255,0);
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/images/images/logo_english_university.png</normaloff>:/images/images/logo_english_university.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>491</width>
+          <height>211</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="pushButton_mail">
+            <property name="toolTip">
+             <string>Send Feedback</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255,0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/images/icon_feed_back.png</normaloff>:/images/images/icon_feed_back.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>55</width>
+              <height>55</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_information">
+            <property name="toolTip">
+             <string>Get Information</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255,0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/images/icon_information.png</normaloff>:/images/images/icon_information.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>225</y>
+       <width>1181</width>
+       <height>481</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="sort_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#sort_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#sort_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>SORTING ALGORITHMS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="timecomp_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#timecomp_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#timecomp_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>TIME COMPARISON</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="matrix_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#matrix_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#matrix_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>MATRIX MULTIPLICATION</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="binary_search_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#binary_search_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#binary_search_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>BINARY SEARCH</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="fibonacci_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#fibonacci_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#fibonacci_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>FIBONACCI NUMBER</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="kthsmallest_button">
+          <property name="minimumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>256</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#kthsmallest_button{
+border-radius: 10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.409, x2:0.994, y2:0.768, stop:0 rgba(103, 126, 198, 255), stop:1 rgba(91, 255, 96, 255));
+}
+
+#kthsmallest_button:hover{
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83, stop:0 rgba(26, 214, 24, 255), stop:1 rgba(68, 184, 255, 255));}</string>
+          </property>
+          <property name="text">
+           <string>RANDOMIZED SELECTION</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>710</y>
+       <width>1171</width>
+       <height>63</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>564</width>
+          <height>61</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>564</width>
+          <height>61</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_2{background-color: rgba(255, 255, 255,0);
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/images/images/created_by_ozan.svg</normaloff>:/images/images/created_by_ozan.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>564</width>
+          <height>61</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="mic_btn">
+        <property name="styleSheet">
+         <string notr="true">#mic_btn{background-color: rgba(0,0,0,0);}
+
+#mic_btn:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources.qrc">
+          <normaloff>:/images/images/microphone.svg</normaloff>:/images/images/microphone.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+  <include location="G:/My Drive/5. Term/Technical Elective 1 Algorithm/ExternalResources/Externalhw/Homework_betul/Pyqt5_ProjectFiles/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
