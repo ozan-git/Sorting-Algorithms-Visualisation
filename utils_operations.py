@@ -75,7 +75,7 @@ class BinarySearch:
 	def __init__(self):
 		pass
 
-	def createarray(self, l, u, n):  # take lower bound from user #take array size from user
+	def create_array(self, l, u, n):  # take lower bound from user #take array size from user
 		self.unsorted_array = set()  # Generating random arrays containing different numbers with format set
 		while True:
 			self.unsorted_array.add(random.randint(l, u))
@@ -83,7 +83,7 @@ class BinarySearch:
 				break
 		return list(self.unsorted_array)  # returning the set in list form
 
-	def insertionSort(self, array):  # create an function to do insertion sort
+	def insertion_sort(self, array):
 		for i in range(1, len(array)):  # making a for loop because of to swap an item with previous one,starting from 1
 			key = array[i]  # key will be used for comparison with previous items and sent to the place it belongs
 			j = i - 1
@@ -110,7 +110,7 @@ class BinarySearch:
 
 
 # %%The class that contains functions to perform randomized selection operations
-class randomized_selection():
+class RandomizedSelection:
 	def __init__(self):
 		pass
 
@@ -122,7 +122,7 @@ class randomized_selection():
 				i += 1
 				array[i], array[j] = array[j], array[i]
 		array[i + 1], array[r] = array[r], array[i + 1]
-		return (i + 1)
+		return i + 1
 
 	def randomized_partition(self, array, p, r):
 		i = random.randint(p, r)
@@ -141,7 +141,7 @@ class randomized_selection():
 		else:
 			return self.randomized_select(array, r + 1, q, i - k)
 
-	def createarray(self, l, u, n):  # take lower bound from user #take array size from user
+	def create_array(self, l, u, n):  # take lower bound from user #take array size from user
 		self.unsorted_array = set()  # Generating random arrays containing different numbers with format set
 		while True:
 			self.unsorted_array.add(random.randint(l, u))
@@ -149,7 +149,7 @@ class randomized_selection():
 				break
 		return list(self.unsorted_array)  # returning the set in list form
 
-	def insertionSort(self, array):  # create an funciton to do insertion sort
+	def insertion_sort(self, array):  # create a function to do insertion sort
 		for i in range(1, len(array)):  # making a for loop because of to swap an item with previous one,starting from 1
 			key = array[i]  # key will be used for comparison with previous items and sent to the place it belongs
 			j = i - 1
@@ -163,11 +163,11 @@ class randomized_selection():
 
 
 # %% The class that contains functions to perform time comparison operations
-class sortingalgorithmsfortimecomparison():
+class SortingAlgorithmsForTimeComparison:
 	def __init__(self):
 		pass
 
-	def insertionSort(self, array):  # create an funciton to do insertion sort
+	def insertion_sort(self, array):
 		for i in range(1, len(array)):  # making a for loop because of to swap an item with previous one,starting from 1
 			key = array[i]  # key will be used for comparison with previous items and sent to the place it belongs
 			j = i - 1
@@ -179,18 +179,18 @@ class sortingalgorithmsfortimecomparison():
 				j + 1] = key  # take array[j] all the way left to the place where it has a smaller/no value to its left
 		return array
 
-	def BubbleSort(self, array):  # create an funciton to do bubble sort
+	def bubble_sort(self, array):  # create an funciton to do bubble sort
 		for i in range(0, len(array) - 1):  # loop for all array elements
 			for j in range(len(array), i + 1, -1):  # second cycle for swap operations
 				if array[j - 1] < array[j - 2]:  # if the left greater than right
 					array[j - 2], array[j - 1] = array[j - 1], array[j - 2]  # swap to the index of value
 		return array
 
-	def mergeSort(self, array, p, r):  # create an function to do merge sort
+	def merge_sort(self, array, p, r):  # create an function to do merge sort
 		if p < r:  # p is the first index, r is the last index.
 			q = (p + r) // 2  # q is the middle index
-			self.mergeSort(array, p, q)  # recursive function for new right array created
-			self.mergeSort(array, q + 1, r)  # recursive function for new right array created
+			self.merge_sort(array, p, q)  # recursive function for new right array created
+			self.merge_sort(array, q + 1, r)  # recursive function for new right array created
 			self.merge(array, p, q, r)  # merge funciton for sorted array to merge
 		return array
 
@@ -217,7 +217,7 @@ class sortingalgorithmsfortimecomparison():
 				j += 1
 		return array
 
-	def SelectionSort(self, array):
+	def selection_sort(self, array):
 		for i in range(len(array)):
 			min = i
 			for j in range(i + 1, len(array)):
@@ -226,11 +226,11 @@ class sortingalgorithmsfortimecomparison():
 
 			array[i], array[min] = array[min], array[i]
 
-	def QuickSort(self, array, p, r):
+	def quick_sort(self, array, p, r):
 		if p < r:
 			q = self.partition(array, p, r)
-			self.QuickSort(array, p, q - 1)
-			self.QuickSort(array, q + 1, r)
+			self.quick_sort(array, p, q - 1)
+			self.quick_sort(array, q + 1, r)
 
 	def partition(self, array, p, r):
 		pivotelement = array[r]
@@ -242,7 +242,7 @@ class sortingalgorithmsfortimecomparison():
 		array[i + 1], array[r] = array[r], array[i + 1]
 		return i + 1
 
-	def Heapify(self, array, n, i):
+	def heapify(self, array, n, i):
 		largest = i
 		left = 2 * i + 1
 		right = 2 * i + 2
@@ -253,17 +253,17 @@ class sortingalgorithmsfortimecomparison():
 			largest = right
 		if largest != i:
 			array[i], array[largest] = array[largest], array[i]
-			self.Heapify(array, n, largest)
+			self.heapify(array, n, largest)
 
-	def HeapSort(self, array):
+	def heap_sort(self, array):
 		n = len(array)
 		for i in range(n // 2 - 1, -1, -1):
-			self.Heapify(array, n, i)
+			self.heapify(array, n, i)
 		for i in range(n - 1, 0, -1):
 			array[i], array[0] = array[0], array[i]
-			self.Heapify(array, i, 0)
+			self.heapify(array, i, 0)
 
-	def CountingSort(self, array):
+	def counting_sort(self, array):
 		max_value = int(max(array))
 		min_value = int(min(array))
 		range_of_elements = max_value - min_value + 1
@@ -284,7 +284,7 @@ class sortingalgorithmsfortimecomparison():
 		for i in range(0, len(array)):
 			array[i] = sorted_array[i]
 
-	def BucketSort(self, array):
+	def bucket_sort(self, array):
 		max_value = max(array)
 		size = max_value / len(array)
 
@@ -301,7 +301,7 @@ class sortingalgorithmsfortimecomparison():
 				buckets_list[len(array) - 1].append(array[i])
 
 		for z in range(len(array)):
-			self.insertionSort(buckets_list[z])
+			self.insertion_sort(buckets_list[z])
 
 		final_output = []
 		for x in range(len(array)):
@@ -310,7 +310,7 @@ class sortingalgorithmsfortimecomparison():
 		for i in range(0, len(array)):
 			array[i] = final_output[i]
 
-	def ShellSort(self, array):
+	def shell_sort(self, array):
 		n = len(array)
 		gap = n // 2
 
@@ -353,13 +353,15 @@ class sortingalgorithmsfortimecomparison():
 
 
 # %%
-class timer():
+class Timer:
 	def __init__(self):  # set the initializer method
+		self.times = None
+		self.new_array = None
 		self.n = [100, 300, 500, 2000]  # define random array lengths
 
 	def create_array(self, length, maximum):  # define a random array creator function
 		random.seed(0)
-		random.sample
+		random.sample()
 		# create a random array between -500 and maximum
 		self.new_array = [random.randint(0, maximum) for i in range(length)]
 		return self.new_array  # return that to use this array on below
@@ -372,69 +374,70 @@ class timer():
 			if situations[0]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().BubbleSort(array)  # make bubble sorting
+				SortingAlgorithmsForTimeComparison().bubble_sort(array)  # make bubble sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Bubble"].append(t1 - t0)  # add this time to a dictionary where Bubble's location
 
 			if situations[1]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().insertionSort(array)  # make insertion sorting
+				SortingAlgorithmsForTimeComparison().insertion_sort(array)  # make insertion sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Insertion"].append(t1 - t0)  # add this time to a dictionary where Insertion's location
 
 			if situations[2]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().mergeSort(array, 0, len(array) - 1)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().merge_sort(array, 0, len(array) - 1)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Merge"].append(t1 - t0)  # add this time to a dictionary where Merge's location
 
 			if situations[3]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().SelectionSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().selection_sort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Selection"].append(t1 - t0)  # add this time to a dictionary where Selection's location
 
 			if situations[4]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().CountingSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().counting_sort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Counting"].append(t1 - t0)  # add this time to a dictionary where Counting's location
 
 			if situations[5]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().HeapSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().heap_sort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Heap"].append(t1 - t0)  # add this time to a dictionary where Heap's location
 
 			if situations[6]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().BucketSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().bucket_sort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Bucket"].append(t1 - t0)  # add this time to a dictionary where Bucket's location
 
 			if situations[7]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().RadixSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().RadixSort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Radix"].append(t1 - t0)  # add this time to a dictionary where Radix's location
 
 			if situations[8]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().QuickSort(array, 0, len(array) - 1)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().quick_sort(array, 0, len(array) - 1)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Quick"].append(t1 - t0)  # add this time to a dictionary where Quick's location
+
 			if situations[9]:
 				array = self.create_array(size, size)  # create array
 				t0 = time()  # take the time before the sorting
-				sortingalgorithmsfortimecomparison().ShellSort(array)  # make merge sorting
+				SortingAlgorithmsForTimeComparison().shell_sort(array)  # make merge sorting
 				t1 = time()  # take the time after the sorting
 				self.times["Shell"].append(t1 - t0)  # add this time to a dictionary where Quick's location
 		return self.times

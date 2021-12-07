@@ -26,6 +26,15 @@ class MatrixOperation(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		# The variable created so that the interface class can be used.
+		self.matrix1_current = None
+		self.msg = None
+		self.matrix2 = None
+		self.matrices = None
+		self.matrix1 = None
+		self.number_of_columns_matrix1 = None
+		self.number_of_rows_matrix2 = None
+		self.number_of_columns_matrix2 = None
+		self.number_of_rows_matrix1 = None
 		self.ui = Ui_MatrixWindow()
 		self.ui.setupUi(self)
 		# linking the first line edit for matrix 1 to the inputs function with the enter key
@@ -51,8 +60,8 @@ class MatrixOperation(QMainWindow):
 		self.ui.back_btn.clicked.connect(self.close)
 
 		# Adding functionality to generate matrix button with random matrices function
-		self.ui.generate_matrix_btn.clicked.connect(self.random_matrices)
 		# Adding functionality to multiply button with multiplication function
+		self.ui.generate_matrix_btn.clicked.connect(self.random_matrices)
 		self.ui.multiply_btn.clicked.connect(self.multiplication)
 
 		# Adding functionality to clear button with clear function

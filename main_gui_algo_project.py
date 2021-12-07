@@ -82,7 +82,7 @@ class MainWindow(QMainWindow):
 
 	def voice(self):
 		reader_voice = sr.Recognizer()
-		microphoneValue = ""
+		# microphoneValue = ""
 		with sr.Microphone() as source:
 			try:
 				self.statusBar().showMessage('Start talking...')

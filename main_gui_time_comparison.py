@@ -8,9 +8,9 @@ import speech_recognition as sr
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
 from uiqt_time_comparison import Ui_TimeComparisonWindow
-from utils_operations import timer
+from utils_operations import Timer
 
-times = timer()
+times = Timer()
 
 
 # %%

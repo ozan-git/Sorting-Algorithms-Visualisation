@@ -13,9 +13,9 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
 from uiqt_randomized_selection import Ui_RandomizedSelectionWindow
-from utils_operations import randomized_selection
+from utils_operations import RandomizedSelection
 
-ran_sel = randomized_selection()
+ran_sel = RandomizedSelection()
 
 
 # %% Application Content
@@ -112,8 +112,8 @@ class RandomizedSelection(QMainWindow):
 		self.length = random.randint(10, 50)
 		self.ui.display_arraylen.setText(str(self.length))
 		self.ui.array_len.setValue(self.length)
-		self.unsorted_array = ran_sel.createarray(self.lower, self.upper,
-												  self.length)  # Calling the create array function from the project operations file
+		self.unsorted_array = ran_sel.create_array(self.lower, self.upper,
+												   self.length)  # Calling the create array function from the project operations file
 		self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 		self.sorting_array()
 		self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
@@ -163,8 +163,8 @@ class RandomizedSelection(QMainWindow):
 					if (self.lower != 0 and self.upper != 0) or self.length != 0:
 						if self.lower < self.upper:
 							if abs(self.upper - self.lower) > self.length:
-								self.unsorted_array = ran_sel.createarray(self.lower, self.upper,
-																		  self.length)  # Calling the create array function from the project operations file
+								self.unsorted_array = ran_sel.create_array(self.lower, self.upper,
+																		   self.length)  # Calling the create array function from the project operations file
 								self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 								self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 								self.ui.disp_unsorted_array.setText(
@@ -216,7 +216,7 @@ class RandomizedSelection(QMainWindow):
 		if len(self.unsorted_array) != 0:
 			temp_array1 = tuple(self.unsorted_array)
 			temp_array1 = list(temp_array1)
-			self.sorted_array = ran_sel.insertionSort(
+			self.sorted_array = ran_sel.insertion_sort(
 				temp_array1)  # Calling the insertion sort function from the project operations file for sorting
 			self.ui.disp_sorted_array.setText(str(self.sorted_array))  # Display on the interface
 		# self.t = np.lin-space(1, len(self.unsorted_array), len(self.unsorted_array))

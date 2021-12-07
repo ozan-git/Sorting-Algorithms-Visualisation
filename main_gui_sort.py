@@ -1076,7 +1076,7 @@ class SortingAlgorithms(QMainWindow):
 						buckets_list[len(self.unsorted_array) - 1].append(self.unsorted_array[i])
 
 				for z in range(len(self.unsorted_array)):
-					BinarySearch.insertionSort(buckets_list[z])
+					BinarySearch.insertion_sort(buckets_list[z])
 
 				final_output = []
 				for x in range(len(self.unsorted_array)):
