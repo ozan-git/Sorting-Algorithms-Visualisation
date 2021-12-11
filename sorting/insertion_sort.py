@@ -35,7 +35,7 @@ class InsertionSort(Sorter):
 	@staticmethod
 	def insertion_sort(unsorted_array):
 		# (1) for j(iterationNumber) = 2 to A(array).length.
-		# Our array index started from 0 so we need to take j = 1.
+		# Our array index started from 0, so we need to take j = 1.
 		for iterationNumber in range(1, len(unsorted_array)):
 			# (2) key = A[j].
 			key = unsorted_array[iterationNumber]

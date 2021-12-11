@@ -29,7 +29,7 @@ class RadixSort(Sorter):
         # Initialize count array
         count = [0] * 10
 
-        # Store the count of each elements in count array
+        # Store the count of each element in count array
         for i in range(0, size):
             index = unsorted_array[i] // exp1
             count[int(index % 10)] += 1

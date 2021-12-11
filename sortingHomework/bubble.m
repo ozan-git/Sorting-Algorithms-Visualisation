@@ -14,17 +14,19 @@ function [array, comp_bubble] = bubble(array)
     % Measure the computational time of the method.
     tic;
     arrayLength = size(array,2);
-    
+    % for i = 1 to A:length - 1
     for i = 1: (arrayLength+1)
+        % for j = A:length downto i + 1
         for j = arrayLength:-1:(i + 1)
-            
+            % if A[j] < A[j - 1]
             if array(j) < array(j - 1)
-                
+                % exchange A[j] with A[j - 1]"
                 temp = array(j);
                 array(j) = array(j - 1);
                 array(j-1) = temp;
             end
         end
     end
+    % Read elapsed time from stopwatch.
     comp_bubble = toc;
 end

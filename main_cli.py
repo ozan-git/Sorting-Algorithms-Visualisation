@@ -20,6 +20,8 @@ from sorting.quick_sort import QuickSort
 # Initialize of result for compare the computational time with respect to n (number of inputs).
 from sorting.radix_sort import RadixSort
 
+# These arrays are stored in arrays to compare the computation times of all sorting algorithms by array sizes.
+# Afterwards, the results obtained to be printed on the chart are monitored.
 insertion_comp_time = []
 bubble_comp_time = []
 merge_comp_time = []
@@ -34,6 +36,7 @@ bucket_comp_time = []
 # Generating a random array based on user inputs.
 def generate_random_array():
 	generated_array = []
+	# Creating an array as user wanted.
 	size_array = int(input("How many numbers should the array consist of: "))
 	i_min = int(input("What is the smallest value: "))
 	i_max = int(input("What is the largest value: "))
@@ -98,6 +101,7 @@ def analyse_sorting_algorithms(array_to_be_sorted):
 			computational_time))
 
 
+# The person using the program was asked which sorting algorithm he wanted to use.
 def ask_operation_fun():
 	operation = input("""
 Press 1 Insertion sort,
@@ -115,6 +119,7 @@ Enter value: """)
 	return operation
 
 
+# According to the user's selection of the sorting algorithm, the algorithm is called and sorting is done.
 def operate_sorting_fun(uns_array):
 	# Insertion sort.
 	if chosen_operation == str(1):

@@ -46,7 +46,7 @@ class CountingSort(Sorter):
 		# Initialize count array.
 		count = [0 for _ in range(range_of_elements)]
 
-		# Store the count of each elements in count array.
+		# Store the count of each element in count array.
 		for i in range(0, size):
 			count[unsorted_array[i] - min_element] += 1
 

@@ -7,10 +7,10 @@ function [array, comp_radix] = radix(array)
     tic;
     max_value = max(array);
     base = 1;
-while max_value/base > 0
-    array = counting(array,base);
-    base = base * 10;
-end
+    while max_value/base > 0
+        array = counting(array,base);
+        base = base * 10;
+    end
     function A = counting(array,base)
         B = zeros(1,11);
         A = zeros(1,numel(array));
