@@ -15,27 +15,42 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from uiqt_randomized_selection import Ui_RandomizedSelectionWindow
 from utils_operations import RandomizedSelection
 
-ran_sel = RandomizedSelection()
+random_select = RandomizedSelection()
 
 
+# Ability to use the class in which the interface I designed with qt designer converted into code
 # %% Application Content
 class RandomizedSelection(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.ui = Ui_RandomizedSelectionWindow()  # Ability to use the class in which the interface I designed with qt designer converted into code
+
+		self.ui = Ui_RandomizedSelectionWindow()
 		self.ui.setupUi(self)
-		self.ui.array_len.setMinimum(0)  # Fixing the dial to min 1 max 50
-		self.ui.array_len.setMaximum(50)  # Link to print the number on the dial on the line edit next to it
-		self.ui.array_len.valueChanged.connect(
-			self.value_len)  # Link to print the number on the dial on the line edit next to it
-		self.ui.createanarray_btn.clicked.connect(
-			self.create_array)  # Connecting the create array button with the corresponding function
+		self.ui.array_len.setMinimum(0)  # Fixing the dial to min 1 max 50.
+		self.ui.array_len.setMaximum(50)  # Link to print the number on the dial on the line edit next to it.
+		# Link to print the number on the dial on the line edit next to it.
+		self.ui.array_len.valueChanged.connect(self.value_len)
+		# Connecting the create array button with the corresponding function.
+		self.ui.createanarray_btn.clicked.connect(self.create_array)
 		self.ui.createanarray_btn.clicked.connect(self.sorting_array)
 		self.ui.set_default_values.clicked.connect(self.set_default_array)
-		self.ui.back_btn.clicked.connect(self.close)  # back to main menu
-		self.ui.find_btn.clicked.connect(
-			self.find_number)  # Connecting the find number button with the corresponding function
-		self.ui.clear_btn.clicked.connect(self.clear)  # Linking the clear button with the corresponding function
+		self.t = None
+		self.msg = None
+		self.x = None
+		self.sorted_array = None
+		self.upper = None
+		self.rects = None
+		self.length = None
+		self.lower = None
+		self.msg3 = None
+		self.smallest = None
+		self.number = None
+		# Back to main menu.
+		self.ui.back_btn.clicked.connect(self.close)
+		# Connecting the find number button with the corresponding function.
+		self.ui.find_btn.clicked.connect(self.find_number)
+		# Linking the clear button with the corresponding function.
+		self.ui.clear_btn.clicked.connect(self.clear)
 		self.ui.random_array_checkbox.setChecked(True)
 		self.ui.random_array_checkbox.toggled.connect(self.random_array)
 		self.ui.create_array_checkbox.toggled.connect(self.array_yourself)
@@ -112,12 +127,13 @@ class RandomizedSelection(QMainWindow):
 		self.length = random.randint(10, 50)
 		self.ui.display_arraylen.setText(str(self.length))
 		self.ui.array_len.setValue(self.length)
-		self.unsorted_array = ran_sel.create_array(self.lower, self.upper,
-												   self.length)  # Calling the create array function from the project operations file
+		# Calling the create array function from the project operations file
+		self.unsorted_array = random_select.create_array(self.lower, self.upper, self.length)
 		self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 		self.sorting_array()
 		self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
-		self.ui.disp_unsorted_array.setText(str(self.unsorted_array))  # Display on the interface
+		# Display on the interface
+		self.ui.disp_unsorted_array.setText(str(self.unsorted_array))
 		self.ui.MplSort.canvas.axes.clear()
 		self.ui.MplSort.canvas.axes.set_title("Unsorted Array")
 		self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.unsorted_array, color=(0.4, 0, 0.2), edgecolor="blue")
@@ -149,11 +165,10 @@ class RandomizedSelection(QMainWindow):
 	def autolabel(self, rects):  # The function for writing number values ​​on the bar graph
 		for rect in self.rects:
 			height = rect.get_height()
-			self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
-											 '%d' % int(height),
+			self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height, '%d' % int(height),
 											 ha='center', va='bottom')
 
-	# %%#%%Creating a random array and display it on the screen
+	# %% Creating a random array and display it on the screen
 	def create_array(self):
 		if self.ui.random_array_checkbox.isChecked():  # function written to create an array
 			try:
@@ -163,8 +178,8 @@ class RandomizedSelection(QMainWindow):
 					if (self.lower != 0 and self.upper != 0) or self.length != 0:
 						if self.lower < self.upper:
 							if abs(self.upper - self.lower) > self.length:
-								self.unsorted_array = ran_sel.create_array(self.lower, self.upper,
-																		   self.length)  # Calling the create array function from the project operations file
+								# Calling the create array function from the project operations file
+								self.unsorted_array = random_select.create_array(self.lower, self.upper, self.length)
 								self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 								self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 								self.ui.disp_unsorted_array.setText(
@@ -187,8 +202,9 @@ class RandomizedSelection(QMainWindow):
 				except ValueError:
 					self.msg = QMessageBox.critical(self, "Error", "Please fill in the required fields!")
 			except AttributeError:
+				# If the user presses another button without pressing this button, an error is given
 				self.msg = QMessageBox.critical(self, "Error",
-												"Please make the operations in order!")  # If the user presses another button without pressing this button, an error is given
+												"Please make the operations in order!")
 
 		if self.ui.create_array_checkbox.isChecked():
 			self.ui.disp_unsorted_array.setReadOnly(False)
@@ -216,9 +232,10 @@ class RandomizedSelection(QMainWindow):
 		if len(self.unsorted_array) != 0:
 			temp_array1 = tuple(self.unsorted_array)
 			temp_array1 = list(temp_array1)
-			self.sorted_array = ran_sel.insertion_sort(
-				temp_array1)  # Calling the insertion sort function from the project operations file for sorting
-			self.ui.disp_sorted_array.setText(str(self.sorted_array))  # Display on the interface
+			# Calling the insertion sort function from the project operations file for sorting
+			self.sorted_array = random_select.insertion_sort(temp_array1)
+			# Display on the interface
+			self.ui.disp_sorted_array.setText(str(self.sorted_array))
 		# self.t = np.lin-space(1, len(self.unsorted_array), len(self.unsorted_array))
 		# self.ui.MplSort.canvas.axes.clear()
 		# self.ui.MplSort.canvas.axes.set_title("Sorted Array")
@@ -232,24 +249,26 @@ class RandomizedSelection(QMainWindow):
 	def find_number(self):
 		try:
 			if len(self.sorted_array) != 0:
-				self.number = int(self.ui.take_number.text())  # getting the desired number from the user
-				if self.number <= len(self.unsorted_array):  # Checking whether the desired number is in the array
-					self.smallest = self.randomized_select(self.unsorted_array, 0, len(self.sorted_array) - 1,
-														   self.number)  # Calling the binary search function from the project operations file for search
-					self.ui.result_edit.setText(
-						"{}. smallest array is '{}'.".format(str(self.number), str(self.smallest)))  # Display of result
+				self.number = int(self.ui.take_number.text()) 	# Getting the desired number from the user.
+				if self.number <= len(self.unsorted_array):  	# Checking whether the desired number is in the array.
+					# Calling the binary search function from the project operations file for search.
+					self.smallest = self.randomized_select(self.unsorted_array, 0, len(self.sorted_array) - 1, self.number)
+					# Display of result.
+					self.ui.result_edit.setText("{}. smallest array is '{}'.".format(str(self.number), str(self.smallest)))
 
 				else:
-					self.msg3 = QMessageBox.information(self, "Error",
-														"Please enter a sorted array elements...")  # give an error if the requested number is not in the array
-					self.ui.take_number.clear()  # cleaning the section where the user entered numbers
+					# Give an error if the requested number is not in the array.
+					self.msg3 = QMessageBox.information(self, "Error", "Please enter a sorted array elements...")
+					# Clean the section where the user entered numbers.
+					self.ui.take_number.clear()
 					self.ui.result_edit.clear()
 			else:
 				self.msg = QMessageBox.critical(self, "Error", "Please make the operations in order!")
 		except ValueError:
-			self.msg = QMessageBox.information(self, "Error",
-											   "Please enter a valid number...")  # error if user enters anything other than number
-			self.ui.take_number.clear()  # cleaning the section where the user entered numbers
+			# Error if user enters anything other than number.
+			self.msg = QMessageBox.information(self, "Error", "Please enter a valid number...")
+			# Clean the section where the user entered numbers.
+			self.ui.take_number.clear()
 		except AttributeError:
 			self.msg = QMessageBox.information(self, "Error", "Please create an array...")
 
@@ -273,7 +292,7 @@ class RandomizedSelection(QMainWindow):
 		self.ui.MplSort.canvas.draw()
 		QApplication.processEvents()
 		time.sleep(1)
-		return (i + 1)
+		return i + 1
 
 	def randomized_partition(self, array, p, r):
 		i = random.randint(p, r)

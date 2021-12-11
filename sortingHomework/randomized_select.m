@@ -28,10 +28,10 @@ function [A] = randomized_select(A,p,r,i)
     if i==k
         output=A(q);
         display(output)
-    % (7)
+        % (7)
     elseif i<k
         A=randomized_select(A,p,r,i);
-    % (8),(9)
+        % (8),(9)
     else
         A=randomized_select(A,q+1,r,i-k);
     end
