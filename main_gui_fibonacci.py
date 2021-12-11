@@ -133,12 +133,16 @@ class Fibonacci(QMainWindow):
 			self.ui.MplFib.canvas.axes.set_title('Fibonacci Graph')
 			self.ui.MplFib.canvas.draw()  # plotting the graph
 
-	def autolabel(self, rects):  # The function for writing number values ​​on the bar graph
+	# Function to write number values to a bar chart.
+	def autolabel(self, rects):
 		for rect in self.rects:
 			height = rect.get_height()
-			self.ui.MplFib.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
-											'%d' % int(height),
-											ha='center', va='bottom')
+			if height > 0:
+				self.ui.MplFib.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												'%d' % int(height), ha='center', va='bottom')
+			else:
+				self.ui.MplFib.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												'%d' % int(height), ha='center', va='top')
 
 	# %%
 	def golden_spiral(self):

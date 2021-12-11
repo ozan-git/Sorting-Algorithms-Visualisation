@@ -1,56 +1,44 @@
-# Introduction to Algorithm course graphical interface design project binary search page.
-# 5 December 2021.
-
-# Written by Orhan Ozan Yildiz.
-import random
-import sys
-import time
-
-import numpy as np
-import speech_recognition as sr
+# -*- coding: utf-8 -*-
+"""
+Betül USLU
+31.10.2020
+170403004
+This file contains the code I wrote to add functionality to the interface of binary search I designed with qt designer.
+"""
+# %% including required libraries, modules and files with code
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDial
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
-
+import sys
+from utils_operations import binarysearch
 from uiqt_binary_search import Ui_BinarySearchWindow
-from utils_operations import BinarySearch
+import numpy as np
+import time
+import random
+import speech_recognition as sr
 
-binarySearch = BinarySearch()
+binarySearch = binarysearch()
 
 
 # %% Application Content
 class BinarySearch(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		# Ability to use the class in which the interface I designed with qt designer converted into code
-		self.length_array = None
-		self.msg3 = None
-		self.number = None
-		self.sorted_array = None
-		self.t = None
-		self.length = None
-		self.unsorted_array = None
-		self.msg = None
-		self.rects = None
-		self.upper = None
-		self.lower = None
-		self.ui = Ui_BinarySearchWindow()
+		self.ui = Ui_BinarySearchWindow()  # Ability to use the class in which the interface I designed with qt designer converted into code
 		self.ui.setupUi(self)
 		self.ui.array_len.setMinimum(0)  # Fixing the dial to min 1 max 50
 		self.ui.array_len.setMaximum(50)
-		# Link to print the number on the dial on the line edit next to it.
-		# self.ui.range.valueChanged.connect(self.valuerange)
-		# Link to print the number on the dial on the line edit next to it
-		self.ui.array_len.valueChanged.connect(self.value_len)
-		# Connecting the create array button with the corresponding function
-		self.ui.createanarray_btn.clicked.connect(self.create_array)
-		# back to main menu
-		self.ui.back_btn.clicked.connect(self.close)
-		# Connecting the sort button with the corresponding function
-		self.ui.sort_btn.clicked.connect(self.sorting_arr)
-		# Connecting the find number button with the corresponding function
-		self.ui.find_btn.clicked.connect(self.find_number)
-		# Linking the clear button with the corresponding function
-		self.ui.clear_btn.clicked.connect(self.clear)
+		# self.ui.range.valueChanged.connect(self.valuerange)                     #Link to print the number on the dial on the line edit next to it
+		self.ui.array_len.valueChanged.connect(
+			self.valuelen)  # Link to print the number on the dial on the line edit next to it
+		self.ui.createanarray_btn.clicked.connect(
+			self.create_array)  # Connecting the create array button with the corresponding function
+		self.ui.back_btn.clicked.connect(self.close)  # back to main menu
+		self.ui.sort_btn.clicked.connect(
+			self.sortingarray)  # Connecting the sort button with the corresponding function
+		self.ui.find_btn.clicked.connect(
+			self.find_number)  # Connecting the find number button with the corresponding function
+		self.ui.clear_btn.clicked.connect(self.clear)  # Linking the clear button with the corresponding function
 		self.ui.checkBox.setChecked(True)
 		self.ui.checkBox.toggled.connect(self.random_array)
 		self.ui.checkBox_2.toggled.connect(self.array_yourself)
@@ -64,7 +52,7 @@ class BinarySearch(QMainWindow):
 
 	def voice(self):
 		r = sr.Recognizer()
-		# microphoneValue = ""
+		microphoneValue = ""
 		with sr.Microphone() as source:
 			try:
 				self.statusBar().showMessage('Start talking...')
@@ -88,7 +76,7 @@ class BinarySearch(QMainWindow):
 
 					elif microphoneValue == 'sort':
 						try:
-							self.sorting_arr()
+							self.sortingarray()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Try Again...")
@@ -131,16 +119,15 @@ class BinarySearch(QMainWindow):
 		self.length = random.randint(10, 50)
 		self.ui.display_arraylen.setText(str(self.length))
 		self.ui.array_len.setValue(self.length)
-		# Calling the create array function from the project operations file
-		self.unsorted_array = BinarySearch.create_array(self.lower, self.upper, self.length)
+		self.unsorted_array = binarySearch.createarray(self.lower, self.upper,
+													   self.length)  # Calling the create array function from the project operations file
 		self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 		self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
-		# Display on the interface
-		self.ui.disp_unsorted_array.setText(str(self.unsorted_array))
+		self.ui.disp_unsorted_array.setText(str(self.unsorted_array))  # Display on the interface
 		self.ui.MplSort.canvas.axes.clear()
 		self.ui.MplSort.canvas.axes.set_title("Unsorted Array")
 		self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.unsorted_array, color=(0.4, 0, 0.2), edgecolor="blue")
-		self.auto_label(self.rects)
+		self.autolabel(self.rects)
 		self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 		self.ui.MplSort.canvas.draw()
 
@@ -161,16 +148,20 @@ class BinarySearch(QMainWindow):
 		self.ui.set_default_values.setEnabled(False)
 		self.clear()
 
-	def value_len(self):  # Function of array size value taken from dial to show next to line edit
+	def valuelen(self):  # Function of array size value taken from dial to show next to line edit
 		self.length_array = self.ui.array_len.value()
 		self.ui.display_arraylen.setText(str(self.length_array))
 
-	def auto_label(self, rects):  # The function for writing number values ​​on the bar graph
+	# Function to write number values to a bar chart.
+	def autolabel(self, rects):
 		for rect in self.rects:
 			height = rect.get_height()
-			self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
-											 '%d' % int(height),
-											 ha='center', va='bottom', color='white')
+			if height > 0:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='bottom')
+			else:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='top')
 
 	# %%Creating a random array and display it on the screen
 	def create_array(self):
@@ -182,9 +173,8 @@ class BinarySearch(QMainWindow):
 					if (self.lower != 0 and self.upper != 0) or self.length_array != 0:
 						if self.lower < self.upper:
 							if abs(self.upper - self.lower) > self.length_array:
-								# Calling the create array function from the project operations file
-								self.unsorted_array = BinarySearch.create_array(self.lower, self.upper,
-																				self.length_array)
+								self.unsorted_array = binarySearch.createarray(self.lower, self.upper,
+																			   self.length_array)  # Calling the create array function from the project operations file
 								self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 								self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 								self.ui.disp_unsorted_array.setText(
@@ -193,7 +183,7 @@ class BinarySearch(QMainWindow):
 								self.ui.MplSort.canvas.axes.set_title("Unsorted Array")
 								self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.unsorted_array,
 																			 color=(0.4, 0, 0.2), edgecolor="blue")
-								self.auto_label(self.rects)
+								self.autolabel(self.rects)
 								self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 								self.ui.MplSort.canvas.draw()
 							else:
@@ -207,8 +197,8 @@ class BinarySearch(QMainWindow):
 				except ValueError:
 					self.msg = QMessageBox.critical(self, "Error", "Please fill in the required fields!")
 			except AttributeError:
-				# If the user presses another button without pressing this button, an error is given
-				self.msg = QMessageBox.critical(self, "Error", "Please make the operations in order!")
+				self.msg = QMessageBox.critical(self, "Error",
+												"Please make the operations in order!")  # If the user presses another button without pressing this button, an error is given
 
 		if self.ui.checkBox_2.isChecked():
 			self.ui.disp_unsorted_array.setReadOnly(False)
@@ -222,34 +212,34 @@ class BinarySearch(QMainWindow):
 				self.ui.MplSort.canvas.axes.set_title("Unsorted Array")
 				self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.unsorted_array, color=(0.4, 0, 0.2),
 															 edgecolor="blue")
-				self.auto_label(self.rects)
+				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
 			except ValueError:
-				# If the user presses another button without pressing this button, an error is given
-				self.msg = QMessageBox.critical(self, "Error", "Please enter an array as valid format!")
+				self.msg = QMessageBox.critical(self, "Error",
+												"Please enter an array as valid format!")  # If the user presses another button without pressing this button, an error is given
 				self.ui.disp_unsorted_array.clear()
 				self.unsorted_array = []
 
 	# %%Sorting a random array and display on the screen
-	def sorting_arr(self):
+	def sortingarray(self):
 		try:
 			if len(self.unsorted_array) != 0:
-				self.sorted_array = BinarySearch.insertion_sort(
+				self.sorted_array = binarySearch.insertionSort(
 					self.unsorted_array)  # Calling the insertion sort function from the project operations file for sorting
 				self.ui.disp_sorted_array.setText(str(self.sorted_array))  # Display on the interface
 				self.ui.MplSort.canvas.axes.clear()
 				self.ui.MplSort.canvas.axes.set_title("Sorted Array")
 				self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.sorted_array, color=(0.4, 0, 0.2),
 															 edgecolor="blue")
-				self.auto_label(self.rects)
+				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
 			else:
 				self.msg = QMessageBox.information(self, "Error", "Please create an array...")
 		except AttributeError:
-			# If the user presses another button without pressing this button, an error is given
-			self.msg = QMessageBox.critical(self, "Error", "Please make the operations in order!")
+			self.msg = QMessageBox.critical(self, "Error",
+											"Please make the operations in order!")  # If the user presses another button without pressing this button, an error is given
 			self.ui.disp_sorted_array.clear()
 
 	# %%Finding the index of the searched number and display on the screen
@@ -270,21 +260,21 @@ class BinarySearch(QMainWindow):
 							self.ui.MplSort.canvas.axes.clear()
 							self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.sorted_array, color=(0.4, 0, 0.2),
 																		 edgecolor=(0, .9, .9))
-							self.auto_label(self.rects)
+							self.autolabel(self.rects)
 							self.ui.MplSort.canvas.axes.bar(self.t[midpoint], self.sorted_array[midpoint], color="red",
 															edgecolor=(0, .9, .9))
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-							# Display of the result.
-							self.ui.result_edit.setText(
-								"Element {} found at index '{}'.".format(str(self.number), str(midpoint + 1)))
+							self.ui.result_edit.setText("Element {} found at index '{}'.".format(str(self.number),
+																								 str(midpoint + 1)))  # Display of result
 							break
+
 						else:
+
 							self.ui.MplSort.canvas.axes.bar(self.t[midpoint], self.sorted_array[midpoint], color="blue",
 															edgecolor=(0, .9, .9))
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-
 							QApplication.processEvents()
 							time.sleep(1)
 						if self.sorted_array[midpoint] > self.number:
@@ -292,23 +282,23 @@ class BinarySearch(QMainWindow):
 						if self.sorted_array[midpoint] < self.number:
 							begin_index = midpoint + 1
 				else:
-					# give an error if the requested number is not in the array
-					self.msg3 = QMessageBox.information(self, "Error", "Please enter a sorted array elements...")
+					self.msg3 = QMessageBox.information(self, "Error",
+														"Please enter a sorted array elements...")  # give an error if the requested number is not in the array
 					self.ui.MplSort.canvas.axes.clear()
 					self.ui.MplSort.canvas.axes.set_title("Sorted Array")
 					self.rects = self.ui.MplSort.canvas.axes.bar(self.t, self.sorted_array, color=(0.4, 0, 0.2),
 																 edgecolor="black")
-					self.auto_label(self.rects)
+					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					# cleaning the section where the user entered numbers
-					self.ui.take_number.clear()
+					self.ui.take_number.clear()  # cleaning the section where the user entered numbers
 					self.ui.result_edit.clear()
 			else:
 				self.msg = QMessageBox.critical(self, "Error", "Please make the operations in order!")
 				self.ui.take_number.clear()
 		except ValueError:
-			self.msg = QMessageBox.information(self, "Error", "Please enter a valid number...")
+			self.msg = QMessageBox.information(self, "Error",
+											   "Please enter a valid number...")  # error if user enters anything other than number
 			self.ui.take_number.clear()  # cleaning the section where the user entered numbers
 		except AttributeError:
 			self.msg = QMessageBox.information(self, "Error", "Please create an array...")
@@ -338,3 +328,7 @@ if __name__ == "__main__":
 	window = BinarySearch()
 	window.show()
 	sys.exit(app.exec_())
+
+
+
+

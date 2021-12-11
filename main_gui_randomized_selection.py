@@ -13,9 +13,9 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
 from uiqt_randomized_selection import Ui_RandomizedSelectionWindow
-from utils_operations import RandomizedSelection
+from utils_operations import randomized_selection
 
-random_select = RandomizedSelection()
+random_select = randomized_selection()
 
 
 # Ability to use the class in which the interface I designed with qt designer converted into code
@@ -128,7 +128,7 @@ class RandomizedSelection(QMainWindow):
 		self.ui.display_arraylen.setText(str(self.length))
 		self.ui.array_len.setValue(self.length)
 		# Calling the create array function from the project operations file
-		self.unsorted_array = random_select.create_array(self.lower, self.upper, self.length)
+		self.unsorted_array = random_select.createarray(self.lower, self.upper, self.length)
 		self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 		self.sorting_array()
 		self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
@@ -158,15 +158,21 @@ class RandomizedSelection(QMainWindow):
 		self.ui.set_default_values.setEnabled(False)
 		self.clear()
 
-	def value_len(self):  # Function of array size value taken from dial to show next to line edit
+	# Function of array size value taken from dial to show next to line edit
+	def value_len(self):
 		self.length = self.ui.array_len.value()
 		self.ui.display_arraylen.setText(str(self.length))
 
-	def autolabel(self, rects):  # The function for writing number values ​​on the bar graph
+	# Function to write number values to a bar chart.
+	def autolabel(self, rects):
 		for rect in self.rects:
 			height = rect.get_height()
-			self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height, '%d' % int(height),
-											 ha='center', va='bottom')
+			if height > 0:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='bottom')
+			else:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='top')
 
 	# %% Creating a random array and display it on the screen
 	def create_array(self):
@@ -179,7 +185,7 @@ class RandomizedSelection(QMainWindow):
 						if self.lower < self.upper:
 							if abs(self.upper - self.lower) > self.length:
 								# Calling the create array function from the project operations file
-								self.unsorted_array = random_select.create_array(self.lower, self.upper, self.length)
+								self.unsorted_array = random_select.createarray(self.lower, self.upper, self.length)
 								self.unsorted_array = random.sample(self.unsorted_array, len(self.unsorted_array))
 								self.t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 								self.ui.disp_unsorted_array.setText(
@@ -222,8 +228,8 @@ class RandomizedSelection(QMainWindow):
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
 			except ValueError:
-				self.msg = QMessageBox.critical(self, "Error",
-												"Please enter an array as valid format!")  # If the user presses another button without pressing this button, an error is given
+				# If the user presses another button without pressing this button, an error is given
+				self.msg = QMessageBox.critical(self, "Error", "Please enter an array as valid format!")
 				self.ui.disp_unsorted_array.clear()
 				self.unsorted_array = []
 
@@ -233,7 +239,7 @@ class RandomizedSelection(QMainWindow):
 			temp_array1 = tuple(self.unsorted_array)
 			temp_array1 = list(temp_array1)
 			# Calling the insertion sort function from the project operations file for sorting
-			self.sorted_array = random_select.insertion_sort(temp_array1)
+			self.sorted_array = random_select.insertionSort(temp_array1)
 			# Display on the interface
 			self.ui.disp_sorted_array.setText(str(self.sorted_array))
 		# self.t = np.lin-space(1, len(self.unsorted_array), len(self.unsorted_array))
@@ -249,12 +255,14 @@ class RandomizedSelection(QMainWindow):
 	def find_number(self):
 		try:
 			if len(self.sorted_array) != 0:
-				self.number = int(self.ui.take_number.text()) 	# Getting the desired number from the user.
-				if self.number <= len(self.unsorted_array):  	# Checking whether the desired number is in the array.
+				self.number = int(self.ui.take_number.text())  # Getting the desired number from the user.
+				if self.number <= len(self.unsorted_array):  # Checking whether the desired number is in the array.
 					# Calling the binary search function from the project operations file for search.
-					self.smallest = self.randomized_select(self.unsorted_array, 0, len(self.sorted_array) - 1, self.number)
+					self.smallest = self.randomized_select(self.unsorted_array, 0, len(self.sorted_array) - 1,
+														   self.number)
 					# Display of result.
-					self.ui.result_edit.setText("{}. smallest array is '{}'.".format(str(self.number), str(self.smallest)))
+					self.ui.result_edit.setText(
+						"{}. smallest array is '{}'.".format(str(self.number), str(self.smallest)))
 
 				else:
 					# Give an error if the requested number is not in the array.

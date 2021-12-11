@@ -26,15 +26,6 @@ class MatrixOperation(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		# The variable created so that the interface class can be used.
-		self.matrix1_current = None
-		self.msg = None
-		self.matrix2 = None
-		self.matrices = None
-		self.matrix1 = None
-		self.number_of_columns_matrix1 = None
-		self.number_of_rows_matrix2 = None
-		self.number_of_columns_matrix2 = None
-		self.number_of_rows_matrix1 = None
 		self.ui = Ui_MatrixWindow()
 		self.ui.setupUi(self)
 		# linking the first line edit for matrix 1 to the inputs function with the enter key
@@ -216,24 +207,24 @@ class MatrixOperation(QMainWindow):
 	def inputs(self):
 		if self.ui.row_m1.text() != '' or self.ui.column_m1.text() != '':
 			try:
-				self.number_of_rows_matrix1 = int(
-					self.ui.row_m1.text())  # Getting row number of first matrix from line edit
-				self.number_of_columns_matrix1 = int(
-					self.ui.column_m1.text())  # Getting column number of first matrix from line edit
-				self.matrix1 = [[0 for i in range(self.number_of_columns_matrix1)] for j in
-								range(self.number_of_rows_matrix1)]
+				# Getting row number of first matrix from line edit
+				self.number_of_rows_matrix1 = int(self.ui.row_m1.text())
+				# Getting column number of first matrix from line edit
+				self.number_of_columns_matrix1 = int(self.ui.column_m1.text())
+				self.matrix1 = [[0 for i in range(int(self.ui.column_m1.text()))] for j in
+								range(int(self.ui.row_m1.text()))]
 
 			except ValueError:
 				pass
 		if self.ui.row_m2.text() != '' or self.ui.column_m2.text() != '':
 			try:
 				self.number_of_rows_matrix2 = int(self.ui.row_m2.text())
-				# §self.ui.row_m2.setText(str(self.number_of_columns_matrix1)) #the number of rows of the second
+				# §self.ui.row_m2.setText(str(int(self.ui.column_m1.text()))) #the number of rows of the second
 				# matrix appears as the number of columns of the first according to the matrix multiplication rule
 				self.number_of_columns_matrix2 = int(
 					self.ui.column_m2.text())  # Getting row number of first matrix from line edit
-				self.matrix2 = [[0 for i in range(self.number_of_columns_matrix2)] for j in
-								range(self.number_of_rows_matrix2)]
+				self.matrix2 = [[0 for i in range(int(self.ui.column_m2.text()))] for j in
+								range(int(self.ui.row_m2.text()))]
 			except ValueError:
 				pass
 
@@ -297,13 +288,12 @@ class MatrixOperation(QMainWindow):
 		else:
 			try:
 				# setting the row number of the first table as the number of rows received
-				self.ui.Matrix_1.setRowCount(self.number_of_rows_matrix1)
+				self.ui.Matrix_1.setRowCount(int(self.ui.row_m1.text()))
 				# setting the column number of the first table as the number of columns received
-				self.ui.Matrix_1.setColumnCount(self.number_of_columns_matrix1)
+				self.ui.Matrix_1.setColumnCount(int(self.ui.column_m1.text()))
 				# Creating random matrices with the help of a function I called in another file
-				self.matrices = create_matrix.randommatrix(self.number_of_rows_matrix1, self.number_of_columns_matrix1,
-														   self.number_of_columns_matrix1,
-														   self.number_of_columns_matrix2)
+				self.matrices = create_matrix.randommatrix(int(self.ui.row_m1.text()), int(self.ui.column_m1.text()),
+														   int(self.ui.row_m2.text()), int(self.ui.column_m2.text()))
 				# Determining the matrix at index 0 as the first matrix among the matrices in the list returned from
 				# the function I wrote
 				self.matrix1 = self.matrices[0]
@@ -316,23 +306,23 @@ class MatrixOperation(QMainWindow):
 						self.ui.Matrix_1.setItem(i, j, newItem1)
 
 				# setting the number of rows of the second matrix as the number of columns of the first matrix
-				self.ui.Matrix_2.setRowCount(self.number_of_columns_matrix1)
+				self.ui.Matrix_2.setRowCount(int(self.ui.row_m2.text()))
 				# setting the column number of the second table as the number of columns received
-				self.ui.Matrix_2.setColumnCount(self.number_of_columns_matrix2)
+				self.ui.Matrix_2.setColumnCount(int(self.ui.column_m2.text()))
 				# Determining the matrix at index 1 as the first matrix among the matrices in the list returned from
 				# the function I wrote
 				self.matrix2 = self.matrices[1]
-				for i in range(self.number_of_columns_matrix1):
-					self.ui.Matrix_1.setColumnWidth(i, 500 / self.number_of_columns_matrix1)
+				for i in range(int(self.ui.column_m1.text())):
+					self.ui.Matrix_1.setColumnWidth(i, 500 / int(self.ui.column_m1.text()))
 
-				for i in range(self.number_of_rows_matrix1):  # set the row of first matrix height to 50 px
-					self.ui.Matrix_1.setRowHeight(i, 300 / self.number_of_rows_matrix1)
+				for i in range(int(self.ui.row_m1.text())):  # set the row of first matrix height to 50 px
+					self.ui.Matrix_1.setRowHeight(i, 300 / int(self.ui.row_m1.text()))
 
-				for i in range(self.number_of_columns_matrix2):
-					self.ui.Matrix_2.setColumnWidth(i, 500 / self.number_of_columns_matrix2)
+				for i in range(int(self.ui.column_m2.text())):
+					self.ui.Matrix_2.setColumnWidth(i, 500 / int(self.ui.column_m2.text()))
 
-				for i in range(self.number_of_rows_matrix2):  # set the row of second matrix height to 50 px
-					self.ui.Matrix_2.setRowHeight(i, 300 / self.number_of_rows_matrix2)
+				for i in range(int(self.ui.row_m2.text())):  # set the row of second matrix height to 50 px
+					self.ui.Matrix_2.setRowHeight(i, 300 / int(self.ui.row_m2.text()))
 
 				for k, row_2 in enumerate(
 						self.matrix2):  # Placing the second random matrix created using the enumerate function into the second table
@@ -354,14 +344,14 @@ class MatrixOperation(QMainWindow):
 			try:
 				self.visible1_true()
 				# setting the row number of the first table as the number of rows received
-				self.ui.Matrix_1.setRowCount(self.number_of_rows_matrix1)
+				self.ui.Matrix_1.setRowCount(int(self.ui.row_m1.text()))
 				# setting the column number of the first table as the number of columns received
-				self.ui.Matrix_1.setColumnCount(self.number_of_columns_matrix1)
-				for i in range(self.number_of_columns_matrix1):
-					self.ui.Matrix_1.setColumnWidth(i, 500 / self.number_of_columns_matrix1)
+				self.ui.Matrix_1.setColumnCount(int(self.ui.column_m1.text()))
+				for i in range(int(self.ui.column_m1.text())):
+					self.ui.Matrix_1.setColumnWidth(i, 500 / int(self.ui.column_m1.text()))
 
-				for i in range(self.number_of_rows_matrix1):  # set the row of first matrix height to 50 px
-					self.ui.Matrix_1.setRowHeight(i, 300 / self.number_of_rows_matrix1)
+				for i in range(int(self.ui.row_m1.text())):  # set the row of first matrix height to 50 px
+					self.ui.Matrix_1.setRowHeight(i, 300 / int(self.ui.row_m1.text()))
 			except AttributeError:
 				self.msg = QMessageBox.critical(self, "Error", "Please fill in the required fields...")
 
@@ -376,14 +366,14 @@ class MatrixOperation(QMainWindow):
 			try:
 				self.visible2_true()
 				self.ui.Matrix_2.setRowCount(
-					self.number_of_rows_matrix2)  # setting the number of rows of the second matrix as the number of columns of the first matrix
+					int(self.ui.row_m2.text()))  # setting the number of rows of the second matrix as the number of columns of the first matrix
 				self.ui.Matrix_2.setColumnCount(
-					self.number_of_columns_matrix2)  # setting the column number of the second table as the number of columns received
-				for i in range(self.number_of_columns_matrix2):
-					self.ui.Matrix_2.setColumnWidth(i, 500 / self.number_of_columns_matrix2)
+					int(self.ui.column_m2.text()))  # setting the column number of the second table as the number of columns received
+				for i in range(int(self.ui.column_m2.text())):
+					self.ui.Matrix_2.setColumnWidth(i, 500 / int(self.ui.column_m2.text()))
 
-				for i in range(self.number_of_rows_matrix2):  # set the row of second matrix height to 50 px
-					self.ui.Matrix_2.setRowHeight(i, 300 / self.number_of_rows_matrix2)
+				for i in range(int(self.ui.row_m2.text())):  # set the row of second matrix height to 50 px
+					self.ui.Matrix_2.setRowHeight(i, 300 / int(self.ui.row_m2.text()))
 
 			except AttributeError:
 				self.msg = QMessageBox.critical(self, "Error", "Please fill in the required fields...")

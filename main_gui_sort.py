@@ -22,9 +22,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from main_gui_input_array import ArrayWindow
 from main_gui_time_comparison import TimeComparisonMainWindow
 from uiqt_sorting import Ui_SortWindow
-from utils_operations import BinarySearch
+from utils_operations import binarysearch
 
-binarySearch = BinarySearch()
+binarySearch = binarysearch()
 
 
 # %%
@@ -55,7 +55,7 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.MplSort.canvas.axes.get_yaxis().set_visible(False)
 
 		self.AddArray.array_signal.connect(self.add_array)
-		self.AddArray.array_signal.connect(self.takeuserarray)
+		self.AddArray.array_signal.connect(self.take_user_array)
 		self.unsorted_array = []
 
 		self.ui.micro_btn.clicked.connect(self.voice)
@@ -416,7 +416,7 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 		self.ui.MplSort.canvas.draw()
 
-	def takeuserarray(self, array):
+	def take_user_array(self, array):
 		self.unsorted_array = array
 		t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 		self.ui.MplSort.canvas.axes.clear()
@@ -582,13 +582,16 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 		self.ui.MplSort.canvas.draw()
 
-	# %%Text numbers on the bar chart
-	def autolabel(self, rects):  # The function for writing number values ​​on the bar graph
+	# Function to write number values to a bar chart.
+	def autolabel(self, rects):
 		for rect in self.rects:
 			height = rect.get_height()
-			self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
-											 '%d' % int(height),
-											 ha='center', va='bottom', color='white')
+			if height > 0:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='bottom')
+			else:
+				self.ui.MplSort.canvas.axes.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
+												 '%d' % int(height), ha='center', va='top')
 
 	# %%Bubble Sort Animation
 	def BubbleSort(self):
@@ -1076,7 +1079,7 @@ class SortingAlgorithms(QMainWindow):
 						buckets_list[len(self.unsorted_array) - 1].append(self.unsorted_array[i])
 
 				for z in range(len(self.unsorted_array)):
-					BinarySearch.insertion_sort(buckets_list[z])
+					binarysearch.insertion_sort(buckets_list[z])
 
 				final_output = []
 				for x in range(len(self.unsorted_array)):
