@@ -23,7 +23,7 @@ random_select = randomized_selection()
 class RandomizedSelection(QMainWindow):
 	def __init__(self):
 		super().__init__()
-
+		self.setWindowTitle('Randomized Selection')
 		self.ui = Ui_RandomizedSelectionWindow()
 		self.ui.setupUi(self)
 		self.ui.array_len.setMinimum(0)  # Fixing the dial to min 1 max 50.

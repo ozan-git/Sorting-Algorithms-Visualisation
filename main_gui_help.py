@@ -14,12 +14,10 @@ class HelpWindow(QMainWindow):
        super().__init__() 
        self.ui = Ui_MainWindow()                                         
        self.ui.setupUi(self)
-       
-       
-       
-     
-       
-  #%% Initialization       
+       self.setWindowTitle('Help')
+
+
+#%% Initialization
 if __name__ == "__main__":
     app = QApplication([])
     window = HelpWindow()

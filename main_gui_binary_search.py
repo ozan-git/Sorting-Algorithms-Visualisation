@@ -26,6 +26,7 @@ class BinarySearch(QMainWindow):
 		super().__init__()
 		self.ui = Ui_BinarySearchWindow()  # Ability to use the class in which the interface I designed with qt designer converted into code
 		self.ui.setupUi(self)
+		self.setWindowTitle('Binary Search')
 		self.ui.array_len.setMinimum(0)  # Fixing the dial to min 1 max 50
 		self.ui.array_len.setMaximum(50)
 		# self.ui.range.valueChanged.connect(self.valuerange)                     #Link to print the number on the dial on the line edit next to it

@@ -28,6 +28,7 @@ class MatrixOperation(QMainWindow):
 		# The variable created so that the interface class can be used.
 		self.ui = Ui_MatrixWindow()
 		self.ui.setupUi(self)
+		self.setWindowTitle('Matrix Operations')
 		# linking the first line edit for matrix 1 to the inputs function with the enter key
 		# linking the second line for matrix 1 edit to the inputs function with the enter key
 		# linking the first line edit for matrix 2 to the inputs function with the enter key

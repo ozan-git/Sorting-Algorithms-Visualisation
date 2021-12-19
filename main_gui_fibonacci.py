@@ -24,6 +24,7 @@ class Fibonacci(QMainWindow):
 		super().__init__()
 		self.ui = Ui_FibonacciWindow()  # Ability to use the class in which the interface I designed with qt designer converted into code
 		self.ui.setupUi(self)
+		self.setWindowTitle('Fibonacci')
 		self.ui.back_btn.clicked.connect(self.close)  # Back to my home page linking with the back button
 		self.ui.n_number.setValidator(
 			QIntValidator(1, 1000, self))  # fixing the number received from the user to the integer

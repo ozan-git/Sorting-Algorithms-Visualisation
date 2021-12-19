@@ -35,6 +35,7 @@ class SortingAlgorithms(QMainWindow):
 		super().__init__()
 		self.ui = Ui_SortWindow()
 		self.ui.setupUi(self)
+		self.setWindowTitle('Sorting Algorithms Visualisations')
 		self.AddArray = ArrayWindow()
 		self.time_comp = TimeComparisonMainWindow()
 		self.ui.array_sort.setMinimum(0)
