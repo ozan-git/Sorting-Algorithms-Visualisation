@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>801</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -459,8 +459,32 @@ background-color: rgb(219, 240, 242);
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="frame_main">
+      <property name="spacing">
+       <number>27</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
       <item>
        <widget class="QFrame" name="frame_top">
         <property name="minimumSize">
@@ -606,7 +630,7 @@ background-color: rgb(219, 240, 242);
                     </property>
                     <property name="styleSheet">
                      <string notr="true">background: transparent;
-background-image: url(:/images/images/shutter_speed_white_24dp.svg);
+image: url(:/images/images/shutter_speed_white_24dp.svg);
 background-position: center;
 background-repeat: no-repeat;</string>
                     </property>
@@ -715,8 +739,8 @@ QPushButton:pressed {
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../resources.qrc">
-                      <normaloff>:/images/images/minimize_white_24dp.svg</normaloff>:/images/images/minimize_white_24dp.svg</iconset>
+                     <iconset>
+                      <normaloff>../images/minimize_white_24dp.svg</normaloff>../images/minimize_white_24dp.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -753,8 +777,8 @@ QPushButton:pressed {
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../resources.qrc">
-                      <normaloff>:/images/images/open_in_full_white_24dp.svg</normaloff>:/images/images/open_in_full_white_24dp.svg</iconset>
+                     <iconset>
+                      <normaloff>../images/open_in_full_white_24dp.svg</normaloff>../images/open_in_full_white_24dp.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -791,8 +815,8 @@ QPushButton:pressed {
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../resources.qrc">
-                      <normaloff>:/images/images/close_white_24dp.svg</normaloff>:/images/images/close_white_24dp.svg</iconset>
+                     <iconset>
+                      <normaloff>../images/close_white_24dp.svg</normaloff>../images/close_white_24dp.svg</iconset>
                     </property>
                    </widget>
                   </item>
@@ -804,6 +828,19 @@ QPushButton:pressed {
                </item>
               </layout>
              </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -1469,6 +1506,16 @@ background-color: qlineargradient(spread:reflect, x1:0, y1:0.279, x2:1, y2:0.83,
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QFrame" name="size_grip">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

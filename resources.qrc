@@ -1,9 +1,5 @@
 <RCC>
   <qresource prefix="images">
-    <file>images/minimize_white_24dp.svg</file>
-    <file>images/close_white_24dp.svg</file>
-    <file>images/shutter_speed_white_24dp.svg</file>
-    <file>images/open_in_full_white_24dp.svg</file>
     <file>images/__init__.py</file>
     <file>images/add.png</file>
     <file>images/app_icon.png</file>
@@ -13,6 +9,7 @@
     <file>images/button_decrease.png</file>
     <file>images/button_increase.png</file>
     <file>images/clean.svg</file>
+    <file>images/close_white_24dp.svg</file>
     <file>images/created_by_ozan.svg</file>
     <file>images/excel_icon.png</file>
     <file>images/forward.svg</file>
@@ -26,13 +23,16 @@
     <file>images/microphone.png</file>
     <file>images/microphone.svg</file>
     <file>images/minimize.png</file>
+    <file>images/minimize_white_24dp.svg</file>
     <file>images/minus.png</file>
     <file>images/multiply.png</file>
+    <file>images/open_in_full_white_24dp.svg</file>
     <file>images/pause.svg</file>
     <file>images/play.svg</file>
     <file>images/rewind.svg</file>
     <file>images/save.png</file>
     <file>images/save_all.png</file>
+    <file>images/shutter_speed_white_24dp.svg</file>
     <file>images/sorting_background.png</file>
     <file>images/speed.png</file>
     <file>images/stop.svg</file>
