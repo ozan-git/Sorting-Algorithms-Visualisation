@@ -7,8 +7,10 @@ import sys
 import webbrowser
 
 import speech_recognition as sr
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget
 from PyQt5.QtWidgets import QMessageBox
+from iconify.qt import QtCore
 
 from main_gui_binary_search import BinarySearch
 from main_gui_fibonacci import Fibonacci
@@ -49,6 +51,33 @@ class MainWindow(QMainWindow):
 		self.ui.pushButton_mail.clicked.connect(self.sendmail)
 		self.subject = 'The features I specified can be added to the Introduction to algorithm project.'
 		self.ui.mic_btn.clicked.connect(self.voice)
+		self.ui.btn_close.clicked.connect(self.close)
+		self.ui.btn_maximize_restore.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize.clicked.connect(self.showMinimized)
+
+		self.setWindowFlags(Qt.CustomizeWindowHint)
+		self.pressing = False
+
+	def resizeEvent(self, QResizeEvent):
+		super(MainWindow, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	def sendmail(self):
 		webbrowser.open('mailto:orhan.ozan351@gmail.com?' + '&subject=' + self.subject, new=1)
@@ -79,6 +108,35 @@ class MainWindow(QMainWindow):
 
 	def help_operations(self):
 		self.help_main.show()
+
+	#
+	# def resizeEvent(self, QResizeEvent):
+	# 	super(self).resizeEvent(QResizeEvent)
+	# 	self.title.setFixedWidth(self.width())
+	#
+	# def mousePressEvent(self, event):
+	# 	self.start = self.mapToGlobal(event.pos())
+	# 	self.pressing = True
+	#
+	# def mouseMoveEvent(self, event):
+	# 	if self.pressing:
+	# 		self.end = self.mapToGlobal(event.pos())
+	# 		self.movement = self.end - self.start
+	# 		self.setGeometry(self.mapToGlobal(self.movement).x(), self.mapToGlobal(self.movement).y(), self.width(),
+	# 						 self.height())
+	# 		self.start = self.end
+	#
+	# def mouseReleaseEvent(self, QMouseEvent):
+	# 	self.pressing = False
+	#
+	# def btn_max_clicked(self):
+	# 	self.showMaximized()
+	#
+	# def btn_min_clicked(self):
+	# 	self.showMinimized()
+	#
+	def btn_close_clicked(self):
+		self.close()
 
 	def voice(self):
 		reader_voice = sr.Recognizer()
