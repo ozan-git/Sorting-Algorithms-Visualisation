@@ -10,6 +10,7 @@ import speech_recognition as sr
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget
 from PyQt5.QtWidgets import QMessageBox
+from iconify.qt import QtCore
 
 from main_gui_binary_search import BinarySearch
 from main_gui_fibonacci import Fibonacci
@@ -23,79 +24,6 @@ from uiqt_main import Ui_MainWindow
 
 def add_ikc_link():
 	webbrowser.open('https://www.ikcu.edu.tr/')
-
-
-class MyBar(QMainWindow):
-	def __init__(self, parent):
-		super(MyBar, self).__init__()
-		self.parent = parent
-		print(self.parent.width())
-		self.layout = QHBoxLayout()
-		self.layout.setContentsMargins(0, 0, 0, 0)
-		self.title = QLabel("My Own Bar")
-
-		btn_size = 35
-
-		self.btn_close = QPushButton("x")
-		self.btn_close.clicked.connect(self.btn_close_clicked)
-		self.btn_close.setFixedSize(btn_size, btn_size)
-		self.btn_close.setStyleSheet("background-color: red;")
-
-		self.btn_min = QPushButton("-")
-		self.btn_min.clicked.connect(self.btn_min_clicked)
-		self.btn_min.setFixedSize(btn_size, btn_size)
-		self.btn_min.setStyleSheet("background-color: gray;")
-
-		self.btn_max = QPushButton("+")
-		self.btn_max.clicked.connect(self.btn_max_clicked)
-		self.btn_max.setFixedSize(btn_size, btn_size)
-		self.btn_max.setStyleSheet("background-color: gray;")
-
-		self.title.setFixedHeight(35)
-		self.title.setAlignment(Qt.AlignCenter)
-		self.layout.addWidget(self.title)
-		self.layout.addWidget(self.btn_min)
-		self.layout.addWidget(self.btn_max)
-		self.layout.addWidget(self.btn_close)
-
-		self.title.setStyleSheet("""
-            background-color: black;
-            color: white;
-        """)
-		self.setLayout(self.layout)
-
-		self.start = QPoint(0, 0)
-		self.pressing = False
-
-	def resizeEvent(self, QResizeEvent):
-		super(MyBar, self).resizeEvent(QResizeEvent)
-		self.title.setFixedWidth(self.parent.width())
-
-	def mousePressEvent(self, event):
-		self.start = self.mapToGlobal(event.pos())
-		self.pressing = True
-
-	def mouseMoveEvent(self, event):
-		if self.pressing:
-			self.end = self.mapToGlobal(event.pos())
-			self.movement = self.end - self.start
-			self.parent.setGeometry(self.mapToGlobal(self.movement).x(),
-									self.mapToGlobal(self.movement).y(),
-									self.parent.width(),
-									self.parent.height())
-			self.start = self.end
-
-	def mouseReleaseEvent(self, QMouseEvent):
-		self.pressing = False
-
-	def btn_max_clicked(self):
-		self.parent.showMaximized()
-
-	def btn_min_clicked(self):
-		self.parent.showMinimized()
-
-	def btn_close_clicked(self):
-		self.parent.close()
 
 
 class MainWindow(QMainWindow):
@@ -123,18 +51,33 @@ class MainWindow(QMainWindow):
 		self.ui.pushButton_mail.clicked.connect(self.sendmail)
 		self.subject = 'The features I specified can be added to the Introduction to algorithm project.'
 		self.ui.mic_btn.clicked.connect(self.voice)
+		self.ui.btn_close.clicked.connect(self.close)
+		self.ui.btn_maximize_restore.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize.clicked.connect(self.showMinimized)
 
-		self.layout = QVBoxLayout()
-		self.layout.addWidget(MyBar(self))
-		self.setLayout(self.layout)
-		self.layout.setContentsMargins(0, 0, 0, 0)
-		self.layout.addStretch(-1)
-		self.setWindowFlags(Qt.FramelessWindowHint)
+		self.setWindowFlags(Qt.CustomizeWindowHint)
 		self.pressing = False
 
-		self.btn_close = QPushButton("x")
-		self.btn_close.clicked.connect(self.btn_close_clicked)
-		self.btn_close.setStyleSheet("background-color: red;")
+	def resizeEvent(self, QResizeEvent):
+		super(MainWindow, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	def sendmail(self):
 		webbrowser.open('mailto:orhan.ozan351@gmail.com?' + '&subject=' + self.subject, new=1)
@@ -166,8 +109,34 @@ class MainWindow(QMainWindow):
 	def help_operations(self):
 		self.help_main.show()
 
+	#
+	# def resizeEvent(self, QResizeEvent):
+	# 	super(self).resizeEvent(QResizeEvent)
+	# 	self.title.setFixedWidth(self.width())
+	#
+	# def mousePressEvent(self, event):
+	# 	self.start = self.mapToGlobal(event.pos())
+	# 	self.pressing = True
+	#
+	# def mouseMoveEvent(self, event):
+	# 	if self.pressing:
+	# 		self.end = self.mapToGlobal(event.pos())
+	# 		self.movement = self.end - self.start
+	# 		self.setGeometry(self.mapToGlobal(self.movement).x(), self.mapToGlobal(self.movement).y(), self.width(),
+	# 						 self.height())
+	# 		self.start = self.end
+	#
+	# def mouseReleaseEvent(self, QMouseEvent):
+	# 	self.pressing = False
+	#
+	# def btn_max_clicked(self):
+	# 	self.showMaximized()
+	#
+	# def btn_min_clicked(self):
+	# 	self.showMinimized()
+	#
 	def btn_close_clicked(self):
-		self.parent.close()
+		self.close()
 
 	def voice(self):
 		reader_voice = sr.Recognizer()

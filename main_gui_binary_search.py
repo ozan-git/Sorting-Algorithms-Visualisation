@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Betül USLU
-31.10.2020
-170403004
-This file contains the code I wrote to add functionality to the interface of binary search I designed with qt designer.
-"""
-# %% including required libraries, modules and files with code
+# Introduction to Algorithm course graphical interface design project binary search page.
+# 5 December 2021.
+
+# Written by Orhan Ozan Yildiz.
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDial
 from PyQt5.QtGui import QIntValidator
 import sys
@@ -50,6 +47,34 @@ class BinarySearch(QMainWindow):
 		self.ui.lower_range.setValidator(QIntValidator(-1000000, 10000, self))
 		self.ui.upper_range.setValidator(QIntValidator(10000, 1000000, self))
 		self.ui.mic_btn.clicked.connect(self.voice)
+
+		self.ui.btn_close_3.clicked.connect(self.close)
+		self.ui.btn_maximize_restore_3.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize_3.clicked.connect(self.showMinimized)
+
+		self.setWindowFlags(Qt.CustomizeWindowHint)
+		self.pressing = False
+
+	def resizeEvent(self, QResizeEvent):
+		super(BinarySearch, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top_binary.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	def voice(self):
 		r = sr.Recognizer()
