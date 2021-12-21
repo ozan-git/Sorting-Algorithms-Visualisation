@@ -26,7 +26,6 @@ def add_ikc_link():
 
 
 class MyBar(QMainWindow):
-
 	def __init__(self, parent):
 		super(MyBar, self).__init__()
 		self.parent = parent
@@ -89,14 +88,14 @@ class MyBar(QMainWindow):
 	def mouseReleaseEvent(self, QMouseEvent):
 		self.pressing = False
 
-	def btn_close_clicked(self):
-		self.parent.close()
-
 	def btn_max_clicked(self):
 		self.parent.showMaximized()
 
 	def btn_min_clicked(self):
 		self.parent.showMinimized()
+
+	def btn_close_clicked(self):
+		self.parent.close()
 
 
 class MainWindow(QMainWindow):
@@ -132,7 +131,10 @@ class MainWindow(QMainWindow):
 		self.layout.addStretch(-1)
 		self.setWindowFlags(Qt.FramelessWindowHint)
 		self.pressing = False
-		#self.ui.btn_close.clicked.connect(MyBar.btn_close_clicked())
+
+		self.btn_close = QPushButton("x")
+		self.btn_close.clicked.connect(self.btn_close_clicked)
+		self.btn_close.setStyleSheet("background-color: red;")
 
 	def sendmail(self):
 		webbrowser.open('mailto:orhan.ozan351@gmail.com?' + '&subject=' + self.subject, new=1)
@@ -163,6 +165,9 @@ class MainWindow(QMainWindow):
 
 	def help_operations(self):
 		self.help_main.show()
+
+	def btn_close_clicked(self):
+		self.parent.close()
 
 	def voice(self):
 		reader_voice = sr.Recognizer()
