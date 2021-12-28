@@ -12,706 +12,845 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_SortWindow(object):
-	def setupUi(self, SortWindow):
-		SortWindow.setObjectName("SortWindow")
-		SortWindow.resize(1200, 900)
-		SortWindow.setMinimumSize(QtCore.QSize(1200, 900))
-		SortWindow.setMaximumSize(QtCore.QSize(1200, 900))
-		SortWindow.setAutoFillBackground(False)
-		SortWindow.setStyleSheet("#SortWindow{\n"
-								 "background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
-								 "}")
-		self.centralwidget = QtWidgets.QWidget(SortWindow)
-		self.centralwidget.setObjectName("centralwidget")
-		self.MplSort = MplSort(self.centralwidget)
-		self.MplSort.setGeometry(QtCore.QRect(136, 60, 971, 391))
-		self.MplSort.setStyleSheet("background-color: rgba(199, 204, 219,0);")
-		self.MplSort.setObjectName("MplSort")
-		self.label_5 = QtWidgets.QLabel(self.centralwidget)
-		self.label_5.setGeometry(QtCore.QRect(436, 10, 351, 41))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(12)
-		font.setBold(True)
-		font.setWeight(75)
-		font.setKerning(True)
-		self.label_5.setFont(font)
-		self.label_5.setObjectName("label_5")
-		self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-		self.pushButton.setGeometry(QtCore.QRect(400, 530, 36, 36))
-		self.pushButton.setMinimumSize(QtCore.QSize(36, 36))
-		self.pushButton.setMaximumSize(QtCore.QSize(36, 36))
-		font = QtGui.QFont()
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.pushButton.setFont(font)
-		self.pushButton.setStyleSheet("#pushButton{background-color: rgba(255, 255, 255,0);\\n}")
-		self.pushButton.setText("")
-		icon = QtGui.QIcon()
-		icon.addPixmap(QtGui.QPixmap(":/images/images/arrow_up_square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.pushButton.setIcon(icon)
-		self.pushButton.setIconSize(QtCore.QSize(36, 36))
-		self.pushButton.setObjectName("pushButton")
-		self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-		self.pushButton_2.setGeometry(QtCore.QRect(400, 630, 36, 36))
-		self.pushButton_2.setMaximumSize(QtCore.QSize(36, 36))
-		font = QtGui.QFont()
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.pushButton_2.setFont(font)
-		self.pushButton_2.setStyleSheet("#pushButton_2{background-color: rgba(255, 255, 255,0);\\n}")
-		self.pushButton_2.setText("")
-		icon1 = QtGui.QIcon()
-		icon1.addPixmap(QtGui.QPixmap(":/images/images/arrow_down_square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.pushButton_2.setIcon(icon1)
-		self.pushButton_2.setIconSize(QtCore.QSize(36, 36))
-		self.pushButton_2.setObjectName("pushButton_2")
-		self.label_3 = QtWidgets.QLabel(self.centralwidget)
-		self.label_3.setGeometry(QtCore.QRect(206, 500, 101, 21))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(12)
-		font.setBold(True)
-		font.setWeight(75)
-		self.label_3.setFont(font)
-		self.label_3.setObjectName("label_3")
-		self.set_default_values = QtWidgets.QPushButton(self.centralwidget)
-		self.set_default_values.setGeometry(QtCore.QRect(26, 520, 171, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.set_default_values.setFont(font)
-		self.set_default_values.setStyleSheet("#set_default_values{\n"
-											  "background-color: rgb(102, 61, 54);\n"
-											  "border-radius: 10px ;\n"
-											  "color: white;}\n"
-											  "\n"
-											  "#set_default_values:hover{\n"
-											  "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-											  "}")
-		self.set_default_values.setObjectName("set_default_values")
-		self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-		self.checkBox.setGeometry(QtCore.QRect(216, 560, 111, 20))
-		self.checkBox.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
-		self.checkBox.setObjectName("checkBox")
-		self.spinBox = QtWidgets.QSpinBox(self.centralwidget)
-		self.spinBox.setGeometry(QtCore.QRect(216, 520, 81, 31))
-		font = QtGui.QFont()
-		font.setPointSize(10)
-		self.spinBox.setFont(font)
-		self.spinBox.setStyleSheet("background-color: rgb(229, 249, 255);")
-		self.spinBox.setAlignment(QtCore.Qt.AlignCenter)
-		self.spinBox.setMaximum(1000)
-		self.spinBox.setObjectName("spinBox")
-		self.clear_btn = QtWidgets.QPushButton(self.centralwidget)
-		self.clear_btn.setGeometry(QtCore.QRect(56, 680, 91, 31))
-		self.clear_btn.setStyleSheet("#clear_btn:hover{\n"
-									 "background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
-									 "}\n"
-									 "\n"
-									 "#clear_btn{\n"
-									 "background-color: rgba(255, 255, 255,0);\n"
-									 "}")
-		icon2 = QtGui.QIcon()
-		icon2.addPixmap(QtGui.QPixmap(":/images/images/clean.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.clear_btn.setIcon(icon2)
-		self.clear_btn.setIconSize(QtCore.QSize(36, 36))
-		self.clear_btn.setObjectName("clear_btn")
-		self.create_array = QtWidgets.QPushButton(self.centralwidget)
-		self.create_array.setGeometry(QtCore.QRect(26, 560, 171, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.create_array.setFont(font)
-		self.create_array.setStyleSheet("#create_array{\n"
-										"border-radius: 12px;\n"
-										"border: 2px solid white;\n"
-										"background-color: rgb(f, f, f);\n"
-										"color: white;\n"
-										"}\n"
-										"\n"
-										"#create_array:hover{\n"
-										"background-color:\n"
-										"qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										"}\n"
-										"")
-		self.create_array.setObjectName("create_array")
-		self.enter_array = QtWidgets.QPushButton(self.centralwidget)
-		self.enter_array.setGeometry(QtCore.QRect(26, 600, 171, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setItalic(False)
-		font.setWeight(75)
-		self.enter_array.setFont(font)
-		self.enter_array.setStyleSheet("#enter_array{\n"
-									   "border-radius: 12px;\n"
-									   "border: 2px solid white;\n"
-									   "background-color: rgb(f, f, f);\n"
-									   "color: white;\n"
-									   "}\n"
-									   "\n"
-									   "#enter_array:hover{\n"
-									   "background-color: \n"
-									   "qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									   "}")
-		self.enter_array.setObjectName("enter_array")
-		self.stop_btn = QtWidgets.QPushButton(self.centralwidget)
-		self.stop_btn.setGeometry(QtCore.QRect(126, 640, 71, 31))
-		self.stop_btn.setStyleSheet("#stop_btn:hover{\n"
-									"background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
-									"}\n"
-									"\n"
-									"#stop_btn{\n"
-									"background-color: rgba(255, 255, 255,0);\n"
-									"}")
-		icon3 = QtGui.QIcon()
-		icon3.addPixmap(QtGui.QPixmap(":/images/images/stop.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.stop_btn.setIcon(icon3)
-		self.stop_btn.setIconSize(QtCore.QSize(36, 36))
-		self.stop_btn.setObjectName("stop_btn")
-		self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
-		self.checkBox_2.setGeometry(QtCore.QRect(216, 590, 141, 20))
-		self.checkBox_2.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
-		self.checkBox_2.setObjectName("checkBox_2")
-		self.skip_btn = QtWidgets.QPushButton(self.centralwidget)
-		self.skip_btn.setGeometry(QtCore.QRect(26, 640, 61, 31))
-		self.skip_btn.setStyleSheet("#skip_btn:hover{\n"
-									"background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
-									"}\n"
-									"\n"
-									"#skip_btn{\n"
-									"background-color: rgba(255, 255, 255,0);\n"
-									"}")
-		icon4 = QtGui.QIcon()
-		icon4.addPixmap(QtGui.QPixmap(":/images/images/forward.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.skip_btn.setIcon(icon4)
-		self.skip_btn.setIconSize(QtCore.QSize(36, 36))
-		self.skip_btn.setObjectName("skip_btn")
-		self.displayarraylen_sort = QtWidgets.QLabel(self.centralwidget)
-		self.displayarraylen_sort.setGeometry(QtCore.QRect(460, 500, 71, 21))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(12)
-		font.setBold(True)
-		font.setWeight(75)
-		self.displayarraylen_sort.setFont(font)
-		self.displayarraylen_sort.setAutoFillBackground(False)
-		self.displayarraylen_sort.setStyleSheet("#displayarraylen_sort{\n"
-												"color: white;\n"
-												"}")
-		self.displayarraylen_sort.setObjectName("displayarraylen_sort")
-		self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
-		self.layoutWidget.setGeometry(QtCore.QRect(330, 730, 301, 55))
-		self.layoutWidget.setObjectName("layoutWidget")
-		self.formLayout_2 = QtWidgets.QFormLayout(self.layoutWidget)
-		self.formLayout_2.setContentsMargins(0, 0, 0, 0)
-		self.formLayout_2.setObjectName("formLayout_2")
-		self.verticalSlider = QtWidgets.QSlider(self.layoutWidget)
-		self.verticalSlider.setOrientation(QtCore.Qt.Horizontal)
-		self.verticalSlider.setTickPosition(QtWidgets.QSlider.TicksAbove)
-		self.verticalSlider.setObjectName("verticalSlider")
-		self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.verticalSlider)
-		self.label_4 = QtWidgets.QLabel(self.layoutWidget)
-		self.label_4.setObjectName("label_4")
-		self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.label_4)
-		self.layoutWidget1 = QtWidgets.QWidget(self.centralwidget)
-		self.layoutWidget1.setGeometry(QtCore.QRect(440, 530, 111, 132))
-		self.layoutWidget1.setObjectName("layoutWidget1")
-		self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget1)
-		self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-		self.verticalLayout.setObjectName("verticalLayout")
-		self.array_sort = QtWidgets.QDial(self.layoutWidget1)
-		self.array_sort.setStyleSheet("background-color:rgb(153, 92, 81);")
-		self.array_sort.setObjectName("array_sort")
-		self.verticalLayout.addWidget(self.array_sort)
-		self.displayarrays_sort = QtWidgets.QLineEdit(self.layoutWidget1)
-		self.displayarrays_sort.setMinimumSize(QtCore.QSize(76, 24))
-		self.displayarrays_sort.setMaximumSize(QtCore.QSize(444, 24))
-		self.displayarrays_sort.setStyleSheet("background-color: rgb(225, 229, 238);")
-		self.displayarrays_sort.setAlignment(QtCore.Qt.AlignCenter)
-		self.displayarrays_sort.setReadOnly(True)
-		self.displayarrays_sort.setObjectName("displayarrays_sort")
-		self.verticalLayout.addWidget(self.displayarrays_sort)
-		self.label = QtWidgets.QLabel(self.centralwidget)
-		self.label.setGeometry(QtCore.QRect(866, 480, 181, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(12)
-		font.setBold(True)
-		font.setWeight(75)
-		self.label.setFont(font)
-		self.label.setStyleSheet("color:white;")
-		self.label.setObjectName("label")
-		self.time_comparison = QtWidgets.QPushButton(self.centralwidget)
-		self.time_comparison.setGeometry(QtCore.QRect(626, 540, 151, 81))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.time_comparison.setFont(font)
-		self.time_comparison.setFocusPolicy(QtCore.Qt.NoFocus)
-		self.time_comparison.setStyleSheet("#time_comparison{\n"
-										   "border-radius: 10px ;\n"
-										   "background-color: rgb(102, 61, 54);\n"
-										   "color: white;}\n"
-										   "\n"
-										   "#time_comparison:hover{\n"
-										   "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										   "}")
-		self.time_comparison.setObjectName("time_comparison")
-		self.line = QtWidgets.QFrame(self.centralwidget)
-		self.line.setGeometry(QtCore.QRect(816, 510, 271, 20))
-		self.line.setStyleSheet("")
-		self.line.setFrameShape(QtWidgets.QFrame.HLine)
-		self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-		self.line.setObjectName("line")
-		self.layoutWidget2 = QtWidgets.QWidget(self.centralwidget)
-		self.layoutWidget2.setGeometry(QtCore.QRect(966, 540, 133, 278))
-		self.layoutWidget2.setObjectName("layoutWidget2")
-		self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget2)
-		self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-		self.verticalLayout_3.setSpacing(18)
-		self.verticalLayout_3.setObjectName("verticalLayout_3")
-		self.insertion_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.insertion_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.insertion_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setItalic(False)
-		font.setWeight(75)
-		self.insertion_sort.setFont(font)
-		self.insertion_sort.setStyleSheet("#insertion_sort{\n"
-										  "border-radius: 10px ;\n"
-										  "background-color: rgb(102, 61, 54);\n"
-										  "color: white;\n"
-										  "}\n"
-										  "\n"
-										  "#insertion_sort:hover{\n"
-										  "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										  "}")
-		self.insertion_sort.setObjectName("insertion_sort")
-		self.verticalLayout_3.addWidget(self.insertion_sort)
-		self.heap_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.heap_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.heap_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.heap_sort.setFont(font)
-		self.heap_sort.setStyleSheet("#heap_sort{\n"
-									 "border-radius: 10px ;\n"
-									 "background-color: rgb(102, 61, 54);\n"
-									 "color: white;\n"
-									 "}\n"
-									 "\n"
-									 "#heap_sort:hover{\n"
-									 "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									 "}")
-		self.heap_sort.setObjectName("heap_sort")
-		self.verticalLayout_3.addWidget(self.heap_sort)
-		self.quick_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.quick_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.quick_sort.setMaximumSize(QtCore.QSize(131, 16777215))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.quick_sort.setFont(font)
-		self.quick_sort.setStyleSheet("#quick_sort{\n"
-									  "border-radius: 10px ;\n"
-									  "background-color: rgb(102, 61, 54);\n"
-									  "color: white;}\n"
-									  "\n"
-									  "#quick_sort:hover{\n"
-									  "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									  "}")
-		self.quick_sort.setObjectName("quick_sort")
-		self.verticalLayout_3.addWidget(self.quick_sort)
-		self.radix_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.radix_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.radix_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.radix_sort.setFont(font)
-		self.radix_sort.setStyleSheet("#radix_sort{\n"
-									  "border-radius: 10px ;\n"
-									  "background-color: rgb(102, 61, 54);\n"
-									  "color: white;}\n"
-									  "\n"
-									  "#radix_sort:hover{\n"
-									  "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									  "}")
-		self.radix_sort.setObjectName("radix_sort")
-		self.verticalLayout_3.addWidget(self.radix_sort)
-		self.shell_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.shell_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.shell_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.shell_sort.setFont(font)
-		self.shell_sort.setStyleSheet("#shell_sort{\n"
-									  "border-radius: 10px ;\n"
-									  "background-color: rgb(102, 61, 54);\n"
-									  "color: white;}\n"
-									  "\n"
-									  "#shell_sort:hover{\n"
-									  "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									  "}")
-		self.shell_sort.setObjectName("shell_sort")
-		self.verticalLayout_3.addWidget(self.shell_sort)
-		self.comb_sort = QtWidgets.QPushButton(self.layoutWidget2)
-		self.comb_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.comb_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.comb_sort.setFont(font)
-		self.comb_sort.setStyleSheet("#comb_sort{\n"
-									 "border-radius: 10px ;\n"
-									 "background-color: rgb(102, 61, 54);\n"
-									 "color: white;}\n"
-									 "\n"
-									 "#comb_sort:hover{\n"
-									 "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									 "}")
-		self.comb_sort.setObjectName("comb_sort")
-		self.verticalLayout_3.addWidget(self.comb_sort)
-		self.layoutWidget3 = QtWidgets.QWidget(self.centralwidget)
-		self.layoutWidget3.setGeometry(QtCore.QRect(816, 540, 133, 279))
-		self.layoutWidget3.setObjectName("layoutWidget3")
-		self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.layoutWidget3)
-		self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-		self.verticalLayout_4.setSpacing(18)
-		self.verticalLayout_4.setObjectName("verticalLayout_4")
-		self.bubble_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.bubble_sort.setMinimumSize(QtCore.QSize(131, 32))
-		self.bubble_sort.setMaximumSize(QtCore.QSize(131, 32))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.bubble_sort.setFont(font)
-		self.bubble_sort.setStyleSheet("#bubble_sort{\n"
-									   "background-color: rgb(102, 61, 54);\n"
-									   "border-radius: 10px ;\n"
-									   "color: white;}\n"
-									   "\n"
-									   "#bubble_sort:hover{\n"
-									   "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									   "}")
-		self.bubble_sort.setObjectName("bubble_sort")
-		self.verticalLayout_4.addWidget(self.bubble_sort)
-		self.bucket_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.bucket_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.bucket_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.bucket_sort.setFont(font)
-		self.bucket_sort.setStyleSheet("#bucket_sort{\n"
-									   "border-radius: 10px ;\n"
-									   "background-color: rgb(102, 61, 54);\n"
-									   "color: white;}\n"
-									   "\n"
-									   "#bucket_sort:hover{\n"
-									   "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									   "}")
-		self.bucket_sort.setObjectName("bucket_sort")
-		self.verticalLayout_4.addWidget(self.bucket_sort)
-		self.merge_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.merge_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.merge_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.merge_sort.setFont(font)
-		self.merge_sort.setStyleSheet("#merge_sort{\n"
-									  "border-radius: 10px ;\n"
-									  "background-color: rgb(102, 61, 54);\n"
-									  "color: white;}\n"
-									  "\n"
-									  "#merge_sort:hover{\n"
-									  "    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-									  "}")
-		self.merge_sort.setObjectName("merge_sort")
-		self.verticalLayout_4.addWidget(self.merge_sort)
-		self.counting_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.counting_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.counting_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.counting_sort.setFont(font)
-		self.counting_sort.setStyleSheet("#counting_sort{\n"
-										 "border-radius: 10px ;\n"
-										 "background-color: rgb(102, 61, 54);\n"
-										 "color: white;\n"
-										 "}\n"
-										 "\n"
-										 "#counting_sort:hover{\n"
-										 "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										 "}")
-		self.counting_sort.setObjectName("counting_sort")
-		self.verticalLayout_4.addWidget(self.counting_sort)
-		self.selection_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.selection_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.selection_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.selection_sort.setFont(font)
-		self.selection_sort.setStyleSheet("#selection_sort{\n"
-										  "border-radius: 10px ;\n"
-										  "background-color: rgb(102, 61, 54);\n"
-										  "color: white;\n"
-										  "}\n"
-										  "\n"
-										  "#selection_sort:hover{\n"
-										  "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										  "}")
-		self.selection_sort.setObjectName("selection_sort")
-		self.verticalLayout_4.addWidget(self.selection_sort)
-		self.coctail_sort = QtWidgets.QPushButton(self.layoutWidget3)
-		self.coctail_sort.setMinimumSize(QtCore.QSize(131, 31))
-		self.coctail_sort.setMaximumSize(QtCore.QSize(131, 31))
-		font = QtGui.QFont()
-		font.setFamily("Verdana")
-		font.setPointSize(10)
-		font.setBold(True)
-		font.setWeight(75)
-		self.coctail_sort.setFont(font)
-		self.coctail_sort.setStyleSheet("#coctail_sort{\n"
-										"border-radius: 10px ;\n"
-										"background-color: rgb(102, 61, 54);\n"
-										"color: white;}\n"
-										"\n"
-										"#coctail_sort:hover{\n"
-										"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
-										"}")
-		self.coctail_sort.setObjectName("coctail_sort")
-		self.verticalLayout_4.addWidget(self.coctail_sort)
-		self.label_9 = QtWidgets.QLabel(self.centralwidget)
-		self.label_9.setGeometry(QtCore.QRect(350, 680, 80, 18))
-		self.label_9.setMinimumSize(QtCore.QSize(80, 18))
-		self.label_9.setMaximumSize(QtCore.QSize(80, 18))
-		self.label_9.setObjectName("label_9")
-		self.label_6 = QtWidgets.QLabel(self.centralwidget)
-		self.label_6.setGeometry(QtCore.QRect(350, 703, 80, 18))
-		self.label_6.setMinimumSize(QtCore.QSize(80, 18))
-		self.label_6.setMaximumSize(QtCore.QSize(80, 18))
-		self.label_6.setObjectName("label_6")
-		self.splitter = QtWidgets.QSplitter(self.centralwidget)
-		self.splitter.setGeometry(QtCore.QRect(440, 680, 133, 40))
-		self.splitter.setOrientation(QtCore.Qt.Vertical)
-		self.splitter.setObjectName("splitter")
-		self.layoutWidget4 = QtWidgets.QWidget(self.splitter)
-		self.layoutWidget4.setObjectName("layoutWidget4")
-		self.formLayout = QtWidgets.QFormLayout(self.layoutWidget4)
-		self.formLayout.setContentsMargins(0, 0, 0, 0)
-		self.formLayout.setObjectName("formLayout")
-		self.upper_range = QtWidgets.QLineEdit(self.layoutWidget4)
-		self.upper_range.setStyleSheet("background-color: rgb(225, 229, 238);")
-		self.upper_range.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
-		self.upper_range.setObjectName("upper_range")
-		self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.upper_range)
-		self.lower_range = QtWidgets.QLineEdit(self.layoutWidget4)
-		self.lower_range.setStyleSheet("background-color: rgb(225, 229, 238);")
-		self.lower_range.setAlignment(QtCore.Qt.AlignCenter)
-		self.lower_range.setObjectName("lower_range")
-		self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lower_range)
-		self.widget = QtWidgets.QWidget(self.centralwidget)
-		self.widget.setGeometry(QtCore.QRect(1120, 10, 74, 134))
-		self.widget.setObjectName("widget")
-		self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
-		self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-		self.verticalLayout_2.setObjectName("verticalLayout_2")
-		self.back_btn = QtWidgets.QPushButton(self.widget)
-		self.back_btn.setStyleSheet("#back_btn:hover{\n"
-									"background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
-									"\n"
-									"}\n"
-									"\n"
-									"#back_btn{\n"
-									"background-color: rgba(255, 255, 255,0);\n"
-									"}")
-		self.back_btn.setText("")
-		icon5 = QtGui.QIcon()
-		icon5.addPixmap(QtGui.QPixmap(":/images/images/home.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.back_btn.setIcon(icon5)
-		self.back_btn.setIconSize(QtCore.QSize(60, 60))
-		self.back_btn.setObjectName("back_btn")
-		self.verticalLayout_2.addWidget(self.back_btn)
-		self.micro_btn = QtWidgets.QPushButton(self.widget)
-		self.micro_btn.setStyleSheet("#micro_btn{background-color: rgba(0,0,0,0);}\n"
-									 "#micro_btn:hover{\n"
-									 "    background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}")
-		self.micro_btn.setText("")
-		icon6 = QtGui.QIcon()
-		icon6.addPixmap(QtGui.QPixmap(":/icons/icons/microphone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.micro_btn.setIcon(icon6)
-		self.micro_btn.setIconSize(QtCore.QSize(50, 50))
-		self.micro_btn.setObjectName("micro_btn")
-		self.verticalLayout_2.addWidget(self.micro_btn)
-		SortWindow.setCentralWidget(self.centralwidget)
-		self.file_operations = QtWidgets.QMenuBar(SortWindow)
-		self.file_operations.setGeometry(QtCore.QRect(0, 0, 1200, 21))
-		self.file_operations.setAutoFillBackground(False)
-		self.file_operations.setStyleSheet(
-			"background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));")
-		self.file_operations.setNativeMenuBar(True)
-		self.file_operations.setObjectName("file_operations")
-		self.menuFile_Operations = QtWidgets.QMenu(self.file_operations)
-		self.menuFile_Operations.setObjectName("menuFile_Operations")
-		self.menuSave_File = QtWidgets.QMenu(self.menuFile_Operations)
-		self.menuSave_File.setObjectName("menuSave_File")
-		self.menuInsert_File = QtWidgets.QMenu(self.menuFile_Operations)
-		self.menuInsert_File.setObjectName("menuInsert_File")
-		SortWindow.setMenuBar(self.file_operations)
-		self.statusbar = QtWidgets.QStatusBar(SortWindow)
-		self.statusbar.setStyleSheet("#SortWindow{\n"
-									 "background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
-									 "}")
-		self.statusbar.setObjectName("statusbar")
-		SortWindow.setStatusBar(self.statusbar)
-		self.actionTxt_File = QtWidgets.QAction(SortWindow)
-		self.actionTxt_File.setObjectName("actionTxt_File")
-		self.actionCsv_File = QtWidgets.QAction(SortWindow)
-		self.actionCsv_File.setObjectName("actionCsv_File")
-		self.actionXlsx_File = QtWidgets.QAction(SortWindow)
-		self.actionXlsx_File.setObjectName("actionXlsx_File")
-		self.actionTxt_File_2 = QtWidgets.QAction(SortWindow)
-		self.actionTxt_File_2.setObjectName("actionTxt_File_2")
-		self.actionCsv_File_2 = QtWidgets.QAction(SortWindow)
-		self.actionCsv_File_2.setObjectName("actionCsv_File_2")
-		self.actionXlsx_File_2 = QtWidgets.QAction(SortWindow)
-		self.actionXlsx_File_2.setObjectName("actionXlsx_File_2")
-		self.menuSave_File.addAction(self.actionTxt_File)
-		self.menuSave_File.addAction(self.actionCsv_File)
-		self.menuSave_File.addAction(self.actionXlsx_File)
-		self.menuInsert_File.addAction(self.actionTxt_File_2)
-		self.menuInsert_File.addAction(self.actionCsv_File_2)
-		self.menuInsert_File.addAction(self.actionXlsx_File_2)
-		self.menuFile_Operations.addAction(self.menuSave_File.menuAction())
-		self.menuFile_Operations.addAction(self.menuInsert_File.menuAction())
-		self.file_operations.addAction(self.menuFile_Operations.menuAction())
+    def setupUi(self, SortWindow):
+        SortWindow.setObjectName("SortWindow")
+        SortWindow.resize(1200, 900)
+        SortWindow.setMinimumSize(QtCore.QSize(1200, 900))
+        SortWindow.setMaximumSize(QtCore.QSize(4500, 4500))
+        SortWindow.setAutoFillBackground(False)
+        SortWindow.setStyleSheet("#SortWindow{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(SortWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem)
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setMinimumSize(QtCore.QSize(351, 41))
+        self.label_5.setMaximumSize(QtCore.QSize(351, 41))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(True)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_12.addWidget(self.label_5)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem1)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_12)
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem2)
+        self.MplSort = MplSort(self.centralwidget)
+        self.MplSort.setMinimumSize(QtCore.QSize(971, 391))
+        self.MplSort.setMaximumSize(QtCore.QSize(971, 391))
+        self.MplSort.setStyleSheet("background-color: rgba(199, 204, 219,0);")
+        self.MplSort.setObjectName("MplSort")
+        self.horizontalLayout_13.addWidget(self.MplSort)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem3)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_13)
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem4)
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.set_default_values = QtWidgets.QPushButton(self.centralwidget)
+        self.set_default_values.setMinimumSize(QtCore.QSize(171, 31))
+        self.set_default_values.setMaximumSize(QtCore.QSize(171, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.set_default_values.setFont(font)
+        self.set_default_values.setStyleSheet("#set_default_values{\n"
+"background-color: rgb(102, 61, 54);\n"
+"border-radius: 10px ;\n"
+"color: white;}\n"
+"\n"
+"#set_default_values:hover{\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.set_default_values.setObjectName("set_default_values")
+        self.verticalLayout_8.addWidget(self.set_default_values)
+        self.create_array = QtWidgets.QPushButton(self.centralwidget)
+        self.create_array.setMinimumSize(QtCore.QSize(171, 31))
+        self.create_array.setMaximumSize(QtCore.QSize(171, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.create_array.setFont(font)
+        self.create_array.setStyleSheet("#create_array{\n"
+"border-radius: 12px;\n"
+"border: 2px solid white;\n"
+"background-color: rgb(f, f, f);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#create_array:hover{\n"
+"background-color:\n"
+"qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}\n"
+"")
+        self.create_array.setObjectName("create_array")
+        self.verticalLayout_8.addWidget(self.create_array)
+        self.enter_array = QtWidgets.QPushButton(self.centralwidget)
+        self.enter_array.setMinimumSize(QtCore.QSize(171, 31))
+        self.enter_array.setMaximumSize(QtCore.QSize(171, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.enter_array.setFont(font)
+        self.enter_array.setStyleSheet("#enter_array{\n"
+"border-radius: 12px;\n"
+"border: 2px solid white;\n"
+"background-color: rgb(f, f, f);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#enter_array:hover{\n"
+"background-color: \n"
+"qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.enter_array.setObjectName("enter_array")
+        self.verticalLayout_8.addWidget(self.enter_array)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_8)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setMinimumSize(QtCore.QSize(81, 16))
+        self.label_3.setMaximumSize(QtCore.QSize(81, 16))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_5.addWidget(self.label_3)
+        self.spinBox = QtWidgets.QSpinBox(self.centralwidget)
+        self.spinBox.setMinimumSize(QtCore.QSize(81, 31))
+        self.spinBox.setMaximumSize(QtCore.QSize(81, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.spinBox.setFont(font)
+        self.spinBox.setStyleSheet("background-color: rgb(229, 249, 255);")
+        self.spinBox.setAlignment(QtCore.Qt.AlignCenter)
+        self.spinBox.setMaximum(1000)
+        self.spinBox.setObjectName("spinBox")
+        self.verticalLayout_5.addWidget(self.spinBox)
+        self.verticalLayout_7.addLayout(self.verticalLayout_5)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
+        self.checkBox.setObjectName("checkBox")
+        self.verticalLayout_6.addWidget(self.checkBox)
+        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_2.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
+        self.checkBox_2.setObjectName("checkBox_2")
+        self.verticalLayout_6.addWidget(self.checkBox_2)
+        self.verticalLayout_7.addLayout(self.verticalLayout_6)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_7)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_3)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem5)
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.skip_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.skip_btn.setMinimumSize(QtCore.QSize(100, 40))
+        self.skip_btn.setMaximumSize(QtCore.QSize(100, 40))
+        self.skip_btn.setStyleSheet("#skip_btn:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0))\n"
+"}\n"
+"\n"
+"#skip_btn{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/images/images/forward.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.skip_btn.setIcon(icon)
+        self.skip_btn.setIconSize(QtCore.QSize(36, 36))
+        self.skip_btn.setObjectName("skip_btn")
+        self.horizontalLayout_2.addWidget(self.skip_btn)
+        self.stop_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.stop_btn.setMinimumSize(QtCore.QSize(100, 40))
+        self.stop_btn.setMaximumSize(QtCore.QSize(100, 40))
+        self.stop_btn.setStyleSheet("#stop_btn:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"}\n"
+"\n"
+"#stop_btn{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/images/stop.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.stop_btn.setIcon(icon1)
+        self.stop_btn.setIconSize(QtCore.QSize(36, 36))
+        self.stop_btn.setObjectName("stop_btn")
+        self.horizontalLayout_2.addWidget(self.stop_btn)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem6)
+        self.clear_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.clear_btn.setMinimumSize(QtCore.QSize(100, 40))
+        self.clear_btn.setMaximumSize(QtCore.QSize(100, 40))
+        self.clear_btn.setStyleSheet("#clear_btn:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
+"}\n"
+"\n"
+"#clear_btn{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}\n"
+"\n"
+"#clear_btn:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0))\n"
+"}\n"
+"\n"
+"#clear_btn{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/images/clean.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.clear_btn.setIcon(icon2)
+        self.clear_btn.setIconSize(QtCore.QSize(36, 36))
+        self.clear_btn.setObjectName("clear_btn")
+        self.horizontalLayout.addWidget(self.clear_btn)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem7)
+        self.verticalLayout_9.addLayout(self.horizontalLayout)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_9)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem8)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_17.addLayout(self.verticalLayout_10)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_17.addItem(spacerItem9)
+        self.horizontalLayout_11.addLayout(self.verticalLayout_17)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem10)
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.displayarraylen_sort = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.displayarraylen_sort.setFont(font)
+        self.displayarraylen_sort.setAutoFillBackground(False)
+        self.displayarraylen_sort.setStyleSheet("#displayarraylen_sort{\n"
+"color: white;\n"
+"}")
+        self.displayarraylen_sort.setObjectName("displayarraylen_sort")
+        self.verticalLayout_13.addWidget(self.displayarraylen_sort)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem11)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setMinimumSize(QtCore.QSize(36, 36))
+        self.pushButton.setMaximumSize(QtCore.QSize(36, 36))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("\n"
+"#pushButton{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}\n"
+"#pushButton:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(85, 221, 118, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}")
+        self.pushButton.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/images/images/arrow_up_square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon3)
+        self.pushButton.setIconSize(QtCore.QSize(36, 36))
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_11.addWidget(self.pushButton)
+        spacerItem12 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem12)
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setMaximumSize(QtCore.QSize(36, 36))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("#pushButton_2{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}\n"
+"#pushButton_2:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(85, 221, 118, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}")
+        self.pushButton_2.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/images/images/arrow_down_square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon4)
+        self.pushButton_2.setIconSize(QtCore.QSize(36, 36))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.verticalLayout_11.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addLayout(self.verticalLayout_11)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.array_sort = QtWidgets.QDial(self.centralwidget)
+        self.array_sort.setStyleSheet("background-color:rgb(153, 92, 81);")
+        self.array_sort.setObjectName("array_sort")
+        self.verticalLayout.addWidget(self.array_sort)
+        self.displayarrays_sort = QtWidgets.QLineEdit(self.centralwidget)
+        self.displayarrays_sort.setMinimumSize(QtCore.QSize(76, 24))
+        self.displayarrays_sort.setMaximumSize(QtCore.QSize(444, 24))
+        self.displayarrays_sort.setStyleSheet("background-color: rgb(225, 229, 238);")
+        self.displayarrays_sort.setAlignment(QtCore.Qt.AlignCenter)
+        self.displayarrays_sort.setReadOnly(True)
+        self.displayarrays_sort.setObjectName("displayarrays_sort")
+        self.verticalLayout.addWidget(self.displayarrays_sort)
+        self.horizontalLayout_5.addLayout(self.verticalLayout)
+        self.horizontalLayout_8.addLayout(self.horizontalLayout_5)
+        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem13)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_8)
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem14)
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.label_9 = QtWidgets.QLabel(self.centralwidget)
+        self.label_9.setMinimumSize(QtCore.QSize(80, 18))
+        self.label_9.setMaximumSize(QtCore.QSize(80, 18))
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_7.addWidget(self.label_9)
+        self.upper_range = QtWidgets.QLineEdit(self.centralwidget)
+        self.upper_range.setStyleSheet("background-color: rgb(225, 229, 238);")
+        self.upper_range.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.upper_range.setObjectName("upper_range")
+        self.horizontalLayout_7.addWidget(self.upper_range)
+        self.verticalLayout_12.addLayout(self.horizontalLayout_7)
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.label_6 = QtWidgets.QLabel(self.centralwidget)
+        self.label_6.setMinimumSize(QtCore.QSize(80, 18))
+        self.label_6.setMaximumSize(QtCore.QSize(80, 18))
+        self.label_6.setObjectName("label_6")
+        self.horizontalLayout_6.addWidget(self.label_6)
+        self.lower_range = QtWidgets.QLineEdit(self.centralwidget)
+        self.lower_range.setStyleSheet("background-color: rgb(225, 229, 238);")
+        self.lower_range.setAlignment(QtCore.Qt.AlignCenter)
+        self.lower_range.setObjectName("lower_range")
+        self.horizontalLayout_6.addWidget(self.lower_range)
+        self.verticalLayout_12.addLayout(self.horizontalLayout_6)
+        self.horizontalLayout_9.addLayout(self.verticalLayout_12)
+        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem15)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_9)
+        self.formLayout_2 = QtWidgets.QFormLayout()
+        self.formLayout_2.setObjectName("formLayout_2")
+        self.verticalSlider = QtWidgets.QSlider(self.centralwidget)
+        self.verticalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.verticalSlider.setTickPosition(QtWidgets.QSlider.TicksAbove)
+        self.verticalSlider.setObjectName("verticalSlider")
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.verticalSlider)
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setObjectName("label_4")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.label_4)
+        self.verticalLayout_13.addLayout(self.formLayout_2)
+        self.verticalLayout_16.addLayout(self.verticalLayout_13)
+        self.time_comparison = QtWidgets.QPushButton(self.centralwidget)
+        self.time_comparison.setEnabled(True)
+        self.time_comparison.setMinimumSize(QtCore.QSize(56, 56))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.time_comparison.setFont(font)
+        self.time_comparison.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.time_comparison.setStyleSheet("#time_comparison{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#time_comparison:hover{\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.time_comparison.setObjectName("time_comparison")
+        self.verticalLayout_16.addWidget(self.time_comparison)
+        spacerItem16 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_16.addItem(spacerItem16)
+        self.horizontalLayout_11.addLayout(self.verticalLayout_16)
+        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem17)
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color:white;")
+        self.label.setObjectName("label")
+        self.verticalLayout_15.addWidget(self.label)
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setStyleSheet("")
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.verticalLayout_15.addWidget(self.line)
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setSpacing(18)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.bubble_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.bubble_sort.setMinimumSize(QtCore.QSize(131, 32))
+        self.bubble_sort.setMaximumSize(QtCore.QSize(131, 32))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.bubble_sort.setFont(font)
+        self.bubble_sort.setStyleSheet("#bubble_sort{\n"
+"background-color: rgb(102, 61, 54);\n"
+"border-radius: 10px ;\n"
+"color: white;}\n"
+"\n"
+"#bubble_sort:hover{\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.bubble_sort.setObjectName("bubble_sort")
+        self.verticalLayout_4.addWidget(self.bubble_sort)
+        self.bucket_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.bucket_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.bucket_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.bucket_sort.setFont(font)
+        self.bucket_sort.setStyleSheet("#bucket_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#bucket_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.bucket_sort.setObjectName("bucket_sort")
+        self.verticalLayout_4.addWidget(self.bucket_sort)
+        self.merge_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.merge_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.merge_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.merge_sort.setFont(font)
+        self.merge_sort.setStyleSheet("#merge_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#merge_sort:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.merge_sort.setObjectName("merge_sort")
+        self.verticalLayout_4.addWidget(self.merge_sort)
+        self.counting_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.counting_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.counting_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.counting_sort.setFont(font)
+        self.counting_sort.setStyleSheet("#counting_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#counting_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.counting_sort.setObjectName("counting_sort")
+        self.verticalLayout_4.addWidget(self.counting_sort)
+        self.selection_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.selection_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.selection_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.selection_sort.setFont(font)
+        self.selection_sort.setStyleSheet("#selection_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#selection_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.selection_sort.setObjectName("selection_sort")
+        self.verticalLayout_4.addWidget(self.selection_sort)
+        self.coctail_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.coctail_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.coctail_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.coctail_sort.setFont(font)
+        self.coctail_sort.setStyleSheet("#coctail_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#coctail_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.coctail_sort.setObjectName("coctail_sort")
+        self.verticalLayout_4.addWidget(self.coctail_sort)
+        self.horizontalLayout_10.addLayout(self.verticalLayout_4)
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setSpacing(18)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.insertion_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.insertion_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.insertion_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.insertion_sort.setFont(font)
+        self.insertion_sort.setStyleSheet("#insertion_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#insertion_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.insertion_sort.setObjectName("insertion_sort")
+        self.verticalLayout_3.addWidget(self.insertion_sort)
+        self.heap_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.heap_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.heap_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.heap_sort.setFont(font)
+        self.heap_sort.setStyleSheet("#heap_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;\n"
+"}\n"
+"\n"
+"#heap_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.heap_sort.setObjectName("heap_sort")
+        self.verticalLayout_3.addWidget(self.heap_sort)
+        self.quick_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.quick_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.quick_sort.setMaximumSize(QtCore.QSize(131, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.quick_sort.setFont(font)
+        self.quick_sort.setStyleSheet("#quick_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#quick_sort:hover{\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.quick_sort.setObjectName("quick_sort")
+        self.verticalLayout_3.addWidget(self.quick_sort)
+        self.radix_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.radix_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.radix_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radix_sort.setFont(font)
+        self.radix_sort.setStyleSheet("#radix_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#radix_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.radix_sort.setObjectName("radix_sort")
+        self.verticalLayout_3.addWidget(self.radix_sort)
+        self.shell_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.shell_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.shell_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.shell_sort.setFont(font)
+        self.shell_sort.setStyleSheet("#shell_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#shell_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.shell_sort.setObjectName("shell_sort")
+        self.verticalLayout_3.addWidget(self.shell_sort)
+        self.comb_sort = QtWidgets.QPushButton(self.centralwidget)
+        self.comb_sort.setMinimumSize(QtCore.QSize(131, 31))
+        self.comb_sort.setMaximumSize(QtCore.QSize(131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.comb_sort.setFont(font)
+        self.comb_sort.setStyleSheet("#comb_sort{\n"
+"border-radius: 10px ;\n"
+"background-color: rgb(102, 61, 54);\n"
+"color: white;}\n"
+"\n"
+"#comb_sort:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.625, y2:0.761, stop:0 rgba(48, 33, 14, 255), stop:1 rgba(0, 108, 80, 255));\n"
+"}")
+        self.comb_sort.setObjectName("comb_sort")
+        self.verticalLayout_3.addWidget(self.comb_sort)
+        self.horizontalLayout_10.addLayout(self.verticalLayout_3)
+        self.verticalLayout_15.addLayout(self.horizontalLayout_10)
+        spacerItem18 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_15.addItem(spacerItem18)
+        self.horizontalLayout_11.addLayout(self.verticalLayout_15)
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        spacerItem19 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_14.addItem(spacerItem19)
+        spacerItem20 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_14.addItem(spacerItem20)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.back_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.back_btn.setStyleSheet("#back_btn:hover{\n"
+"background-color: qlineargradient(spread:pad, x1:0.0113636, y1:0.591, x2:1, y2:0.25, stop:0 rgba(230, 184, 87, 255), stop:1 rgba(73, 142, 152, 255));\n"
+"\n"
+"}\n"
+"\n"
+"#back_btn{\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"}")
+        self.back_btn.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/images/images/home.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.back_btn.setIcon(icon5)
+        self.back_btn.setIconSize(QtCore.QSize(60, 60))
+        self.back_btn.setObjectName("back_btn")
+        self.verticalLayout_2.addWidget(self.back_btn)
+        self.micro_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.micro_btn.setStyleSheet("#micro_btn{background-color: rgba(0,0,0,0);}\n"
+"#micro_btn:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}")
+        self.micro_btn.setText("")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/images/images/microphone.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.micro_btn.setIcon(icon6)
+        self.micro_btn.setIconSize(QtCore.QSize(50, 50))
+        self.micro_btn.setObjectName("micro_btn")
+        self.verticalLayout_2.addWidget(self.micro_btn)
+        self.verticalLayout_14.addLayout(self.verticalLayout_2)
+        spacerItem21 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_14.addItem(spacerItem21)
+        self.horizontalLayout_11.addLayout(self.verticalLayout_14)
+        self.horizontalLayout_14.addLayout(self.horizontalLayout_11)
+        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem22)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_14)
+        self.verticalLayout_19.addLayout(self.verticalLayout_18)
+        SortWindow.setCentralWidget(self.centralwidget)
+        self.file_operations = QtWidgets.QMenuBar(SortWindow)
+        self.file_operations.setGeometry(QtCore.QRect(0, 0, 1200, 21))
+        self.file_operations.setAutoFillBackground(False)
+        self.file_operations.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));")
+        self.file_operations.setNativeMenuBar(True)
+        self.file_operations.setObjectName("file_operations")
+        self.menuFile_Operations = QtWidgets.QMenu(self.file_operations)
+        self.menuFile_Operations.setObjectName("menuFile_Operations")
+        self.menuSave_File = QtWidgets.QMenu(self.menuFile_Operations)
+        self.menuSave_File.setObjectName("menuSave_File")
+        self.menuInsert_File = QtWidgets.QMenu(self.menuFile_Operations)
+        self.menuInsert_File.setObjectName("menuInsert_File")
+        SortWindow.setMenuBar(self.file_operations)
+        self.statusbar = QtWidgets.QStatusBar(SortWindow)
+        self.statusbar.setStyleSheet("#SortWindow{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
+"}")
+        self.statusbar.setObjectName("statusbar")
+        SortWindow.setStatusBar(self.statusbar)
+        self.actionTxt_File = QtWidgets.QAction(SortWindow)
+        self.actionTxt_File.setObjectName("actionTxt_File")
+        self.actionCsv_File = QtWidgets.QAction(SortWindow)
+        self.actionCsv_File.setObjectName("actionCsv_File")
+        self.actionXlsx_File = QtWidgets.QAction(SortWindow)
+        self.actionXlsx_File.setObjectName("actionXlsx_File")
+        self.actionTxt_File_2 = QtWidgets.QAction(SortWindow)
+        self.actionTxt_File_2.setObjectName("actionTxt_File_2")
+        self.actionCsv_File_2 = QtWidgets.QAction(SortWindow)
+        self.actionCsv_File_2.setObjectName("actionCsv_File_2")
+        self.actionXlsx_File_2 = QtWidgets.QAction(SortWindow)
+        self.actionXlsx_File_2.setObjectName("actionXlsx_File_2")
+        self.menuSave_File.addAction(self.actionTxt_File)
+        self.menuSave_File.addAction(self.actionCsv_File)
+        self.menuSave_File.addAction(self.actionXlsx_File)
+        self.menuInsert_File.addAction(self.actionTxt_File_2)
+        self.menuInsert_File.addAction(self.actionCsv_File_2)
+        self.menuInsert_File.addAction(self.actionXlsx_File_2)
+        self.menuFile_Operations.addAction(self.menuSave_File.menuAction())
+        self.menuFile_Operations.addAction(self.menuInsert_File.menuAction())
+        self.file_operations.addAction(self.menuFile_Operations.menuAction())
 
-		self.retranslateUi(SortWindow)
-		QtCore.QMetaObject.connectSlotsByName(SortWindow)
+        self.retranslateUi(SortWindow)
+        QtCore.QMetaObject.connectSlotsByName(SortWindow)
 
-	def retranslateUi(self, SortWindow):
-		_translate = QtCore.QCoreApplication.translate
-		SortWindow.setWindowTitle(_translate("SortWindow", "MainWindow"))
-		self.MplSort.setToolTip(
-			_translate("SortWindow", "<html><head/><body><p>Algorithm Visualisation</p></body></html>"))
-		self.label_5.setText(_translate("SortWindow",
-										"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-style:italic; color:#ffffff;\">Sorting Algorithms</span></p></body></html>"))
-		self.label_3.setText(_translate("SortWindow",
-										"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; color:#ffffff;\">Seed Value</span></p></body></html>"))
-		self.set_default_values.setToolTip(_translate("SortWindow", "The program assigns values ​​to default"))
-		self.set_default_values.setText(_translate("SortWindow", "SET DEFAULT VALUES"))
-		self.checkBox.setToolTip(_translate("SortWindow", "Seed Array"))
-		self.checkBox.setText(_translate("SortWindow", "Seed Array"))
-		self.clear_btn.setToolTip(_translate("SortWindow", "Clear all values"))
-		self.clear_btn.setText(_translate("SortWindow", "Clear"))
-		self.create_array.setToolTip(_translate("SortWindow", "Create array with selected values"))
-		self.create_array.setText(_translate("SortWindow", "CREATE ARRAY"))
-		self.enter_array.setToolTip(_translate("SortWindow", "Enter array yourself"))
-		self.enter_array.setText(_translate("SortWindow", "ENTER ARRAY"))
-		self.stop_btn.setToolTip(_translate("SortWindow", "Stop the animation"))
-		self.stop_btn.setText(_translate("SortWindow", "Stop"))
-		self.checkBox_2.setToolTip(_translate("SortWindow", "Unique Array"))
-		self.checkBox_2.setText(_translate("SortWindow", "Non-repeating Array"))
-		self.skip_btn.setToolTip(_translate("SortWindow", "Skip the animation"))
-		self.skip_btn.setText(_translate("SortWindow", "Skip"))
-		self.displayarraylen_sort.setText(_translate("SortWindow",
-													 "<html><head/><body><p align=\"center\"><span style=\" font-size:9pt;\">Array Size</span></p></body></html>"))
-		self.label_4.setText(_translate("SortWindow",
-										"<html><head/><body><p align=\"center\"><span style=\" font-size:9pt;\">Animation Speed</span></p></body></html>"))
-		self.array_sort.setToolTip(_translate("SortWindow", "Set the Array Size."))
-		self.label.setText(_translate("SortWindow",
-									  "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Sorting Algorithms</span></p></body></html>"))
-		self.time_comparison.setToolTip(_translate("SortWindow", "See the Time Complexity Graph"))
-		self.time_comparison.setText(_translate("SortWindow", "TIME COMPARISON"))
-		self.insertion_sort.setToolTip(_translate("SortWindow", "Insertion Sort Animation"))
-		self.insertion_sort.setText(_translate("SortWindow", "INSERTION SORT"))
-		self.heap_sort.setToolTip(_translate("SortWindow", "Heap Sort Animation"))
-		self.heap_sort.setText(_translate("SortWindow", "HEAP SORT"))
-		self.quick_sort.setToolTip(_translate("SortWindow", "Quick Sort Animation"))
-		self.quick_sort.setText(_translate("SortWindow", "QUICK SORT"))
-		self.radix_sort.setToolTip(_translate("SortWindow", "Radix Sort Animation"))
-		self.radix_sort.setText(_translate("SortWindow", "RADIX SORT"))
-		self.shell_sort.setToolTip(_translate("SortWindow", "Shell Sort Animation"))
-		self.shell_sort.setText(_translate("SortWindow", "SHELL SORT"))
-		self.comb_sort.setText(_translate("SortWindow", "COMB SORT"))
-		self.bubble_sort.setToolTip(_translate("SortWindow", "Bubble Sort Animation"))
-		self.bubble_sort.setText(_translate("SortWindow", "BUBBLE SORT"))
-		self.bucket_sort.setToolTip(_translate("SortWindow", "Bucket Sort Animation"))
-		self.bucket_sort.setText(_translate("SortWindow", "BUCKET SORT"))
-		self.merge_sort.setToolTip(_translate("SortWindow", "Merge Sort Animation"))
-		self.merge_sort.setText(_translate("SortWindow", "MERGE SORT"))
-		self.counting_sort.setToolTip(_translate("SortWindow", "Counting Sort Animation"))
-		self.counting_sort.setText(_translate("SortWindow", "COUNTING SORT"))
-		self.selection_sort.setToolTip(_translate("SortWindow", "Selection Sort Animation"))
-		self.selection_sort.setText(_translate("SortWindow", "SELECTION SORT"))
-		self.coctail_sort.setToolTip(_translate("SortWindow", "Coctail Sort Animation"))
-		self.coctail_sort.setText(_translate("SortWindow", "COCTAIL SORT"))
-		self.label_9.setText(_translate("SortWindow",
-										"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Upper Range:</span></p><p align=\"center\"><span style=\" font-size:10pt;\"><br/></span></p></body></html>"))
-		self.label_6.setText(_translate("SortWindow",
-										"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Lower Range:</span></p><p align=\"center\"><span style=\" font-size:10pt;\"><br/></span></p></body></html>"))
-		self.upper_range.setToolTip(_translate("SortWindow", "Set Upper Range"))
-		self.lower_range.setToolTip(_translate("SortWindow", "Set Lower Range"))
-		self.back_btn.setToolTip(_translate("SortWindow", "Back To Menu"))
-		self.menuFile_Operations.setTitle(_translate("SortWindow", "File Operations"))
-		self.menuSave_File.setTitle(_translate("SortWindow", "Save File"))
-		self.menuInsert_File.setTitle(_translate("SortWindow", "Insert File"))
-		self.actionTxt_File.setText(_translate("SortWindow", "Txt File"))
-		self.actionCsv_File.setText(_translate("SortWindow", "Csv File"))
-		self.actionXlsx_File.setText(_translate("SortWindow", "Xlsx File"))
-		self.actionTxt_File_2.setText(_translate("SortWindow", "Txt File"))
-		self.actionCsv_File_2.setText(_translate("SortWindow", "Csv File"))
-		self.actionXlsx_File_2.setText(_translate("SortWindow", "Xlsx File"))
-
-
+    def retranslateUi(self, SortWindow):
+        _translate = QtCore.QCoreApplication.translate
+        SortWindow.setWindowTitle(_translate("SortWindow", "MainWindow"))
+        self.label_5.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-style:italic; color:#ffffff;\">Sorting Algorithms</span></p></body></html>"))
+        self.MplSort.setToolTip(_translate("SortWindow", "<html><head/><body><p>Algorithm Visualisation</p></body></html>"))
+        self.set_default_values.setToolTip(_translate("SortWindow", "The program assigns values ​​to default"))
+        self.set_default_values.setText(_translate("SortWindow", "SET DEFAULT VALUES"))
+        self.create_array.setToolTip(_translate("SortWindow", "Create array with selected values"))
+        self.create_array.setText(_translate("SortWindow", "CREATE ARRAY"))
+        self.enter_array.setToolTip(_translate("SortWindow", "Enter array yourself"))
+        self.enter_array.setText(_translate("SortWindow", "ENTER ARRAY"))
+        self.label_3.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; color:#ffffff;\">Seed Value</span></p></body></html>"))
+        self.checkBox.setToolTip(_translate("SortWindow", "Seed Array"))
+        self.checkBox.setText(_translate("SortWindow", "Seed Array"))
+        self.checkBox_2.setToolTip(_translate("SortWindow", "Unique Array"))
+        self.checkBox_2.setText(_translate("SortWindow", "Non-repeating Array"))
+        self.skip_btn.setToolTip(_translate("SortWindow", "Skip the animation"))
+        self.skip_btn.setText(_translate("SortWindow", "Skip"))
+        self.stop_btn.setToolTip(_translate("SortWindow", "Stop the animation"))
+        self.stop_btn.setText(_translate("SortWindow", "Pause"))
+        self.clear_btn.setToolTip(_translate("SortWindow", "Clear all values"))
+        self.clear_btn.setText(_translate("SortWindow", "Clear"))
+        self.displayarraylen_sort.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:9pt;\">Array Size</span></p></body></html>"))
+        self.array_sort.setToolTip(_translate("SortWindow", "Set the Array Size."))
+        self.label_9.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Upper Range:</span></p><p align=\"center\"><span style=\" font-size:10pt;\"><br/></span></p></body></html>"))
+        self.upper_range.setToolTip(_translate("SortWindow", "Set Upper Range"))
+        self.label_6.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Lower Range:</span></p><p align=\"center\"><span style=\" font-size:10pt;\"><br/></span></p></body></html>"))
+        self.lower_range.setToolTip(_translate("SortWindow", "Set Lower Range"))
+        self.label_4.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:9pt;\">Animation Speed</span></p></body></html>"))
+        self.time_comparison.setToolTip(_translate("SortWindow", "See the Time Complexity Graph"))
+        self.time_comparison.setText(_translate("SortWindow", "TIME COMPARISON"))
+        self.label.setText(_translate("SortWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Sorting Algorithms</span></p></body></html>"))
+        self.bubble_sort.setToolTip(_translate("SortWindow", "Bubble Sort Animation"))
+        self.bubble_sort.setText(_translate("SortWindow", "BUBBLE SORT"))
+        self.bucket_sort.setToolTip(_translate("SortWindow", "Bucket Sort Animation"))
+        self.bucket_sort.setText(_translate("SortWindow", "BUCKET SORT"))
+        self.merge_sort.setToolTip(_translate("SortWindow", "Merge Sort Animation"))
+        self.merge_sort.setText(_translate("SortWindow", "MERGE SORT"))
+        self.counting_sort.setToolTip(_translate("SortWindow", "Counting Sort Animation"))
+        self.counting_sort.setText(_translate("SortWindow", "COUNTING SORT"))
+        self.selection_sort.setToolTip(_translate("SortWindow", "Selection Sort Animation"))
+        self.selection_sort.setText(_translate("SortWindow", "SELECTION SORT"))
+        self.coctail_sort.setToolTip(_translate("SortWindow", "Coctail Sort Animation"))
+        self.coctail_sort.setText(_translate("SortWindow", "COCTAIL SORT"))
+        self.insertion_sort.setToolTip(_translate("SortWindow", "Insertion Sort Animation"))
+        self.insertion_sort.setText(_translate("SortWindow", "INSERTION SORT"))
+        self.heap_sort.setToolTip(_translate("SortWindow", "Heap Sort Animation"))
+        self.heap_sort.setText(_translate("SortWindow", "HEAP SORT"))
+        self.quick_sort.setToolTip(_translate("SortWindow", "Quick Sort Animation"))
+        self.quick_sort.setText(_translate("SortWindow", "QUICK SORT"))
+        self.radix_sort.setToolTip(_translate("SortWindow", "Radix Sort Animation"))
+        self.radix_sort.setText(_translate("SortWindow", "RADIX SORT"))
+        self.shell_sort.setToolTip(_translate("SortWindow", "Shell Sort Animation"))
+        self.shell_sort.setText(_translate("SortWindow", "SHELL SORT"))
+        self.comb_sort.setText(_translate("SortWindow", "COMB SORT"))
+        self.back_btn.setToolTip(_translate("SortWindow", "Back To Menu"))
+        self.menuFile_Operations.setTitle(_translate("SortWindow", "File Operations"))
+        self.menuSave_File.setTitle(_translate("SortWindow", "Save File"))
+        self.menuInsert_File.setTitle(_translate("SortWindow", "Insert File"))
+        self.actionTxt_File.setText(_translate("SortWindow", "Txt File"))
+        self.actionCsv_File.setText(_translate("SortWindow", "Csv File"))
+        self.actionXlsx_File.setText(_translate("SortWindow", "Xlsx File"))
+        self.actionTxt_File_2.setText(_translate("SortWindow", "Txt File"))
+        self.actionCsv_File_2.setText(_translate("SortWindow", "Csv File"))
+        self.actionXlsx_File_2.setText(_translate("SortWindow", "Xlsx File"))
 from mplsort import MplSort
+import resources_rc
+
 
 if __name__ == "__main__":
-	import sys
-
-	app = QtWidgets.QApplication(sys.argv)
-	SortWindow = QtWidgets.QMainWindow()
-	ui = Ui_SortWindow()
-	ui.setupUi(SortWindow)
-	SortWindow.show()
-	sys.exit(app.exec_())
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    SortWindow = QtWidgets.QMainWindow()
+    ui = Ui_SortWindow()
+    ui.setupUi(SortWindow)
+    SortWindow.show()
+    sys.exit(app.exec_())

@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ArrayWindow(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(442, 238)
@@ -31,25 +31,30 @@ class Ui_ArrayWindow(object):
         self.takearray_textedit.setStyleSheet("background-color: rgb(231, 217, 234);\n"
 "font: 10pt \"MS Shell Dlg 2\";")
         self.takearray_textedit.setObjectName("takearray_textedit")
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(30, 140, 381, 60))
-        self.widget.setObjectName("widget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.layoutWidget.setGeometry(QtCore.QRect(30, 140, 381, 60))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.mic_btn = QtWidgets.QPushButton(self.widget)
-        self.mic_btn.setStyleSheet("#mic_btn{background-color: rgba(0,0,0,0);}\n"
+        self.mic_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.mic_btn.setMinimumSize(QtCore.QSize(58, 58))
+        self.mic_btn.setMaximumSize(QtCore.QSize(58, 58))
+        self.mic_btn.setStyleSheet("#mic_btn{\n"
+"background-color: rgba(0,0,0,0);\n"
+"}\n"
 "\n"
 "#mic_btn:hover{\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}")
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"}")
         self.mic_btn.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/icons/microphone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/images/images/microphone.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mic_btn.setIcon(icon)
         self.mic_btn.setIconSize(QtCore.QSize(50, 50))
         self.mic_btn.setObjectName("mic_btn")
         self.horizontalLayout.addWidget(self.mic_btn)
-        self.clear_btn = QtWidgets.QPushButton(self.widget)
+        self.clear_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.clear_btn.setMinimumSize(QtCore.QSize(0, 42))
         self.clear_btn.setMaximumSize(QtCore.QSize(16777215, 42))
         font = QtGui.QFont()
@@ -71,7 +76,7 @@ class Ui_ArrayWindow(object):
 "}")
         self.clear_btn.setObjectName("clear_btn")
         self.horizontalLayout.addWidget(self.clear_btn)
-        self.add_array_btn = QtWidgets.QPushButton(self.widget)
+        self.add_array_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.add_array_btn.setMinimumSize(QtCore.QSize(0, 42))
         self.add_array_btn.setMaximumSize(QtCore.QSize(16777215, 42))
         font = QtGui.QFont()
@@ -110,13 +115,14 @@ class Ui_ArrayWindow(object):
         self.takearray_textedit.setPlaceholderText(_translate("MainWindow", "Please enter a string of numbers with a comma between the numbers. For example \'21, 42, 1, 4\'."))
         self.clear_btn.setText(_translate("MainWindow", "CLEAR"))
         self.add_array_btn.setText(_translate("MainWindow", "ADD ARRAY"))
+import resources_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_ArrayWindow()
+    ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

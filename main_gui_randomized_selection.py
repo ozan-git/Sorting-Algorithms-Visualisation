@@ -8,6 +8,7 @@ import time
 
 import numpy as np
 import speech_recognition as sr
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 # %% including required libraries, modules and files with code
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
@@ -62,6 +63,34 @@ class RandomizedSelection(QMainWindow):
 		self.lower_range = 0
 		self.upper_range = 0
 		self.ui.mic_btn.clicked.connect(self.voice)
+
+		self.ui.btn_close.clicked.connect(self.close)
+		self.ui.btn_maximize_restore.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize.clicked.connect(self.showMinimized)
+
+		self.setWindowFlags(Qt.CustomizeWindowHint)
+		self.pressing = False
+
+	def resizeEvent(self, QResizeEvent):
+		super(RandomizedSelection, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	def voice(self):
 		r = sr.Recognizer()

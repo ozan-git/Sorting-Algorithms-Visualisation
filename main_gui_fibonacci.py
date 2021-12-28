@@ -8,6 +8,7 @@ import turtle
 
 import numpy as np
 import speech_recognition as sr
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 # %% including required libraries, modules and files with code
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
@@ -22,21 +23,52 @@ fibonacci = fibonacci()
 class Fibonacci(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.ui = Ui_FibonacciWindow()  # Ability to use the class in which the interface I designed with qt designer converted into code
+		# Ability to use the class in which the interface I designed with qt designer converted into code
+		self.ui = Ui_FibonacciWindow()
 		self.ui.setupUi(self)
 		self.setWindowTitle('Fibonacci')
-		self.ui.back_btn.clicked.connect(self.close)  # Back to my home page linking with the back button
-		self.ui.n_number.setValidator(
-			QIntValidator(1, 1000, self))  # fixing the number received from the user to the integer
-		self.ui.findfibo_btn.clicked.connect(self.fibo_number)  # Connecting the fibonacci find function with the button
-		self.ui.findfibo_btn.clicked.connect(
-			self.fibo_bar_graph)  # Connecting the same button with the function that I have graphed
+		self.ui.back_btn.clicked.connect(self.close)
+		# Fixing the number received from the user to the integer.
+		self.ui.n_number.setValidator(QIntValidator(1, 1000, self))
+
+		self.ui.findfibo_btn.clicked.connect(self.fibo_number)
+		self.ui.findfibo_btn.clicked.connect(self.fibo_bar_graph)
+
 		self.ui.MplFib.canvas.axes.get_xaxis().set_visible(False)
 		self.ui.MplFib.canvas.axes.get_yaxis().set_visible(False)
+
 		self.ui.golden_spiral.clicked.connect(self.spiral)
 		self.ui.mic_btn.clicked.connect(self.voice)
 		self.ui.clear_btn.clicked.connect(self.clear)
 		self.ui.horizontalSlider.valueChanged.connect(self.value)
+
+		self.ui.btn_close.clicked.connect(self.close)
+		self.ui.btn_maximize_restore.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize.clicked.connect(self.showMinimized)
+
+		self.setWindowFlags(Qt.CustomizeWindowHint)
+		self.pressing = False
+
+	def resizeEvent(self, QResizeEvent):
+		super(Fibonacci, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	def value(self):
 		self.n = self.ui.horizontalSlider.value()
@@ -101,17 +133,18 @@ class Fibonacci(QMainWindow):
 
 	def fibo_number(self):
 		try:
-			self.n = int(self.ui.n_number.text())  # User input with line edit
+			# User input with line edit.
+			self.n = int(self.ui.n_number.text())
 			if self.n == 0:
 				self.ui.MplFib.canvas.axes.clear()
 				self.ui.MplFib.canvas.axes.patch.set_alpha(0)
 				self.ui.MplFib.canvas.draw()
 				self.msg = QMessageBox.critical(self, "Error", "Please enter a positive integer!")
-			else:  # Function of finding a fibonacci number
-				self.result = fibonacci.fibonacci_number(
-					self.n)  # sending this number to the function in my project operations file
-				self.ui.result.setText("{}. Fibonacci Number is {}".format(str(self.n),
-																		   str(self.result)))  # the result appears on the screen
+			else:
+				# Function of finding a fibonacci number sending this number to the function in
+				# my project operations file the result appears on the screen.
+				self.result = fibonacci.fibonacci_number(self.n)
+				self.ui.result.setText("{}. Fibonacci Number is {}".format(str(self.n), str(self.result)))
 				self.fibonacci_numbers = fibonacci.fibonacci_array(self.n)
 				self.ui.fibonacci_series.setText(str(self.fibonacci_numbers))
 		except ValueError:

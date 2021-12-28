@@ -8,6 +8,7 @@ import webbrowser
 
 import speech_recognition as sr
 from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget
 from PyQt5.QtWidgets import QMessageBox
 from iconify.qt import QtCore
@@ -39,6 +40,8 @@ class MainWindow(QMainWindow):
 		self.randomized_selection_main = RandomizedSelection()
 		self.time_comparison_main = TimeComparisonMainWindow()
 		self.help_main = HelpWindow()
+
+		self.ui.sort_button.resizeEvent = self.resizeText
 
 		self.ui.sort_button.clicked.connect(self.sort_operations)
 		self.ui.matrix_button.clicked.connect(self.matrix_operations)
@@ -79,6 +82,20 @@ class MainWindow(QMainWindow):
 	def mouseReleaseEvent(self, QMouseEvent):
 		self.pressing = False
 
+	def resizeText(self, event):
+		defaultSize = 8
+		if self.rect().width() // 80 > defaultSize:
+			f = QFont('', self.rect().width() // 80)
+		else:
+			f = QFont('', defaultSize)
+
+		self.ui.sort_button.setFont(f)
+		self.ui.binary_search_button.setFont(f)
+		self.ui.matrix_button.setFont(f)
+		self.ui.timecomp_button.setFont(f)
+		self.ui.fibonacci_button.setFont(f)
+		self.ui.kthsmallest_button.setFont(f)
+
 	def sendmail(self):
 		webbrowser.open('mailto:orhan.ozan351@gmail.com?' + '&subject=' + self.subject, new=1)
 
@@ -108,35 +125,6 @@ class MainWindow(QMainWindow):
 
 	def help_operations(self):
 		self.help_main.show()
-
-	#
-	# def resizeEvent(self, QResizeEvent):
-	# 	super(self).resizeEvent(QResizeEvent)
-	# 	self.title.setFixedWidth(self.width())
-	#
-	# def mousePressEvent(self, event):
-	# 	self.start = self.mapToGlobal(event.pos())
-	# 	self.pressing = True
-	#
-	# def mouseMoveEvent(self, event):
-	# 	if self.pressing:
-	# 		self.end = self.mapToGlobal(event.pos())
-	# 		self.movement = self.end - self.start
-	# 		self.setGeometry(self.mapToGlobal(self.movement).x(), self.mapToGlobal(self.movement).y(), self.width(),
-	# 						 self.height())
-	# 		self.start = self.end
-	#
-	# def mouseReleaseEvent(self, QMouseEvent):
-	# 	self.pressing = False
-	#
-	# def btn_max_clicked(self):
-	# 	self.showMaximized()
-	#
-	# def btn_min_clicked(self):
-	# 	self.showMinimized()
-	#
-	def btn_close_clicked(self):
-		self.close()
 
 	def voice(self):
 		reader_voice = sr.Recognizer()

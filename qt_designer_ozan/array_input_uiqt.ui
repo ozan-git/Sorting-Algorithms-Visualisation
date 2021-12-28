@@ -73,11 +73,26 @@ p, li { white-space: pre-wrap; }
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="mic_btn">
+       <property name="minimumSize">
+        <size>
+         <width>58</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>58</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="styleSheet">
-        <string notr="true">#mic_btn{background-color: rgba(0,0,0,0);}
+        <string notr="true">#mic_btn{
+background-color: rgba(0,0,0,0);
+}
 
 #mic_btn:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}</string>
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));
+}</string>
        </property>
        <property name="text">
         <string/>

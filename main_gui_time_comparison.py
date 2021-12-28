@@ -5,9 +5,10 @@
 import sys
 
 import speech_recognition as sr
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
-from uiqt_time_comparison import Ui_TimeComparisonWindow
+from uiqt_time_comparison import Ui_MainWindow
 from utils_operations import timer
 
 times = timer()
@@ -17,7 +18,7 @@ times = timer()
 class TimeComparisonMainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.ui = Ui_TimeComparisonWindow()
+		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 
 		self.ui.comparisonchoosen_button.setText("Comparison Chosen Algorithms")
@@ -44,6 +45,34 @@ class TimeComparisonMainWindow(QMainWindow):
 		self.ui.MplSort.canvas.axes.set_title('Time Comparison Graph')
 		self.ui.MplSort.canvas.axes.set_xlabel('Number of elements in array')
 		self.ui.MplSort.canvas.axes.set_ylabel('Time')
+
+		self.ui.btn_close.clicked.connect(self.close)
+		self.ui.btn_maximize_restore.clicked.connect(self.showMaximized)
+		self.ui.btn_minimize.clicked.connect(self.showMinimized)
+
+		self.setWindowFlags(Qt.CustomizeWindowHint)
+		self.pressing = False
+
+	def resizeEvent(self, QResizeEvent):
+		super(TimeComparisonMainWindow, self).resizeEvent(QResizeEvent)
+		self.ui.frame_top.setFixedWidth(self.width())
+
+	def mousePressEvent(self, event):
+		self.start = self.mapToGlobal(event.pos())
+		self.pressing = True
+
+	def mouseMoveEvent(self, event):
+		if self.pressing:
+			self.end = self.mapToGlobal(event.pos())
+			self.movement = self.end - self.start
+			self.setGeometry(self.mapToGlobal(self.movement).x(),
+							 self.mapToGlobal(self.movement).y(),
+							 self.width(),
+							 self.height())
+			self.start = self.end
+
+	def mouseReleaseEvent(self, QMouseEvent):
+		self.pressing = False
 
 	# %%
 	def voice(self):
