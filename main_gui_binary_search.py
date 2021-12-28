@@ -354,7 +354,3 @@ if __name__ == "__main__":
 	window = BinarySearch()
 	window.show()
 	sys.exit(app.exec_())
-
-
-
-

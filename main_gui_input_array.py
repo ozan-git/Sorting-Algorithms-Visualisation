@@ -8,7 +8,7 @@ from PyQt5.QtCore import pyqtSignal
 # Written by Orhan Ozan Yildiz.
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
-from uiqt_array_input import Ui_ArrayWindow
+from uiqt_array_input import Ui_MainWindow
 
 
 class ArrayWindow(QMainWindow):
@@ -16,7 +16,7 @@ class ArrayWindow(QMainWindow):
 
 	def __init__(self):
 		super().__init__()
-		self.ui = Ui_ArrayWindow()
+		self.ui = Ui_MainWindow()
 		self.setWindowTitle('Enter Array')
 		self.ui.setupUi(self)
 		self.ui.add_array_btn.clicked.connect(self.addArray)

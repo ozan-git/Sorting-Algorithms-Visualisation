@@ -14,8 +14,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_BinarySearchWindow(object):
     def setupUi(self, BinarySearchWindow):
         BinarySearchWindow.setObjectName("BinarySearchWindow")
-        BinarySearchWindow.resize(1200, 800)
-        BinarySearchWindow.setMinimumSize(QtCore.QSize(1200, 800))
+        BinarySearchWindow.resize(1200, 903)
+        BinarySearchWindow.setMinimumSize(QtCore.QSize(1200, 880))
         BinarySearchWindow.setMaximumSize(QtCore.QSize(4500, 4500))
         BinarySearchWindow.setStyleSheet("#BinarySearchWindow{\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
@@ -323,6 +323,7 @@ class Ui_BinarySearchWindow(object):
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_11.setSpacing(8)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.set_default_values = QtWidgets.QPushButton(self.centralwidget)
         self.set_default_values.setMinimumSize(QtCore.QSize(151, 41))
@@ -372,6 +373,7 @@ class Ui_BinarySearchWindow(object):
         spacerItem11 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_12.addItem(spacerItem11)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setSpacing(6)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox_2.setMinimumSize(QtCore.QSize(164, 20))
@@ -394,6 +396,7 @@ class Ui_BinarySearchWindow(object):
         self.horizontalLayout_7.addLayout(self.verticalLayout_12)
         self.verticalLayout_14.addLayout(self.horizontalLayout_7)
         self.verticalLayout_13 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_13.setSpacing(16)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
@@ -472,9 +475,12 @@ class Ui_BinarySearchWindow(object):
         spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_12.addItem(spacerItem20)
         self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setContentsMargins(-1, -1, -1, 36)
         self.verticalLayout.setObjectName("verticalLayout")
         spacerItem21 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem21)
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.mic_btn = QtWidgets.QPushButton(self.centralwidget)
         self.mic_btn.setStyleSheet("#mic_btn{background-color: rgba(0,0,0,0);}\n"
 "\n"
@@ -486,9 +492,7 @@ class Ui_BinarySearchWindow(object):
         self.mic_btn.setIcon(icon3)
         self.mic_btn.setIconSize(QtCore.QSize(50, 50))
         self.mic_btn.setObjectName("mic_btn")
-        self.verticalLayout.addWidget(self.mic_btn)
-        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        self.horizontalLayout_13.addWidget(self.mic_btn)
         self.back_btn = QtWidgets.QPushButton(self.centralwidget)
         self.back_btn.setStyleSheet("#back_btn{background-color: rgba(0,0,0,0);}\n"
 "\n"
@@ -502,15 +506,16 @@ class Ui_BinarySearchWindow(object):
         self.back_btn.setObjectName("back_btn")
         self.horizontalLayout_13.addWidget(self.back_btn)
         self.verticalLayout.addLayout(self.horizontalLayout_13)
-        spacerItem22 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem22)
         self.horizontalLayout_12.addLayout(self.verticalLayout)
-        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_12.addItem(spacerItem23)
+        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem22)
         self.frame_center_binary.addLayout(self.horizontalLayout_12)
         self.frame_main_binary.addLayout(self.frame_center_binary)
         self.verticalLayout_18.addLayout(self.frame_main_binary)
         BinarySearchWindow.setCentralWidget(self.centralwidget)
+        self.statusBar = QtWidgets.QStatusBar(BinarySearchWindow)
+        self.statusBar.setObjectName("statusBar")
+        BinarySearchWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(BinarySearchWindow)
         QtCore.QMetaObject.connectSlotsByName(BinarySearchWindow)

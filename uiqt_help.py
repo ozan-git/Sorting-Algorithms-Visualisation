@@ -14,7 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1012, 417)
+        MainWindow.resize(1000, 420)
+        MainWindow.setMinimumSize(QtCore.QSize(1000, 420))
+        MainWindow.setMaximumSize(QtCore.QSize(1000, 420))
         MainWindow.setStyleSheet("\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.193545, x2:1, y2:0.676, stop:0 rgba(30, 187, 114, 255), stop:1 rgba(122, 89, 196, 255));\n"
 "")
@@ -26,15 +28,6 @@ class Ui_MainWindow(object):
         self.label_kthsmallestelement.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.label_kthsmallestelement.setUsesScrollButtons(True)
         self.label_kthsmallestelement.setObjectName("label_kthsmallestelement")
-        self.about_me = QtWidgets.QWidget()
-        self.about_me.setObjectName("about_me")
-        self.label_aboutme = QtWidgets.QLabel(self.about_me)
-        self.label_aboutme.setGeometry(QtCore.QRect(0, 40, 981, 281))
-        self.label_aboutme.setStyleSheet("background-color: rgba(232, 232, 232,0);\n"
-"color:black;\n"
-"")
-        self.label_aboutme.setObjectName("label_aboutme")
-        self.label_kthsmallestelement.addTab(self.about_me, "")
         self.help_sort = QtWidgets.QWidget()
         self.help_sort.setObjectName("help_sort")
         self.label_sort_algorithms = QtWidgets.QLabel(self.help_sort)
@@ -93,20 +86,27 @@ class Ui_MainWindow(object):
 "")
         self.label_4.setObjectName("label_4")
         self.label_kthsmallestelement.addTab(self.help_matrix, "")
+        self.about_me = QtWidgets.QWidget()
+        self.about_me.setObjectName("about_me")
+        self.label_aboutme = QtWidgets.QLabel(self.about_me)
+        self.label_aboutme.setGeometry(QtCore.QRect(0, 40, 981, 281))
+        self.label_aboutme.setStyleSheet("background-color: rgba(232, 232, 232,0);\n"
+"color:black;\n"
+"")
+        self.label_aboutme.setObjectName("label_aboutme")
+        self.label_kthsmallestelement.addTab(self.about_me, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.label_kthsmallestelement.setCurrentIndex(6)
+        self.label_kthsmallestelement.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Help"))
-        self.label_aboutme.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">This project created by Orhan Ozan Yıldız.</span></p></body></html>"))
-        self.label_kthsmallestelement.setTabText(self.label_kthsmallestelement.indexOf(self.about_me), _translate("MainWindow", "About Me"))
         self.label_sort_algorithms.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">-If you want the array you want to create to be the same array when the same parameters are entered, check the &quot;Seed Array&quot; option.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-Enter &quot;Array Size&quot; and Range values ​​for the array you want to create and click the &quot;Create Array&quot; button.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-If you want to enter the array yourself, press the &quot;Enter Array&quot; button.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-If you want to create an array without entering these values, click the &quot;Set Default Values&quot; button.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-Check the &quot;Non-Repeating Array&quot; option if you do not want the array to have repeating numbers in the array you want to create.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-After creating the array, click on the algorithm you want to sort.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-You can stop the animation by pressing the &quot;Stop&quot; button, press the &quot;Skip&quot; button to see the sorted array.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-During the animation, you can adjust the speed with the slider named &quot;Speed&quot;.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-With the menubar at the top of the page, you can transfer the arrays in the &quot;txt&quot;, &quot;csv&quot; and &quot;xlxs&quot; files on your computer to the program or save the arrays you created in the same formats to your computer.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-You can activate it by calling the names of the buttons by pressing the microphone icon.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-With the &quot;Clear&quot; button, you can clear the data on the page.</span></p></body></html>"))
         self.label_kthsmallestelement.setTabText(self.label_kthsmallestelement.indexOf(self.help_sort), _translate("MainWindow", "Sorting Algorithms"))
         self.label_timecomparison.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">-Click the &quot;Compare all&quot; button to compare the times of all algorithms and to draw their graph according to the number of inputs.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-To draw the time computational complexity graph of specific algorithms, select the algorithms and </span></p><p align=\"center\"><span style=\" font-size:12pt;\">click the &quot;Compare Choosen Algorithms&quot; button.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-You can activate it by calling the names of the buttons by pressing the microphone icon.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-With the &quot;Clear&quot; button, you can clear the data on the page.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-Press the &quot;Back To Menu&quot; button for back to menu.</span></p></body></html>"))
@@ -119,6 +119,8 @@ class Ui_MainWindow(object):
         self.label_kthsmallestelement.setTabText(self.label_kthsmallestelement.indexOf(self.help_rand_sel), _translate("MainWindow", "Kth Smallest Element"))
         self.label_4.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">-To create the matrix as random, first enter the row and column of Matrix 1.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">According to the program multiplication rules, the row number of Matrix 2 </span></p><p align=\"center\"><span style=\" font-size:12pt;\">equals the number of columns of Matrix 1. Then enter the column </span></p><p align=\"center\"><span style=\" font-size:12pt;\">number of Matrix 2.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-Click the &quot;Multiply&quot; button to see the result matrix in the Result Matrix table.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-You can use operations such as determinant, inverse matrix, rank, transpose for the first matrix </span></p><p align=\"center\"><span style=\" font-size:12pt;\">by pressing the first &quot;Create Matrix&quot; button. You can see the same actions for the second matrix by pressing the second </span></p><p align=\"center\"><span style=\" font-size:12pt;\">&quot;Create Matrix&quot; button.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-You can activate it by calling the names of the buttons by pressing the microphone icon.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-Before the click the &quot;Enter Matrix&quot; button to enter the matrix manually,fill in the Matrix 1 and Matrix 2\'s row and column values.</span></p><p align=\"center\"><span style=\" font-size:12pt;\">-With the &quot;Clear&quot; button, you can clear the data on the page.<br/></span></p></body></html>"))
         self.label_kthsmallestelement.setTabText(self.label_kthsmallestelement.indexOf(self.help_matrix), _translate("MainWindow", "Matrix Multiplication"))
+        self.label_aboutme.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">This project created by Orhan Ozan Yıldız.</span></p></body></html>"))
+        self.label_kthsmallestelement.setTabText(self.label_kthsmallestelement.indexOf(self.about_me), _translate("MainWindow", "About Me"))
 
 
 if __name__ == "__main__":

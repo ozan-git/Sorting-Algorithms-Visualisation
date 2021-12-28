@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>800</height>
+    <height>903</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1200</width>
-    <height>800</height>
+    <height>880</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -858,6 +858,9 @@ p, li { white-space: pre-wrap; }
                <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_11">
+                  <property name="spacing">
+                   <number>8</number>
+                  </property>
                   <item>
                    <widget class="QPushButton" name="set_default_values">
                     <property name="minimumSize">
@@ -976,6 +979,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
                   </item>
                   <item>
                    <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <property name="spacing">
+                     <number>6</number>
+                    </property>
                     <item>
                      <widget class="QCheckBox" name="checkBox_2">
                       <property name="minimumSize">
@@ -1046,6 +1052,9 @@ color:black;</string>
               </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_13">
+                <property name="spacing">
+                 <number>16</number>
+                </property>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_8">
                   <item>
@@ -1288,6 +1297,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="bottomMargin">
+             <number>36</number>
+            </property>
             <item>
              <spacer name="verticalSpacer_7">
               <property name="orientation">
@@ -1302,30 +1314,30 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="mic_btn">
-              <property name="styleSheet">
-               <string notr="true">#mic_btn{background-color: rgba(0,0,0,0);}
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <item>
+               <widget class="QPushButton" name="mic_btn">
+                <property name="styleSheet">
+                 <string notr="true">#mic_btn{background-color: rgba(0,0,0,0);}
 
 #mic_btn:hover{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.453136, x2:1, y2:0.523273, stop:0 rgba(104, 113, 138, 255), stop:1 rgba(215, 221, 232, 255));}</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset resource="../resources.qrc">
-                <normaloff>:/images/images/microphone.svg</normaloff>:/images/images/microphone.svg</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_13">
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resources.qrc">
+                  <normaloff>:/images/images/microphone.svg</normaloff>:/images/images/microphone.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QPushButton" name="back_btn">
                 <property name="toolTip">
@@ -1354,19 +1366,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
               </item>
              </layout>
             </item>
-            <item>
-             <spacer name="verticalSpacer_13">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
           <item>
@@ -1390,6 +1389,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <customwidgets>
   <customwidget>
