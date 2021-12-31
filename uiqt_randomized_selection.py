@@ -68,7 +68,7 @@ class Ui_RandomizedSelectionWindow(object):
         self.frame_icon_top_bar.setMinimumSize(QtCore.QSize(0, 30))
         self.frame_icon_top_bar.setMaximumSize(QtCore.QSize(30, 30))
         self.frame_icon_top_bar.setStyleSheet("background: transparent;\n"
-"image: url(:/images/images/shutter_speed_white_24dp.svg);\n"
+"image: url(images/shutter_speed_white_24dp.svg);\n"
 "background-position: center;\n"
 "background-repeat: no-repeat;")
         self.frame_icon_top_bar.setFrameShape(QtWidgets.QFrame.StyledPanel)
