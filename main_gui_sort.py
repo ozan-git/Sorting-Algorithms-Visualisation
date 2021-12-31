@@ -357,7 +357,7 @@ class SortingAlgorithms(QMainWindow):
 
 	# %%Stop Button
 	def stop_button(self):
-		if self.ui.stop_btn.text() == "Stop":
+		if self.ui.stop_btn.text() == "Pause":
 			self.ui.stop_btn.setText("Continue")
 			self.ui.stop_btn.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" white;\n"
 										   "border-radius: 10px ;\n"
@@ -366,11 +366,14 @@ class SortingAlgorithms(QMainWindow):
 			global stop_array
 			self.stop_array = int(1)
 		elif self.ui.stop_btn.text() == "Continue":
-			self.ui.stop_btn.setText("Stop")
-			self.ui.stop_btn.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" white;\n"
-										   "border-radius: 10px ;\n"
-										   "background-color: rgb(0, 0, 0);\n"
-										   "color: white;")
+			self.ui.stop_btn.setText("Pause")
+			self.ui.stop_btn.setStyleSheet("#stop_btn:hover{\n"
+										"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+										"}\n"
+										"\n"
+										"#stop_btn{\n"
+										"background-color: rgba(255, 255, 255,0);\n"
+										"}")
 			global stop_array
 			self.stop_array = int(0)
 
