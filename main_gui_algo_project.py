@@ -7,11 +7,10 @@ import sys
 import webbrowser
 
 import speech_recognition as sr
-from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtWidgets import QMessageBox
-from iconify.qt import QtCore
 
 from main_gui_binary_search import BinarySearch
 from main_gui_fibonacci import Fibonacci

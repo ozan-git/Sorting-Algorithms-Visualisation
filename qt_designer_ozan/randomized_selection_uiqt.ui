@@ -483,6 +483,12 @@ QPushButton:pressed {
                <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
                  <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Unsorted Array:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
@@ -521,6 +527,13 @@ border 10 px;</string>
                <layout class="QVBoxLayout" name="verticalLayout_2">
                 <item>
                  <widget class="QLabel" name="label_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Sorted Array:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
@@ -568,6 +581,13 @@ p, li { white-space: pre-wrap; }
                  <layout class="QVBoxLayout" name="verticalLayout_5">
                   <item>
                    <widget class="QLabel" name="label_2">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Array Size&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
@@ -664,6 +684,13 @@ p, li { white-space: pre-wrap; }
                  <layout class="QHBoxLayout" name="horizontalLayout_3">
                   <item>
                    <widget class="QLabel" name="label_5">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Lower Range:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
@@ -702,6 +729,13 @@ border 10 px;</string>
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
                   <item>
                    <widget class="QLabel" name="label_9">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Upper Range:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
@@ -740,6 +774,19 @@ border 10 px;</string>
               </item>
              </layout>
             </item>
+            <item>
+             <spacer name="verticalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
           <item>
@@ -762,6 +809,19 @@ border 10 px;</string>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
+                 <spacer name="verticalSpacer_8">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
                  <widget class="QPushButton" name="set_default_values">
                   <property name="minimumSize">
                    <size>
@@ -771,9 +831,18 @@ border 10 px;</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>151</width>
-                    <height>41</height>
+                    <width>200</width>
+                    <height>100</height>
                    </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MS Shell Dlg 2 white</family>
+                    <pointsize>12</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
                   </property>
                   <property name="toolTip">
                    <string>Create array with selected values.</string>
@@ -781,7 +850,7 @@ border 10 px;</string>
                   <property name="styleSheet">
                    <string notr="true">#set_default_values{
 background-color: rgba(120, 2, 6, 255);
-font: 10pt &quot;MS Shell Dlg 2&quot; white;
+font: 12pt &quot;MS Shell Dlg 2&quot; white;
 border-radius: 10px ;
 color: white;}
 
@@ -803,8 +872,8 @@ color: white;}
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>151</width>
-                    <height>41</height>
+                    <width>200</width>
+                    <height>100</height>
                    </size>
                   </property>
                   <property name="toolTip">
@@ -813,7 +882,7 @@ color: white;}
                   <property name="styleSheet">
                    <string notr="true">#createanarray_btn{
 background-color: rgba(66, 132, 255,0.8);
-font: 10pt &quot;MS Shell Dlg 2&quot; white;
+font: 12pt &quot;MS Shell Dlg 2&quot; white;
 border-radius: 10px ;
 color: white;
 }
@@ -826,6 +895,19 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
                    <string>CREATE ARRAY</string>
                   </property>
                  </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </item>
@@ -857,6 +939,15 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.425318, x2:1, y2:0.341,
                     <width>165</width>
                     <height>20</height>
                    </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MS Shell Dlg 2</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -963,19 +1054,6 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_8">
                 <item>
-                 <spacer name="horizontalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
                  <widget class="QPushButton" name="find_btn">
                   <property name="minimumSize">
                    <size>
@@ -985,15 +1063,15 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>151</width>
-                    <height>41</height>
+                    <width>360</width>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="toolTip">
                    <string>Find the kth Smallest Index</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">#find_btn{font: 9pt &quot;MS Shell Dlg 2&quot; white;
+                   <string notr="true">#find_btn{font: 12pt &quot;MS Shell Dlg 2&quot; white;
 background-color: rgba(120, 2, 6, 255);
 border-radius: 10px ;
 color: white;}
@@ -1004,19 +1082,6 @@ color: white;}
                    <string>FIND I'TH SMALLEST </string>
                   </property>
                  </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_6">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </item>
@@ -1080,7 +1145,8 @@ border-color: rgb(0, 0, 0);</string>
                    <string>Clear all values.</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">#clear_btn{font: 10pt &quot;MS Shell Dlg 2&quot; white;
+                   <string notr="true">#clear_btn{
+font: 12pt &quot;MS Shell Dlg 2&quot; white;
 border-radius: 10px ;
 background-color: rgba(66, 132, 255,0.8);
 color: white;}
@@ -1109,6 +1175,19 @@ color: white;}
                </layout>
               </item>
              </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_10">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
@@ -1198,19 +1277,6 @@ color: white;}
          </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </item>

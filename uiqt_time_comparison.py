@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1200, 801)
+        MainWindow.resize(1200, 800)
         MainWindow.setMinimumSize(QtCore.QSize(1200, 800))
         MainWindow.setMaximumSize(QtCore.QSize(4500, 4500))
         MainWindow.setStyleSheet("#MainWindow{\n"
@@ -68,7 +68,7 @@ class Ui_MainWindow(object):
         self.frame_icon_top_bar.setMinimumSize(QtCore.QSize(0, 30))
         self.frame_icon_top_bar.setMaximumSize(QtCore.QSize(30, 30))
         self.frame_icon_top_bar.setStyleSheet("background: transparent;\n"
-"image: url(images/shutter_speed_white_24dp.svg);\n"
+"image: url(:/images/images/shutter_speed_white_24dp.svg);\n"
 "background-position: center;\n"
 "background-repeat: no-repeat;")
         self.frame_icon_top_bar.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -186,22 +186,26 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
         self.MplSort = MplSort(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.MplSort.sizePolicy().hasHeightForWidth())
+        self.MplSort.setSizePolicy(sizePolicy)
         self.MplSort.setMinimumSize(QtCore.QSize(901, 351))
+        self.MplSort.setMaximumSize(QtCore.QSize(4500, 4500))
         self.MplSort.setObjectName("MplSort")
         self.horizontalLayout_2.addWidget(self.MplSort)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem2)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.back_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.back_btn.setMaximumSize(QtCore.QSize(0, 0))
         self.back_btn.setStyleSheet("background-color: rgba(0,0,0,0);")
         self.back_btn.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/images/images/home.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.back_btn.setIcon(icon3)
-        self.back_btn.setIconSize(QtCore.QSize(60, 60))
+        self.back_btn.setIconSize(QtCore.QSize(0, 0))
         self.back_btn.setObjectName("back_btn")
         self.verticalLayout_5.addWidget(self.back_btn)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_5.addItem(spacerItem2)
         self.horizontalLayout_2.addLayout(self.verticalLayout_5)
         self.verticalLayout_8.addLayout(self.horizontalLayout_2)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)

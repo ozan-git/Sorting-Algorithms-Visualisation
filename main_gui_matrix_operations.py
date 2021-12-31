@@ -22,7 +22,6 @@ matrix_mult = matrix_mult()
 
 
 # %% Application Content
-
 class MatrixOperation(QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -101,8 +100,7 @@ class MatrixOperation(QMainWindow):
 	def mouseReleaseEvent(self, QMouseEvent):
 		self.pressing = False
 
-
-	# %%
+	# %% Voice.
 	def voice(self):
 		r = sr.Recognizer()
 		microphoneValue = ""
@@ -234,7 +232,6 @@ class MatrixOperation(QMainWindow):
 				QMessageBox.information(self, "ERROR", "No Internet Connection...")
 
 	# %% User input connections of the interface
-
 	def inputs(self):
 		if self.ui.row_m1.text() != '' or self.ui.column_m1.text() != '':
 			try:
@@ -242,8 +239,7 @@ class MatrixOperation(QMainWindow):
 				self.number_of_rows_matrix1 = int(self.ui.row_m1.text())
 				# Getting column number of first matrix from line edit
 				self.number_of_columns_matrix1 = int(self.ui.column_m1.text())
-				self.matrix1 = [[0 for i in range(int(self.ui.column_m1.text()))] for _ in range(int(self.ui.row_m1.text()))]
-
+				self.matrix1 = [(i, j) for i in range(int(self.ui.column_m1.text())) for j in range(int(self.ui.row_m1.text()))]
 			except ValueError:
 				pass
 		if self.ui.row_m2.text() != '' or self.ui.column_m2.text() != '':
@@ -251,13 +247,14 @@ class MatrixOperation(QMainWindow):
 				self.number_of_rows_matrix2 = int(self.ui.row_m2.text())
 				# §self.ui.row_m2.setText(str(int(self.ui.column_m1.text()))) #the number of rows of the second
 				# matrix appears as the number of columns of the first according to the matrix multiplication rule
-				self.number_of_columns_matrix2 = int(
-					self.ui.column_m2.text())  # Getting row number of first matrix from line edit
-				self.matrix2 = [[0 for i in range(int(self.ui.column_m2.text()))] for _ in range(int(self.ui.row_m2.text()))]
+
+				# Getting row number of first matrix from line edit
+				self.number_of_columns_matrix2 = int(self.ui.column_m2.text())
+				self.matrix2 = [(i, j) for i in range(int(self.ui.column_m2.text())) for j in range(int(self.ui.row_m2.text()))]
 			except ValueError:
 				pass
 
-	# %%%
+	# %% Visibility.
 
 	def visible1_false(self):
 		self.ui.label_6.setVisible(False)
@@ -307,8 +304,8 @@ class MatrixOperation(QMainWindow):
 		self.ui.rank_2.setVisible(True)
 		self.ui.display_det_2.setVisible(True)
 
-	# %% Creating tables of matrices with the number of rows and columns received from the user and placing the
-	# generated random matrices into the table
+	# %% Generate Random Matrices.
+	# Creating tables of matrices with the number of rows and columns received from the user and placing the generated random matrices into the table
 	def random_matrices(self):
 		self.visible1_false()
 		self.visible2_false()
@@ -410,14 +407,17 @@ class MatrixOperation(QMainWindow):
 	# %%Determinant
 
 	def determinant1(self):
+		self.matrix1 = [[(i, j) for i in range(int(self.ui.column_m1.text()))] for j in range(int(self.ui.row_m1.text()))]
 		if self.ui.row_m1.text() != self.ui.column_m1.text():
 			self.msg = QMessageBox.critical(self, "Error",
-											"Last 2 dimensions of the array must be square!\nPlease check your first matrix row count and column count......")
+											"Last 2 dimensions of the array must be square!"
+											"\nPlease check your first matrix row count and column count......")
 		else:
 			try:
 				for i in range(len(self.matrix1)):
 					for j in range(len(self.matrix1[0])):
 						self.matrix1[i][j] = float(self.ui.Matrix_1.item(i, j).text())
+
 				print(self.matrix1)
 				self.matrix1 = np.asarray(self.matrix1)
 				self.det = np.linalg.det(self.matrix1)
@@ -428,9 +428,11 @@ class MatrixOperation(QMainWindow):
 				self.msg = QMessageBox.critical(self, "Error", "Please fill in the required fields...")
 
 	def determinant2(self):
+		self.matrix2 = [[(i, j) for i in range(int(self.ui.column_m2.text()))] for j in range(int(self.ui.row_m2.text()))]
 		if self.ui.row_m2.text() != self.ui.column_m2.text():
 			self.msg = QMessageBox.critical(self, "Error",
-											"Last 2 dimensions of the array must be square!\nPlease check your second matrix row count and column count...")
+											"Last 2 dimensions of the array must be square!"
+											"\nPlease check your second matrix row count and column count...")
 		else:
 			try:
 				for i in range(len(self.matrix2)):
@@ -715,16 +717,20 @@ class MatrixOperation(QMainWindow):
 		self.matrix1 = []
 		self.matrix2 = []
 		self.result_matrix = []
-		self.ui.Matrix_1.clear()  # cleaning the table of first matrix
-		self.ui.Matrix_2.clear()  # cleaning the table of second matrix
-		self.ui.Matrix_1.setRowCount(0)  # cleaning the row value of table of first matrix
-		self.ui.Matrix_1.setColumnCount(0)  # cleaning the column value of table of first matrix
-		self.ui.Matrix_2.setRowCount(0)  # cleaning the row value of table of second matrix
-		self.ui.Matrix_2.setColumnCount(0)  # cleaning the column value of table of second matrix
-		self.ui.resultmatrix.setRowCount(0)  # cleaning the row value of table of result matrix
-		self.ui.resultmatrix.setColumnCount(0)  # cleaning the row value of table of result matrix
-		self.ui.resultmatrix.clear()  # cleaning the table of result matrix
-		self.ui.row_m1.clear()  # clear all line edits
+
+		# Cleaning the table of matrices.
+		self.ui.Matrix_1.clear()
+		self.ui.Matrix_2.clear()
+		self.ui.resultmatrix.clear()
+		# Cleaning the column&row value of table of matrices.
+		self.ui.Matrix_1.setRowCount(0)
+		self.ui.Matrix_1.setColumnCount(0)
+		self.ui.Matrix_2.setRowCount(0)
+		self.ui.Matrix_2.setColumnCount(0)
+		self.ui.resultmatrix.setRowCount(0)
+		self.ui.resultmatrix.setColumnCount(0)
+		# Clear all row and columns.
+		self.ui.row_m1.clear()
 		self.ui.column_m1.clear()
 		self.ui.row_m2.clear()
 		self.ui.column_m2.clear()
