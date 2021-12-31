@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>801</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -426,18 +426,49 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="MplSort" name="MplSort" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
             <width>901</width>
             <height>351</height>
            </size>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>4500</width>
+            <height>4500</height>
+           </size>
+          </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QPushButton" name="back_btn">
+            <property name="maximumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="toolTip">
              <string>Back To Menu</string>
             </property>
@@ -447,30 +478,13 @@ QPushButton:pressed {
             <property name="text">
              <string/>
             </property>
-            <property name="icon">
-             <iconset resource="../resources.qrc">
-              <normaloff>:/images/images/home.svg</normaloff>:/images/images/home.svg</iconset>
-            </property>
             <property name="iconSize">
              <size>
-              <width>60</width>
-              <height>60</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
