@@ -42,10 +42,10 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.array_sort.setMaximum(100)
 		self.ui.lower_range.setValidator(QIntValidator(-1000000, 10000, self))
 		self.ui.upper_range.setValidator(QIntValidator(10000, 1000000, self))
-		self.ui.array_sort.valueChanged.connect(self.valuelen)
+		self.ui.array_sort.valueChanged.connect(self.value_length)
 		self.ui.set_default_values.clicked.connect(self.SetDefaultValues)
 		self.ui.set_default_values.clicked.connect(self.spin_box)
-		self.ui.set_default_values.clicked.connect(self.createbargraph)
+		self.ui.set_default_values.clicked.connect(self.CreateBarGraph)
 		self.ui.create_array.clicked.connect(self.CreateArray)
 		self.ui.create_array.clicked.connect(self.spin_box)
 		self.ui.enter_array.clicked.connect(self.add_array)
@@ -64,23 +64,23 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.menuSave_File.triggered.connect(self.save_response)
 		self.ui.menuInsert_File.triggered.connect(self.insert_response)
 
-		self.ui.create_array.clicked.connect(self.createbargraph)
+		self.ui.create_array.clicked.connect(self.CreateBarGraph)
 		self.ui.clear_btn.clicked.connect(self.clear)
 		self.ui.back_btn.clicked.connect(self.close)
 		self.ui.verticalSlider.setFocusPolicy(Qt.NoFocus)
 		self.ui.MplSort.canvas.axes.get_xaxis().set_visible(False)
 		self.ui.bubble_sort.clicked.connect(self.BubbleSort)
 		self.ui.insertion_sort.clicked.connect(self.InsertionSort)
-		self.ui.merge_sort.clicked.connect(self.callmerge)
+		self.ui.merge_sort.clicked.connect(self.CallMerge)
 		self.ui.selection_sort.clicked.connect(self.SelectionSort)
-		self.ui.quick_sort.clicked.connect(self.callquicksort)
+		self.ui.quick_sort.clicked.connect(self.CallQuickSort)
 		self.ui.heap_sort.clicked.connect(self.HeapSort)
 		self.ui.counting_sort.clicked.connect(self.CountingSort)
 		self.ui.bucket_sort.clicked.connect(self.BucketSort)
 		self.ui.shell_sort.clicked.connect(self.ShellSort)
 		self.ui.radix_sort.clicked.connect(self.RadixSort)
-		self.ui.coctail_sort.clicked.connect(self.CoctailSort)
-		self.ui.comb_sort.clicked.connect(self.callcombsort)
+		self.ui.coctail_sort.clicked.connect(self.CocktailSort)
+		self.ui.comb_sort.clicked.connect(self.CallCompSort)
 
 		self.ui.pushButton.clicked.connect(self.plus)
 		self.ui.pushButton_2.clicked.connect(self.minus)
@@ -127,7 +127,7 @@ class SortingAlgorithms(QMainWindow):
 							QMessageBox.warning(self, "ERROR", "Create array first...")
 					elif microphoneValue == 'merge sort':
 						try:
-							self.callmerge()
+							self.CallMerge()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
@@ -145,7 +145,7 @@ class SortingAlgorithms(QMainWindow):
 							QMessageBox.warning(self, "ERROR", "Create array first...")
 					elif microphoneValue == 'quicksort':
 						try:
-							self.callquicksort()
+							self.CallQuickSort()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
@@ -176,7 +176,7 @@ class SortingAlgorithms(QMainWindow):
 					elif microphoneValue == 'default':
 						try:
 							self.SetDefaultValues()
-							self.createbargraph()
+							self.CreateBarGraph()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
@@ -204,15 +204,15 @@ class SortingAlgorithms(QMainWindow):
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
-					elif microphoneValue == 'coctail sort':
+					elif microphoneValue == 'cocktail sort':
 						try:
-							self.CoctailSort()
+							self.CocktailSort()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
 					elif microphoneValue == 'comb sort':
 						try:
-							self.callcombsort()
+							self.CallCompSort()
 							microphoneValue = ""
 						except:
 							QMessageBox.warning(self, "ERROR", "Create array first...")
@@ -316,9 +316,9 @@ class SortingAlgorithms(QMainWindow):
 				file_path = filedialog.askopenfilename(initialdir="/", title="Select file",
 													   filetypes=(("csv file", "*.csv"), ("all files", "*.*")))
 				with open(file_path) as f:
-					okur = csv.reader(f)
-					for satır in okur:
-						self.unsorted_array = satır
+					reader = csv.reader(f)
+					for column in reader:
+						self.unsorted_array = column
 					for i in range(len(self.unsorted_array)):
 						self.unsorted_array[i] = int(self.unsorted_array[i])
 					t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
@@ -368,12 +368,12 @@ class SortingAlgorithms(QMainWindow):
 		elif self.ui.stop_btn.text() == "Continue":
 			self.ui.stop_btn.setText("Pause")
 			self.ui.stop_btn.setStyleSheet("#stop_btn:hover{\n"
-										"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
-										"}\n"
-										"\n"
-										"#stop_btn{\n"
-										"background-color: rgba(255, 255, 255,0);\n"
-										"}")
+										   "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+										   "}\n"
+										   "\n"
+										   "#stop_btn{\n"
+										   "background-color: rgba(255, 255, 255,0);\n"
+										   "}")
 			global stop_array
 			self.stop_array = int(0)
 
@@ -469,13 +469,13 @@ class SortingAlgorithms(QMainWindow):
 		self.ui.micro_btn.setEnabled(True)
 
 	# %% Change in Dial
-	def valuelen(self):
+	def value_length(self):
 		self.length = int(self.ui.array_sort.value())
 		self.ui.displayarrays_sort.setText(str(self.length))
 
 	# %% Set the speed
-	def projectspeed(self):
-		self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
+	def project_speed(self):
+		self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
 
 	# %%Create Array with selected values and options
 	def CreateArray(self):
@@ -578,7 +578,7 @@ class SortingAlgorithms(QMainWindow):
 						break
 
 	# %%Bar Graph Function
-	def createbargraph(self):
+	def CreateBarGraph(self):
 		t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 		self.ui.MplSort.canvas.axes.clear()
 		self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#4dffff', edgecolor="black")
@@ -611,39 +611,32 @@ class SortingAlgorithms(QMainWindow):
 							self.operation_buttons()
 							self.ui.MplSort.canvas.axes.clear()
 							self.ui.MplSort.canvas.axes.set_title("Bubble Sort Animation", loc='left')
-							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-																		 edgecolor="#f0f8ff")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 							self.autolabel(self.rects)
-							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="#FFE4E1",
-																		 edgecolor="black")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="#FFE4E1", edgecolor="black")
 							self.autolabel(self.rects)
-							self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1], color="#FFE4E1",
-															edgecolor="black")
+							self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1], color="#FFE4E1", edgecolor="black")
 							self.autolabel(self.rects)
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-							self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-							time.sleep(self.speedofproject)
+							self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+							time.sleep(self.project_speed)
 							QApplication.processEvents()
 
-							self.unsorted_array[j], self.unsorted_array[j + 1] = self.unsorted_array[j + 1], \
-																				 self.unsorted_array[j]
+							self.unsorted_array[j], self.unsorted_array[j + 1] = self.unsorted_array[j + 1], self.unsorted_array[j]
 
 							self.ui.MplSort.canvas.axes.clear()
 							self.ui.MplSort.canvas.axes.set_title("Bubble Sort Animation", loc='left')
-							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-																		 edgecolor="#f0f8ff")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 							self.autolabel(self.rects)
-							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="#FFE4E1",
-																		 edgecolor="black")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="#FFE4E1", edgecolor="black")
 							self.autolabel(self.rects)
-							self.rects = self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1],
-																		 color="#FFE4E1", edgecolor="black")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1], color="#FFE4E1", edgecolor="black")
 							self.autolabel(self.rects)
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-							self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-							time.sleep(self.speedofproject)
+							self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+							time.sleep(self.project_speed)
 							QApplication.processEvents()
 				self.ui.MplSort.canvas.axes.clear()
 				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
@@ -674,31 +667,27 @@ class SortingAlgorithms(QMainWindow):
 						self.operation_buttons()
 						self.ui.MplSort.canvas.axes.clear()
 						self.ui.MplSort.canvas.axes.set_title("Insertion Sort Animation", loc='left')
-						self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-																	 edgecolor="#f0f8ff")
+						self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 						self.autolabel(self.rects)
-						self.rects = self.ui.MplSort.canvas.axes.bar(t[i], self.unsorted_array[i], color="#FFE4E1",
-																	 edgecolor="black")
+						self.rects = self.ui.MplSort.canvas.axes.bar(t[i], self.unsorted_array[i], color="#FFE4E1", edgecolor="black")
 						self.autolabel(self.rects)
-						self.rects = self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1],
-																	 color="#FFE4E1", edgecolor="black")
+						self.rects = self.ui.MplSort.canvas.axes.bar(t[j + 1], self.unsorted_array[j + 1], color="#FFE4E1", edgecolor="black")
 						self.autolabel(self.rects)
 						self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 						self.ui.MplSort.canvas.draw()
-						self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-						time.sleep(self.speedofproject)
+						self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+						time.sleep(self.project_speed)
 						QApplication.processEvents()
 
 					self.unsorted_array[j + 1] = key
 					self.ui.MplSort.canvas.axes.clear()
 					self.ui.MplSort.canvas.axes.set_title("Insertion Sort Animation", loc='left')
-					self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-																 edgecolor="#f0f8ff")
+					self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 				self.enable_button()
 
@@ -708,7 +697,7 @@ class SortingAlgorithms(QMainWindow):
 			self.enable_button()
 
 	# %% Merge Sort Animation
-	def callmerge(self):
+	def CallMerge(self):
 		try:
 			if len(self.unsorted_array) == 0:
 				self.msg = QMessageBox.critical(self, "Error", "Please make an array!")
@@ -727,7 +716,7 @@ class SortingAlgorithms(QMainWindow):
 			q = (p + r) // 2  # q is the middle index
 			self.MergeSort(array, p, q)  # recursive function for new right array created
 			self.MergeSort(array, q + 1, r)  # recursive function for new right array created
-			self.merge(array, p, q, r)  # merge funciton for sorted array to merge
+			self.merge(array, p, q, r)  # merge function for sorted array to merge
 		return array
 
 	def merge(self, array, p, q, r):
@@ -743,11 +732,12 @@ class SortingAlgorithms(QMainWindow):
 		left_array[n1] = np.inf  # use inf value as the sentinel value
 		right_array[n2] = np.inf  # use inf value as the sentinel value
 
-		i = 0  # empty subarray contains the 0 smallest elements of left array and right array
+		# empty subarray contains the 0 smallest elements of left array and right array
+		i = 0
 		j = 0
-		for k in range(p, r + 1):  # the subarrays indexes compare
+		for k in range(p, r + 1):  # the subarrays index compare
 			if left_array[i] <= right_array[
-				j]:  # campare left array ith index and right array jth index for sorted array
+				j]:  # compare left array ith index and right array jth index for sorted array
 				array[k] = left_array[i]  # the smaller one is added to the arrays about to be sorted
 				i += 1
 				self.operation_buttons()
@@ -762,8 +752,8 @@ class SortingAlgorithms(QMainWindow):
 				# self.ui.MplSort.canvas.axes.bar(t[i+1], array[i+1], color="blue", edgecolor="black")
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
-				self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-				time.sleep(self.speedofproject)
+				self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+				time.sleep(self.project_speed)
 				QApplication.processEvents()
 			else:
 				array[k] = right_array[j]
@@ -779,8 +769,8 @@ class SortingAlgorithms(QMainWindow):
 				# self.ui.MplSort.canvas.axes.bar(t[j+1], array[j+1], color="blue", edgecolor="black")
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
-				self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-				time.sleep(self.speedofproject)
+				self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+				time.sleep(self.project_speed)
 				QApplication.processEvents()
 
 		self.ui.MplSort.canvas.axes.clear()
@@ -806,32 +796,28 @@ class SortingAlgorithms(QMainWindow):
 
 							self.ui.MplSort.canvas.axes.clear()
 							self.ui.MplSort.canvas.axes.set_title("Selection Sort Animation", loc='left')
-							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-																		 edgecolor="#f0f8ff")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 							self.autolabel(self.rects)
-							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="blue",
-																		 edgecolor="black")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t[j], self.unsorted_array[j], color="blue", edgecolor="black")
 							self.autolabel(self.rects)
-							self.rects = self.ui.MplSort.canvas.axes.bar(t[min], self.unsorted_array[min], color="red",
-																		 edgecolor="white")
+							self.rects = self.ui.MplSort.canvas.axes.bar(t[min], self.unsorted_array[min], color="red", edgecolor="white")
 							self.autolabel(self.rects)
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-							self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-							time.sleep(self.speedofproject)
+							self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+							time.sleep(self.project_speed)
 							QApplication.processEvents()
 					self.operation_buttons()
 					self.unsorted_array[i], self.unsorted_array[min] = self.unsorted_array[min], self.unsorted_array[i]
 
 				self.ui.MplSort.canvas.axes.clear()
 				self.ui.MplSort.canvas.axes.set_title("Selection Sort Animation", loc='left')
-				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-															 edgecolor="#f0f8ff")
+				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
-				self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-				time.sleep(self.speedofproject)
+				self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+				time.sleep(self.project_speed)
 				QApplication.processEvents()
 				self.enable_button()
 		except AttributeError:
@@ -840,7 +826,7 @@ class SortingAlgorithms(QMainWindow):
 			self.enable_button()
 
 	# %% Quick Sort Animation
-	def callquicksort(self):
+	def CallQuickSort(self):
 		try:
 			if len(self.unsorted_array) == 0:
 				self.msg = QMessageBox.critical(self, "Error", "Please make an array!")
@@ -851,8 +837,7 @@ class SortingAlgorithms(QMainWindow):
 				self.QuickSort(array, 0, len(self.unsorted_array) - 1)
 				self.ui.MplSort.canvas.axes.clear()
 				self.ui.MplSort.canvas.axes.set_title("Quick Sort Animation", loc='left')
-				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
-															 edgecolor="#f0f8ff")
+				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a', edgecolor="#f0f8ff")
 
 				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
@@ -871,10 +856,10 @@ class SortingAlgorithms(QMainWindow):
 
 	def partition(self, array, p, r):
 		t = np.arange(len(self.unsorted_array))
-		pivotelement = array[r]
+		pivot_element = array[r]
 		i = p - 1
 		for j in range(p, r):
-			if array[j] <= pivotelement:
+			if array[j] <= pivot_element:
 				i += 1
 
 				array[i], array[j] = array[j], array[i]
@@ -895,8 +880,8 @@ class SortingAlgorithms(QMainWindow):
 				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
-				self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-				time.sleep(self.speedofproject)
+				self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+				time.sleep(self.project_speed)
 				QApplication.processEvents()
 
 			self.ui.MplSort.canvas.axes.clear()
@@ -912,8 +897,8 @@ class SortingAlgorithms(QMainWindow):
 			self.autolabel(self.rects)
 			self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 			self.ui.MplSort.canvas.draw()
-			self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-			time.sleep(self.speedofproject)
+			self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+			time.sleep(self.project_speed)
 			QApplication.processEvents()
 		array[i + 1], array[r] = array[r], array[i + 1]
 
@@ -955,8 +940,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 
 				for i in range(n - 1, 0, -1):
@@ -972,8 +957,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 
 				self.ui.MplSort.canvas.axes.clear()
@@ -1026,8 +1011,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 
 				for i in range(0, len(self.unsorted_array)):
@@ -1042,8 +1027,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 				self.ui.MplSort.canvas.axes.clear()
 				self.ui.MplSort.canvas.axes.set_title("Counting Sort Animation", loc='left')
@@ -1100,8 +1085,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 
 				for i in range(0, len(self.unsorted_array)):
@@ -1115,8 +1100,8 @@ class SortingAlgorithms(QMainWindow):
 					self.autolabel(self.rects)
 					self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 					self.ui.MplSort.canvas.draw()
-					self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-					time.sleep(self.speedofproject)
+					self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+					time.sleep(self.project_speed)
 					QApplication.processEvents()
 
 				self.enable_button()
@@ -1150,8 +1135,8 @@ class SortingAlgorithms(QMainWindow):
 						self.autolabel(self.rects)
 						self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 						self.ui.MplSort.canvas.draw()
-						self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-						time.sleep(self.speedofproject)
+						self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+						time.sleep(self.project_speed)
 						QApplication.processEvents()
 						while j >= gap and self.unsorted_array[j - gap] > temp:
 							self.unsorted_array[j] = self.unsorted_array[j - gap]
@@ -1165,8 +1150,8 @@ class SortingAlgorithms(QMainWindow):
 							self.autolabel(self.rects)
 							self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 							self.ui.MplSort.canvas.draw()
-							self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-							time.sleep(self.speedofproject)
+							self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+							time.sleep(self.project_speed)
 							QApplication.processEvents()
 							j -= gap
 						self.unsorted_array[j] = temp
@@ -1213,8 +1198,8 @@ class SortingAlgorithms(QMainWindow):
 			self.autolabel(self.rects)
 			self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 			self.ui.MplSort.canvas.draw()
-			self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-			time.sleep(self.speedofproject)
+			self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+			time.sleep(self.project_speed)
 			QApplication.processEvents()
 		for i in range(len(array)):
 			array[i] = result_array[i]
@@ -1246,7 +1231,7 @@ class SortingAlgorithms(QMainWindow):
 			self.enable_button()
 
 	# %% Cocktail Sort Algorithm
-	def CoctailSort(self):
+	def CocktailSort(self):
 		try:
 			if len(self.unsorted_array) != 0:
 				t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
@@ -1272,8 +1257,8 @@ class SortingAlgorithms(QMainWindow):
 						self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 
 						self.ui.MplSort.canvas.draw()
-						self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-						time.sleep(self.speedofproject)
+						self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+						time.sleep(self.project_speed)
 						QApplication.processEvents()
 					if (isSwapped == False):
 						break
@@ -1295,8 +1280,8 @@ class SortingAlgorithms(QMainWindow):
 						self.autolabel(self.rects)
 						self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 						self.ui.MplSort.canvas.draw()
-						self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-						time.sleep(self.speedofproject)
+						self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+						time.sleep(self.project_speed)
 						QApplication.processEvents()
 					start = start + 1
 				self.ui.MplSort.canvas.axes.clear()
@@ -1315,12 +1300,12 @@ class SortingAlgorithms(QMainWindow):
 
 	# %%Comb Sort Animation
 
-	def callcombsort(self):
+	def CallCompSort(self):
 		try:
 			if len(self.unsorted_array) != 0:
 				t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 				self.disable_button()
-				self.combsort(self.unsorted_array)
+				self.CombSort(self.unsorted_array)
 				self.ui.MplSort.canvas.axes.clear()
 				self.ui.MplSort.canvas.axes.set_title("Comb Sort Animation", loc='left')
 				self.rects = self.ui.MplSort.canvas.axes.bar(t, self.unsorted_array, color='#56132a',
@@ -1336,7 +1321,7 @@ class SortingAlgorithms(QMainWindow):
 											"Please make the operations in order!\nMake sure to set to Array Size and Range")
 			self.enable_button()
 
-	def combsort(self, array):
+	def CombSort(self, array):
 		t = np.linspace(1, len(self.unsorted_array), len(self.unsorted_array))
 		gap = len(array)
 		swaps = True
@@ -1352,8 +1337,8 @@ class SortingAlgorithms(QMainWindow):
 				self.autolabel(self.rects)
 				self.ui.MplSort.canvas.axes.patch.set_alpha(0)
 				self.ui.MplSort.canvas.draw()
-				self.speedofproject = 0.001 * (100 - self.ui.verticalSlider.value())
-				time.sleep(self.speedofproject)
+				self.project_speed = 0.001 * (100 - self.ui.verticalSlider.value())
+				time.sleep(self.project_speed)
 				QApplication.processEvents()
 				j = i + gap
 				if array[i] > array[j]:
